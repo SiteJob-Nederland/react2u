@@ -1,0 +1,132 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
+		"layout": { "contentSize": "760px", "wideSize": "1200px" },
+		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"custom": false,
+			"palette": [
+				{ "slug": "brand", "name": "Merkkleur", "color": "#312E82" },
+				{ "slug": "brand-deep", "name": "Merkkleur diep", "color": "#22205A" },
+				{ "slug": "brand-light", "name": "Merkkleur licht", "color": "#8985D6" },
+				{ "slug": "night", "name": "Nacht", "color": "#12112A" },
+				{ "slug": "night-deep", "name": "Nacht diep", "color": "#0B0B19" },
+				{ "slug": "dienst-wvp", "name": "Verzuim WVP", "color": "#CA152A" },
+				{ "slug": "dienst-erd", "name": "Verzuim ERD/ZW", "color": "#AB6600" },
+				{ "slug": "dienst-preventie", "name": "Preventie & vitaliteit", "color": "#1E7EB0" },
+				{ "slug": "dienst-coaching", "name": "Begeleiding & coaching", "color": "#D81570" },
+				{ "slug": "dienst-trainingen", "name": "Trainingen & workshops", "color": "#008577" },
+				{ "slug": "dienst-risico", "name": "Risicomanagement", "color": "#312E82" },
+				{ "slug": "ink", "name": "Inkt", "color": "#16161D" },
+				{ "slug": "ink-soft", "name": "Inkt zacht", "color": "#4C4C5A" },
+				{ "slug": "mist", "name": "Mist", "color": "#F1F1F6" },
+				{ "slug": "line", "name": "Lijn", "color": "#E4E4EC" },
+				{ "slug": "paper", "name": "Papier", "color": "#FBFBFD" },
+				{ "slug": "white", "name": "Wit", "color": "#FFFFFF" }
+			],
+			"gradients": [
+				{ "slug": "brand", "name": "Merkverloop", "gradient": "linear-gradient(135deg, #312E82 0%, #22205A 100%)" },
+				{ "slug": "night", "name": "Nacht", "gradient": "linear-gradient(160deg, #12112A 0%, #0B0B19 100%)" }
+			]
+		},
+		"typography": {
+			"fluid": true,
+			"customFontSize": true,
+			"dropCap": false,
+			"fontFamilies": [
+				{
+					"name": "Figtree",
+					"slug": "body",
+					"fontFamily": "\"React2u Body\", \"Segoe UI\", system-ui, -apple-system, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "React2u Body",
+							"fontWeight": "400 600",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/body-var-latin.woff2" ]
+						}
+					]
+				},
+				{
+					"name": "DM Sans",
+					"slug": "display",
+					"fontFamily": "\"React2u Display\", \"Segoe UI\", system-ui, -apple-system, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "React2u Display",
+							"fontWeight": "400 800",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/display-var-latin.woff2" ]
+						}
+					]
+				},
+				{
+					"name": "Mono",
+					"slug": "mono",
+					"fontFamily": "ui-monospace, \"SFMono-Regular\", monospace"
+				}
+			],
+			"fontSizes": [
+				{ "slug": "small", "name": "Klein", "size": "0.875rem", "fluid": false },
+				{ "slug": "medium", "name": "Normaal", "size": "1rem", "fluid": false },
+				{ "slug": "large", "name": "Groot", "size": "1.25rem", "fluid": { "min": "1.1rem", "max": "1.25rem" } },
+				{ "slug": "x-large", "name": "Kop", "size": "2rem", "fluid": { "min": "1.65rem", "max": "2.5rem" } },
+				{ "slug": "xx-large", "name": "Titel", "size": "3rem", "fluid": { "min": "2.05rem", "max": "3.3rem" } }
+			]
+		},
+		"spacing": {
+			"units": [ "px", "rem", "%", "vw" ],
+			"padding": true,
+			"margin": true,
+			"blockGap": true,
+			"spacingSizes": [
+				{ "slug": "20", "name": "Klein", "size": "clamp(12px, 2vw, 20px)" },
+				{ "slug": "40", "name": "Normaal", "size": "clamp(20px, 3vw, 32px)" },
+				{ "slug": "60", "name": "Ruim", "size": "clamp(32px, 5vw, 64px)" },
+				{ "slug": "80", "name": "Sectie", "size": "clamp(72px, 8vw, 112px)" }
+			]
+		},
+		"border": { "radius": true, "color": true, "style": true, "width": true }
+	},
+	"styles": {
+		"color": { "background": "var(--wp--preset--color--paper)", "text": "var(--wp--preset--color--ink)" },
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--body)",
+			"fontSize": "var(--wp--preset--font-size--medium)",
+			"lineHeight": "1.65"
+		},
+		"spacing": {
+			"blockGap": "clamp(20px, 3vw, 32px)",
+			"padding": { "left": "0", "right": "0" }
+		},
+		"elements": {
+			"link": { "color": { "text": "var(--wp--preset--color--brand)" } },
+			"h1": { "typography": { "fontFamily": "var(--wp--preset--font-family--display)", "fontWeight": "800", "lineHeight": "1.1", "letterSpacing": "-0.025em" } },
+			"h2": { "typography": { "fontFamily": "var(--wp--preset--font-family--display)", "fontWeight": "700", "lineHeight": "1.15", "letterSpacing": "-0.02em" } },
+			"h3": { "typography": { "fontFamily": "var(--wp--preset--font-family--display)", "fontWeight": "700", "lineHeight": "1.25", "letterSpacing": "-0.015em" } },
+			"button": {
+				"color": { "background": "var(--wp--preset--color--brand)", "text": "var(--wp--preset--color--white)" },
+				"border": { "radius": "999px" },
+				"typography": { "fontWeight": "600" },
+				":hover": { "color": { "background": "var(--wp--preset--color--brand-deep)" } }
+			}
+		},
+		"blocks": {
+			"core/quote": {
+				"typography": { "fontFamily": "var(--wp--preset--font-family--display)", "fontWeight": "600" },
+				"border": { "left": { "color": "var(--wp--preset--color--brand)", "width": "3px", "style": "solid" } }
+			},
+			"core/code": { "typography": { "fontFamily": "var(--wp--preset--font-family--mono)" } },
+			"core/separator": { "color": { "text": "var(--wp--preset--color--line)" } }
+		}
+	},
+	"customTemplates": [
+		{ "name": "front-page", "title": "Homepage", "postTypes": [ "page" ] }
+	]
+}

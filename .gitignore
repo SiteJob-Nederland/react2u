@@ -1,0 +1,7 @@
+.env
+*.sql
+*.zip
+backups/
+node_modules/
+qa/uitvoer/
+.DS_Store

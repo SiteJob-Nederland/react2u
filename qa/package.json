@@ -1,0 +1,17 @@
+{
+  "name": "react2u-qa",
+  "private": true,
+  "type": "module",
+  "description": "QA-scripts voor het React2u-thema. Alleen lezen; ze wijzigen nooit iets op de site.",
+  "scripts": {
+    "thema": "node qa-thema.mjs",
+    "links": "node qa-links.mjs",
+    "seo": "node qa-seo.mjs",
+    "musthaves": "node qa-musthaves.mjs",
+    "alles": "node qa-thema.mjs && node qa-links.mjs && node qa-seo.mjs && node qa-musthaves.mjs",
+    "beeld": "node qa-beeld.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

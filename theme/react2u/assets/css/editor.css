@@ -1,0 +1,97 @@
+/*
+ * Editorstijlen — redactionele weergave van de REACT-route.
+ *
+ * style.css wordt bewust niet in de blokeditor geladen. Daarom gebruikt dit
+ * bestand de presets uit theme.json rechtstreeks, inclusief veilige fallbacks.
+ */
+
+.editor-styles-wrapper {
+	background: var(--wp--preset--color--paper, #FBFBFD);
+	color: var(--wp--preset--color--ink, #16161D);
+	font-family: var(--wp--preset--font-family--body, "Segoe UI", system-ui, sans-serif);
+	font-size: 1rem;
+	line-height: 1.65;
+}
+
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4 {
+	font-family: var(--wp--preset--font-family--display, "Segoe UI", system-ui, sans-serif);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.15;
+	text-wrap: balance;
+}
+
+.editor-styles-wrapper h1 {
+	font-size: clamp(2.05rem, 1.35rem + 2.6vw, 3.3rem);
+	font-weight: 800;
+}
+
+.editor-styles-wrapper h2 {
+	margin-top: 1.9em;
+	font-size: clamp(1.65rem, 1.2rem + 1.7vw, 2.5rem);
+}
+
+.editor-styles-wrapper h3 {
+	margin-top: 1.6em;
+	font-size: clamp(1.15rem, 1rem + 0.6vw, 1.45rem);
+}
+
+.editor-styles-wrapper p,
+.editor-styles-wrapper ul,
+.editor-styles-wrapper ol,
+.editor-styles-wrapper blockquote { max-width: 68ch; }
+
+.editor-styles-wrapper a {
+	color: var(--wp--preset--color--brand, #312E82);
+	font-weight: 500;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.18em;
+}
+
+.editor-styles-wrapper blockquote {
+	margin-block: 1.6em;
+	padding-left: 1.2em;
+	border-left: 3px solid var(--wp--preset--color--brand, #312E82);
+	font-family: var(--wp--preset--font-family--display, "Segoe UI", system-ui, sans-serif);
+	font-size: 1.15rem;
+	font-weight: 600;
+}
+
+.editor-styles-wrapper ul,
+.editor-styles-wrapper ol { padding-left: 1.3em; }
+
+.editor-styles-wrapper li + li { margin-top: 0.35em; }
+
+.editor-styles-wrapper .wp-block-button__link {
+	min-height: 44px;
+	padding: 0.85em 1.5em;
+	border-radius: 999px;
+}
+
+.editor-styles-wrapper .wp-block-image img,
+.editor-styles-wrapper .wp-block-group.has-background {
+	border-radius: 20px;
+}
+
+.editor-styles-wrapper .wp-block-table td,
+.editor-styles-wrapper .wp-block-table th {
+	padding: 0.6em 0.8em;
+	border-color: var(--wp--preset--color--line, #E4E4EC);
+}
+
+/*
+ * Een tweede H1 wordt aan de voorkant automatisch een H2. De melding mag
+ * afbreken: zo veroorzaakt hij op een smalle editor geen horizontale scroll.
+ */
+.editor-styles-wrapper h1::after {
+	content: " ← wordt op de site een H2; de paginatitel is de H1";
+	display: inline;
+	font-family: var(--wp--preset--font-family--body, "Segoe UI", system-ui, sans-serif);
+	font-size: 0.75rem;
+	font-weight: 400;
+	color: #8A4318;
+	white-space: normal;
+}

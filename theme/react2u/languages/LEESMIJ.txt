@@ -1,0 +1,7 @@
+Vertaalbestanden (.po/.mo) horen hier.
+
+Het thema is in het Nederlands geschreven met de je-vorm, en gebruikt de
+textdomain react2u. Voor een Nederlandstalige site is vertalen niet nodig;
+zodra er een tweede taal bij komt, genereer je hier een .pot met:
+
+  wp i18n make-pot . languages/react2u.pot
