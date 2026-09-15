@@ -22,9 +22,9 @@ $name   = (string) ( $person['name'] ?? '' );
 <div class="person is-<?php echo esc_attr( $layout ); ?>">
 	<span class="person-photo">
 		<?php if ( '' !== $photo ) : ?>
-			<img src="<?php echo esc_url( str_starts_with( $photo, 'http' ) ? $photo : react2u_image_url( $photo ) ); ?>"
+			<img <?php echo react2u_quality_image_attrs( str_starts_with( $photo, 'http' ) ? $photo : react2u_image_url( $photo ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				alt="<?php echo esc_attr( trim( str_replace( REACT2U_PLACEHOLDER, '', $name ) ) ); ?>"
-				width="72" height="72" loading="lazy" decoding="async">
+				width="72" height="72" loading="lazy" fetchpriority="low" decoding="async">
 		<?php else : ?>
 			<span class="person-photo-empty" aria-hidden="true"></span>
 		<?php endif; ?>

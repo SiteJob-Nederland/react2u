@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "files": {
+    "qa/quality/config.mjs": "3d424fcdd34e319018f409f654330d71dcfb9c128a1029b417768dc16f9fee14",
+    "qa/quality/runner.mjs": "68a3a83bdf63c55102d86e0267ac7d6a122fa27e04a31a11ce231361e85fe1f2",
+    "qa/quality/surface.mjs": "d2d2ce235e40fdc8c7f982642c6a8b67f8d13835c00272da5aa81b025a546dc5",
+    "qa/quality/performance.mjs": "146c58b6530620e103a76575587238274fc8278df45f0d7697498e95fdb48d51",
+    "qa/quality/interaction.mjs": "49cd2e1c47739f1c95a19c4dfb37423a182a189944c57650b1ad6f9fc8b9923a",
+    "deploy/quality/apache-local.conf": "1f6fd3948904614b00337e1644046b63875a482a56762313d4bf12642392922c",
+    "deploy/quality/nginx-staging.conf": "4fdc5dc3123a02c17bbee99f071e93f50e15dce5cbf15dbdafb89ace4678a919",
+    "deploy/quality/nginx-production.conf": "32374553b9606c7d1a8619243c8864bb9b09d7f99f2f0a5c9c4f41a578c4a144",
+    "theme/react2u/inc/quality.php": "df986c524fb12c847a5cd58dab824e22fefca7e59206688017a3a8ae86d42013",
+    "plugins/react2u-hardening/quality-headers.php": "3117062bf2c96fa468acd35987a0cefb630104fc3b1bceaa6783299424c4b575",
+    "qa/quality/all.mjs": "026baf5785a79dc7a175062562b48223f5068800aefea6ecb00f5bf559743fb8"
+  }
+}

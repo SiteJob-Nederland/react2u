@@ -18,6 +18,25 @@ $secondary = $args['secondary'] ?? '';
 $heading   = in_array( $args['heading'] ?? 'h2', array( 'h2', 'h3', 'p' ), true ) ? (string) $args['heading'] : 'h2';
 $show_rate = (bool) ( $args['rating'] ?? false );
 
+$rating_markup = '';
+if ( $show_rate ) {
+	ob_start();
+	react2u_rating_badge( array( 'size' => 'small', 'compact' => in_array( $layout, array( 'aside', 'bar' ), true ) ) );
+	$rating_markup = trim( (string) ob_get_clean() );
+}
+
+$person_markup = '';
+if ( ! empty( $args['person'] ) ) {
+	$person_args = array( 'layout' => 'inline' );
+	if ( is_array( $args['person'] ) ) {
+		$person_args['person'] = $args['person'];
+	}
+
+	ob_start();
+	react2u_person( $person_args );
+	$person_markup = trim( (string) ob_get_clean() );
+}
+
 $primary_class = 'dark' === $tone ? 'button button-white' : 'button button-primary';
 $ghost_class   = 'dark' === $tone ? 'button button-outline-light' : 'button button-ghost';
 ?>
@@ -35,13 +54,13 @@ $ghost_class   = 'dark' === $tone ? 'button button-outline-light' : 'button butt
 			<p class="cta-text"><?php echo esc_html( $text ); ?></p>
 		<?php endif; ?>
 
-		<?php if ( ! empty( $args['person'] ) ) : ?>
-			<div class="cta-person"><?php react2u_person( array( 'layout' => 'inline' ) ); ?></div>
+		<?php if ( '' !== $person_markup ) : ?>
+			<div class="cta-person"><?php echo $person_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 		<?php endif; ?>
 
-		<?php if ( $show_rate ) : ?>
+		<?php if ( '' !== $rating_markup ) : ?>
 			<div class="cta-rating">
-				<?php react2u_rating_badge( array( 'size' => 'small', 'compact' => in_array( $layout, array( 'aside', 'bar' ), true ) ) ); ?>
+				<?php echo $rating_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</div>
 		<?php endif; ?>
 	</div>
@@ -58,7 +77,7 @@ $ghost_class   = 'dark' === $tone ? 'button button-outline-light' : 'button butt
 		<?php endif; ?>
 
 		<?php /* Staat het nummer al bij de persoon, dan hoeft het hier niet nog een keer. */ ?>
-		<?php if ( empty( $args['person'] ) && react2u_has_phone() && in_array( $layout, array( 'aside', 'section' ), true ) ) : ?>
+		<?php if ( '' === $person_markup && react2u_has_phone() && in_array( $layout, array( 'aside', 'section' ), true ) ) : ?>
 			<p class="cta-phone">
 				<?php echo react2u_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<?php esc_html_e( 'Liever bellen?', 'react2u' ); ?>

@@ -14,8 +14,16 @@
 get_header();
 
 $services = (array) react2u_get( 'services', array() );
+$service_icons = array(
+	'wvp'        => 'route',
+	'erd'        => 'map',
+	'preventie'  => 'health',
+	'coaching'   => 'chat',
+	'trainingen' => 'edit',
+	'risico'     => 'balance',
+);
 ?>
-<main id="main" class="site-main">
+<main tabindex="-1" id="main" class="site-main">
 	<?php
 	while ( have_posts() ) :
 		the_post();
@@ -42,25 +50,32 @@ $services = (array) react2u_get( 'services', array() );
 						</div>
 					</div>
 
-					<div class="diensten-spectrum" aria-hidden="true">
-						<?php foreach ( $services as $service ) : ?>
-							<?php $service_slug = sanitize_html_class( (string) ( $service['slug'] ?? '' ) ); ?>
-							<span class="diensten-spectrum-dot service-card--<?php echo esc_attr( $service_slug ); ?>"></span>
-						<?php endforeach; ?>
+					<div class="diensten-hero-visual">
+						<picture class="human-photo diensten-hero-picture">
+							<source media="(max-width: 960px)" srcset="<?php echo esc_url( REACT2U_URI . '/assets/images/diensten-overzicht-higgsfield-v1-960.webp' ); ?>">
+							<img <?php echo react2u_quality_image_attrs( REACT2U_URI . '/assets/images/diensten-overzicht-higgsfield-v1.webp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> width="1920" height="1080" alt="<?php esc_attr_e( 'Vier professionals brengen verschillende vormen van ondersteuning rond werk en gezondheid in kaart.', 'react2u' ); ?>" loading="eager" fetchpriority="high" decoding="async">
+						</picture>
+						<div class="diensten-spectrum" aria-hidden="true">
+							<?php foreach ( $services as $service ) : ?>
+								<?php $service_slug = sanitize_html_class( (string) ( $service['slug'] ?? '' ) ); ?>
+								<span class="diensten-spectrum-dot service-card--<?php echo esc_attr( $service_slug ); ?>"></span>
+							<?php endforeach; ?>
+						</div>
 					</div>
 				</div>
 			</header>
 
 			<?php if ( $services ) : ?>
-				<section class="diensten-aanbod" id="diensten-aanbod" aria-labelledby="diensten-aanbod-title">
+				<section class="diensten-aanbod diensten-aanbod--visual" id="diensten-aanbod" aria-labelledby="diensten-aanbod-title">
 					<div class="shell">
 						<header class="diensten-section-heading">
-							<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><?php esc_html_e( 'Zes routes', 'react2u' ); ?></p>
+							<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><?php esc_html_e( 'Onze diensten', 'react2u' ); ?></p>
 							<h2 id="diensten-aanbod-title"><?php esc_html_e( 'Waar kunnen we je bij helpen?', 'react2u' ); ?></h2>
+							<p><?php esc_html_e( 'Van preventie tot re-integratie: bekijk hoe we jouw organisatie en medewerkers kunnen ondersteunen.', 'react2u' ); ?></p>
 						</header>
 
 						<ul class="diensten-kaarten" role="list">
-							<?php foreach ( $services as $index => $service ) : ?>
+							<?php foreach ( $services as $service ) : ?>
 								<?php
 								$service_slug  = sanitize_html_class( (string) ( $service['slug'] ?? '' ) );
 								$service_title = (string) ( $service['title'] ?? '' );
@@ -68,8 +83,7 @@ $services = (array) react2u_get( 'services', array() );
 								?>
 								<li class="diensten-kaart service-card service-card--<?php echo esc_attr( $service_slug ); ?>">
 									<a class="diensten-kaart-link" href="<?php echo esc_url( home_url( $service_path ) ); ?>">
-										<span class="diensten-kaart-nummer" aria-hidden="true"><?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
-										<span class="service-dot" aria-hidden="true"></span>
+										<span class="diensten-kaart-icon" aria-hidden="true"><?php echo react2u_icon( $service_icons[ $service_slug ] ?? 'arrow', array( 'stroke' => '1.55' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 										<h3 class="diensten-kaart-title service-title"><?php echo react2u_text( $service_title ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h3>
 										<p class="diensten-kaart-text service-text"><?php echo react2u_text( $service['text'] ?? '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 										<span class="diensten-kaart-action">

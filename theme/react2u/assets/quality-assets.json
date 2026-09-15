@@ -1,0 +1,22 @@
+{
+  "assets/css/editor.css": {
+    "sourceHash": "caf9323711103c164bdc5b05b860e517b7214899e0c761fda651678de3615076",
+    "path": "assets/css/editor.quality.95666ae989a0.css",
+    "bytes": 2051
+  },
+  "assets/fonts/fonts.css": {
+    "sourceHash": "57c54ee51dd84ec58ad7b5af1d2fe43d5d63d59f39271d84e3e9dc1850d36cae",
+    "path": "assets/fonts/fonts.quality.e47aa5729490.css",
+    "bytes": 639
+  },
+  "assets/js/site.js": {
+    "sourceHash": "b5a93efff5844e3abbfad74a8f3dfd6aa0799a5ec4a162d319ffd54094ab2833",
+    "path": "assets/js/site.quality.2966fd99644c.js",
+    "bytes": 5452
+  },
+  "style.css": {
+    "sourceHash": "ea1e6876c8ece012591064f1e3342ea8f214f49f044bc29de6c52b8bf4883310",
+    "path": "style.quality.8dda5f3e1481.css",
+    "bytes": 86329
+  }
+}

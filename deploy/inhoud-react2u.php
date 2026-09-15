@@ -18,11 +18,11 @@ if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
 	exit( "Dit script draait alleen via wp eval-file.\n" );
 }
 
-function react2u_inhoud_vind( string $slug ): ?WP_Post {
+function react2u_inhoud_vind( string $slug, string $post_type = 'page' ): ?WP_Post {
 	$gevonden = get_posts(
 		array(
 			'name'             => $slug,
-			'post_type'        => 'page',
+			'post_type'        => $post_type,
 			'post_status'      => array( 'publish', 'draft', 'pending', 'private', 'future' ),
 			'numberposts'      => 1,
 			'suppress_filters' => false,
@@ -378,15 +378,15 @@ foreach ( react2u_inhoud_juridisch() as $slug => $pagina ) {
 /*
  * Privacy reglement: de live pagina op react2u.nl toont bij vergissing de
  * verkeerde inhoud (een Begeleiding & Coaching-blok in plaats van een
- * privacyverklaring) — geen bruikbare bron. Placeholder, zichtbaar gemarkeerd,
- * op de echte slug zodat de URL straks klopt zonder redirect.
+ * privacyverklaring) — geen bruikbare bron. We claimen daarom niets wat niet is
+ * aangeleverd, maar tonen op staging wel een nette, neutrale tussenmelding.
  */
 react2u_inhoud_pagina(
 	'privacy-reglement',
 	array(
 		'post_title'   => 'Privacy reglement',
 		'post_excerpt' => 'Hoe React2u omgaat met persoonsgegevens.',
-		'post_content' => react2u_inhoud_p( '[PLACEHOLDER] De huidige site toont op deze pagina per vergissing de verkeerde inhoud — er is geen bruikbare brontekst om over te nemen. De klant levert de echte privacyverklaring aan.' ),
+		'post_content' => react2u_inhoud_p( 'Het privacyreglement wordt momenteel bijgewerkt. Heb je in de tussentijd een vraag over de verwerking van persoonsgegevens? Neem dan contact op via <a href="mailto:info@react2u.nl">info@react2u.nl</a>.' ),
 	)
 );
 
@@ -409,6 +409,87 @@ react2u_inhoud_pagina(
 		'post_content' => '',
 	)
 );
+
+/* De footer verwijst naar de blog; houd die route ook zonder artikelen netjes bereikbaar. */
+$blog_id = react2u_inhoud_pagina(
+	'blog',
+	array(
+		'post_title'   => 'Blog',
+		'post_excerpt' => 'Praktische inzichten over verzuim, preventie en duurzame inzetbaarheid.',
+		'post_content' => '',
+	)
+);
+update_option( 'page_for_posts', $blog_id );
+
+/* ============================================================================
+ * Generieke staging-demo opruimen
+ * ========================================================================= */
+
+/*
+ * staging-srv1.sh draait eerst seed.php om het complete basisthema te kunnen
+ * testen. Na de klantimport mogen die voorbeeldpagina's, -artikelen en de
+ * demo-auteur niet meer publiek bereikbaar zijn. We verwijderen uitsluitend
+ * de exact herkenbare seedrecords; echte redactionele inhoud blijft ongemoeid.
+ */
+$demo_records = array(
+	array( 'slug' => 'demo-blogartikel',   'type' => 'post',                 'marker' => 'Demo-blogartikel' ),
+	array( 'slug' => 'demo-kort-artikel',  'type' => 'post',                 'marker' => 'demo-artikel' ),
+	array( 'slug' => 'demo-kennisartikel', 'type' => 'react2u_kennisbank',   'marker' => 'Demo-kennisartikel' ),
+	array( 'slug' => 'voorbeelddienst',    'type' => 'page',                 'marker' => 'Demo-servicepagina' ),
+	array( 'slug' => 'tarieven',           'type' => 'page',                 'marker' => 'Demo-pagina' ),
+	array( 'slug' => 'over-ons',           'type' => 'page',                 'marker' => 'Demo-pagina' ),
+	array( 'slug' => 'offerte',            'type' => 'page',                 'marker' => 'Demo-pagina' ),
+	array( 'slug' => 'privacy-policy',      'type' => 'page',                 'marker' => 'Demo-pagina' ),
+);
+
+foreach ( $demo_records as $demo_record ) {
+	$demo_post = react2u_inhoud_vind( $demo_record['slug'], $demo_record['type'] );
+	if ( ! $demo_post ) {
+		continue;
+	}
+
+	$demo_haystack = $demo_post->post_title . "\n" . $demo_post->post_excerpt . "\n" . $demo_post->post_content;
+	if ( ! str_contains( $demo_haystack, $demo_record['marker'] ) ) {
+		WP_CLI::warning( "niet opgeruimd: {$demo_record['slug']} wijkt af van de bekende seedinhoud" );
+		continue;
+	}
+
+	wp_delete_post( (int) $demo_post->ID, true );
+	WP_CLI::log( "opgeruimd: {$demo_record['slug']} (staging-demo)" );
+}
+
+$privacy_reglement = react2u_inhoud_vind( 'privacy-reglement' );
+if ( $privacy_reglement ) {
+	update_option( 'wp_page_for_privacy_policy', (int) $privacy_reglement->ID );
+}
+
+$demo_term = get_term_by( 'slug', 'demo-onderwerp', 'react2u_kennisbank_cat' );
+if ( $demo_term && 0 === (int) $demo_term->count ) {
+	wp_delete_term( (int) $demo_term->term_id, 'react2u_kennisbank_cat' );
+	WP_CLI::log( 'opgeruimd: demo-onderwerp (staging-demo)' );
+}
+
+$demo_auteur = get_user_by( 'login', 'redactie' );
+$demo_auteur_posts = $demo_auteur
+	? get_posts(
+		array(
+			'author'      => (int) $demo_auteur->ID,
+			'post_type'   => array( 'post', 'react2u_kennisbank' ),
+			'post_status' => array( 'publish', 'draft', 'pending', 'private', 'future', 'trash' ),
+			'numberposts' => 1,
+			'fields'      => 'ids',
+		)
+	)
+	: array();
+if (
+	$demo_auteur
+	&& 'redactie@example.invalid' === strtolower( (string) $demo_auteur->user_email )
+	&& array() === $demo_auteur_posts
+) {
+	require_once ABSPATH . 'wp-admin/includes/user.php';
+	wp_delete_user( (int) $demo_auteur->ID );
+	WP_CLI::log( 'opgeruimd: redactie (staging-demo)' );
+}
 
 /* ============================================================================
  * Menu's — de echte navigatie van react2u.nl
@@ -495,9 +576,7 @@ foreach ( $menus as $locatie => $menu ) {
 	$locaties[ $locatie ] = $menu_id;
 }
 
-// Legal-menu laten staan zoals seed.php het zette (privacy/algemene voorwaarden
-// bestaan nog niet als échte pagina's — de klant moet de juridische teksten nog
-// aanleveren, zie AANLEVERLIJST.md).
+// Bestaande locaties behouden die niet door deze klantimport worden beheerd.
 $bestaand_locaties = (array) get_theme_mod( 'nav_menu_locations', array() );
 set_theme_mod( 'nav_menu_locations', array_merge( $bestaand_locaties, $locaties ) );
 

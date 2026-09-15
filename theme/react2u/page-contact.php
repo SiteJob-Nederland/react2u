@@ -24,8 +24,49 @@
 get_header();
 
 $contact_person = (array) react2u_get( 'people.contact', array() );
+$contact_person_has_pending_value = static function ( mixed $value ) use ( &$contact_person_has_pending_value ): bool {
+	if ( is_array( $value ) ) {
+		foreach ( $value as $nested_value ) {
+			if ( $contact_person_has_pending_value( $nested_value ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	if ( ! is_string( $value ) ) {
+		return false;
+	}
+
+	$text = strtolower( trim( wp_strip_all_tags( $value ) ) );
+	return react2u_is_placeholder( $value )
+		|| 1 === preg_match( '/\[(?:placeholder|onbevestigd|unconfirmed|unverified)\]/i', $value )
+		|| in_array( $text, array( 'placeholder', 'tbd', 'todo', 'n.t.b.', 'ntb', 'nog aan te leveren', 'nog in te vullen' ), true );
+};
+
+$contact_person_is_unconfirmed = static function ( array $person ): bool {
+	foreach ( array( 'placeholder', 'is_placeholder' ) as $flag ) {
+		if ( array_key_exists( $flag, $person ) && true === filter_var( $person[ $flag ], FILTER_VALIDATE_BOOLEAN ) ) {
+			return true;
+		}
+	}
+
+	foreach ( array( 'verified', 'confirmed', 'is_verified', 'is_confirmed' ) as $flag ) {
+		if ( array_key_exists( $flag, $person ) && true !== filter_var( $person[ $flag ], FILTER_VALIDATE_BOOLEAN ) ) {
+			return true;
+		}
+	}
+
+	$status = strtolower( trim( (string) ( $person['status'] ?? '' ) ) );
+	return in_array( $status, array( '0', 'concept', 'draft', 'onbevestigd', 'pending', 'placeholder', 'todo', 'unconfirmed', 'unverified' ), true );
+};
+
+$contact_person_is_valid = ! $contact_person_has_pending_value( $contact_person )
+	&& ! $contact_person_is_unconfirmed( $contact_person )
+	&& '' !== trim( wp_strip_all_tags( (string) ( $contact_person['name'] ?? '' ) ) )
+	&& '' !== trim( wp_strip_all_tags( (string) ( $contact_person['role'] ?? '' ) ) );
 ?>
-<main id="main" class="site-main">
+<main tabindex="-1" id="main" class="site-main">
 
 	<header class="resource-header page-hero page-hero--contact has-react-route">
 		<div class="shell resource-header-inner">
@@ -61,10 +102,12 @@ $contact_person = (array) react2u_get( 'people.contact', array() );
 							<a href="tel:<?php echo esc_attr( react2u_phone_link() ); ?>"><?php echo react2u_text( react2u_get( 'contact.phone' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 						</li>
 					<?php endif; ?>
-					<li>
-						<?php echo react2u_icon( 'mail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<a href="mailto:<?php echo esc_attr( str_replace( REACT2U_PLACEHOLDER . ' ', '', (string) react2u_get( 'contact.email' ) ) ); ?>"><?php echo react2u_text( react2u_get( 'contact.email' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
-					</li>
+					<?php if ( react2u_has_email() ) : ?>
+						<li>
+							<?php echo react2u_icon( 'mail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<a href="mailto:<?php echo esc_attr( react2u_email_link() ); ?>"><?php echo esc_html( react2u_email_link() ); ?></a>
+						</li>
+					<?php endif; ?>
 					<li>
 						<?php echo react2u_icon( 'pin' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<span>
@@ -75,14 +118,18 @@ $contact_person = (array) react2u_get( 'people.contact', array() );
 					</li>
 				</ul>
 
-				<?php if ( $contact_person ) : ?>
+				<?php if ( $contact_person_is_valid ) : ?>
 					<div class="contact-person">
 						<?php react2u_person( array( 'person' => $contact_person, 'layout' => 'card' ) ); ?>
 					</div>
 				<?php endif; ?>
 			</div>
 			<div class="contact-react-model">
-				<img src="<?php echo esc_url( REACT2U_URI . '/assets/images/react-wiel.png' ); ?>" width="1024" height="1024" alt="<?php esc_attr_e( 'Het REACT-model van React2u: Results, Expertise, Attention, Coaching, Together', 'react2u' ); ?>" loading="lazy">
+				<picture class="human-photo contact-photo-picture">
+					<source media="(max-width: 960px)" srcset="<?php echo esc_url( REACT2U_URI . '/assets/images/contact-balie-higgsfield-v2-960.webp' ); ?>">
+					<img class="contact-human-photo" <?php echo react2u_quality_image_attrs( REACT2U_URI . '/assets/images/contact-balie-higgsfield-v2.webp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> width="1920" height="1080" alt="<?php esc_attr_e( 'Een professional heet een bezoeker welkom in een rustige ontvangstruimte.', 'react2u' ); ?>" loading="lazy" fetchpriority="low" decoding="async">
+				</picture>
+				<img class="contact-react-wheel" <?php echo react2u_quality_image_attrs( REACT2U_URI . '/assets/images/react-wiel.png' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> width="1024" height="1024" alt="" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true">
 				<div class="react-route react-route--contact" aria-hidden="true"><span class="react-route-signals"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="react-route-line"></span><span class="react-route-destination"></span></div>
 			</div>
 		</div>

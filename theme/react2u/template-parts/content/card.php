@@ -5,6 +5,7 @@
  * @package React2u
  * @var array<string,mixed> $args
  */
+$priority = (bool) ( $args['priority'] ?? false );
 $post_id   = (int) ( $args['post_id'] ?? get_the_ID() );
 $post_type = (string) get_post_type( $post_id );
 $featured  = (bool) ( $args['featured'] ?? false );
@@ -25,7 +26,8 @@ $author_id = (int) get_post_field( 'post_author', $post_id );
 				false,
 				array(
 					'class'    => 'card-image',
-					'loading'  => 'lazy',
+					'loading'  => $priority ? 'eager' : 'lazy',
+					'fetchpriority' => $priority ? 'high' : 'low',
 					'decoding' => 'async',
 					'sizes'    => '(max-width: 700px) 100vw, 380px',
 				)

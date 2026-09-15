@@ -19,6 +19,14 @@ get_header();
 $services = (array) react2u_get( 'services', array() );
 $steps    = (array) react2u_get( 'steps', array() );
 $usps     = (array) react2u_get( 'usps', array() );
+$service_icons = array(
+	'wvp'        => 'route',
+	'erd'        => 'map',
+	'preventie'  => 'health',
+	'coaching'   => 'chat',
+	'trainingen' => 'edit',
+	'risico'     => 'balance',
+);
 
 /*
  * Proof-data mag via react2u_config() of een filter worden aangeleverd. Omdat
@@ -153,14 +161,14 @@ $cases = array_values(
 	)
 );
 ?>
-<main id="main" class="site-main home-main">
+<main tabindex="-1" id="main" class="site-main home-main">
 
 	<?php /* ---- Hero: één belofte en één primaire vervolgstap --------------- */ ?>
 	<section class="hero home-hero tone-dark has-react-route" aria-labelledby="hero-title">
 		<div class="hero-grid home-hero-grid">
 			<div class="shell hero-copy-shell home-hero-inner">
 				<div class="hero-copy home-hero-copy">
-					<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><?php esc_html_e( 'De REACT-route', 'react2u' ); ?></p>
+					<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><?php esc_html_e( 'De persoonlijke arbodienstverlener', 'react2u' ); ?></p>
 
 					<h1 class="hero-title home-hero-title" id="hero-title"><?php esc_html_e( 'Jouw mensen, onze aandacht', 'react2u' ); ?></h1>
 
@@ -181,14 +189,17 @@ $cases = array_values(
 						</ul>
 					<?php endif; ?>
 				</div>
-			</div>
 
-			<div class="hero-media home-hero-media" aria-hidden="true">
-				<img class="home-hero-brand-image" src="<?php echo esc_url( REACT2U_URI . '/assets/images/hero-merkbeeld.webp' ); ?>" width="1600" height="1179" alt="" fetchpriority="high" decoding="async">
-				<div class="react-route react-route--hero react-route--home-hero">
-					<span class="react-route-signals"><i></i><i></i><i></i><i></i><i></i><i></i></span>
-					<span class="react-route-line"></span>
-					<span class="react-route-destination"></span>
+				<div class="hero-media home-hero-media">
+					<picture class="human-photo home-hero-picture">
+						<source media="(max-width: 960px)" srcset="<?php echo esc_url( REACT2U_URI . '/assets/images/hero-mensen-higgsfield-v2-960.webp' ); ?>">
+						<img class="home-hero-human-image" <?php echo react2u_quality_image_attrs( REACT2U_URI . '/assets/images/hero-mensen-higgsfield-v2.webp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> width="1920" height="1080" alt="<?php esc_attr_e( 'Een adviseur en manager lopen door een kantoor waar collega’s aan het werk zijn.', 'react2u' ); ?>" loading="eager" fetchpriority="high" decoding="async">
+					</picture>
+					<div class="react-route react-route--hero react-route--home-hero" aria-hidden="true">
+						<span class="react-route-signals"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+						<span class="react-route-line"></span>
+						<span class="react-route-destination"></span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -203,14 +214,14 @@ $cases = array_values(
 		</section>
 	<?php endif; ?>
 
-	<?php /* ---- Diensten: zes genummerde, volledig klikbare routes ---------- */ ?>
+	<?php /* ---- Diensten: zes herkenbare, volledig klikbare diensten -------- */ ?>
 	<?php if ( $services ) : ?>
-		<section class="section section-services home-services diensten-aanbod" aria-labelledby="services-title">
+		<section class="section section-services home-services diensten-aanbod diensten-aanbod--visual" aria-labelledby="services-title">
 			<div class="shell">
 				<header class="diensten-section-heading home-section-heading">
-					<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><?php esc_html_e( 'Zes routes', 'react2u' ); ?></p>
+					<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><?php esc_html_e( 'Onze diensten', 'react2u' ); ?></p>
 					<h2 id="services-title"><?php esc_html_e( 'Waar kunnen we je bij helpen?', 'react2u' ); ?></h2>
-					<p><?php esc_html_e( 'Van preventie tot re-integratie: kies de route die past bij jouw organisatie en medewerkers.', 'react2u' ); ?></p>
+					<p><?php esc_html_e( 'Van preventie tot re-integratie: bekijk hoe we jouw organisatie en medewerkers kunnen ondersteunen.', 'react2u' ); ?></p>
 				</header>
 
 				<ul class="diensten-kaarten home-diensten-grid" role="list">
@@ -219,11 +230,11 @@ $cases = array_values(
 						$service_slug = sanitize_html_class( (string) ( $service['slug'] ?? '' ) );
 						$service_path = (string) ( $service['path'] ?? '' );
 						?>
-						<li class="diensten-kaart service-card service-card--<?php echo esc_attr( $service_slug ); ?>">
-							<a class="diensten-kaart-link" href="<?php echo esc_url( home_url( $service_path ) ); ?>">
-								<span class="diensten-kaart-nummer" aria-hidden="true"><?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
-								<span class="service-dot" aria-hidden="true"></span>
-								<h3 class="diensten-kaart-title service-title"><?php echo react2u_text( $service['title'] ?? '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h3>
+							<li class="diensten-kaart service-card service-card--<?php echo esc_attr( $service_slug ); ?>">
+								<a class="diensten-kaart-link" href="<?php echo esc_url( home_url( $service_path ) ); ?>">
+									<span class="diensten-kaart-nummer" aria-hidden="true"><?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
+									<span class="diensten-kaart-icon" aria-hidden="true"><?php echo react2u_icon( $service_icons[ $service_slug ] ?? 'arrow', array( 'stroke' => '1.55' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+									<h3 class="diensten-kaart-title service-title"><?php echo react2u_text( $service['title'] ?? '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h3>
 								<p class="diensten-kaart-text service-text"><?php echo react2u_text( $service['text'] ?? '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 								<span class="diensten-kaart-action">
 									<?php esc_html_e( 'Bekijk deze dienst', 'react2u' ); ?>
@@ -251,12 +262,12 @@ $cases = array_values(
 				<div class="home-react-route-lead">
 					<header class="home-react-route-heading dienst-react-route-heading">
 						<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><?php esc_html_e( 'Onze werkwijze', 'react2u' ); ?></p>
-						<h2 id="home-route-title"><?php esc_html_e( 'De REACT-route naar duurzame terugkeer', 'react2u' ); ?></h2>
+						<h2 id="home-route-title"><?php esc_html_e( 'Dit is React2u!', 'react2u' ); ?></h2>
 						<p><?php esc_html_e( 'Bij React2u staat de medewerker centraal in het verzuim- en re-integratietraject. We combineren deskundigheid in wet- en regelgeving met persoonlijke aandacht, zodat werkgever en werknemer samen werken aan duurzaam herstel.', 'react2u' ); ?></p>
 					</header>
 
 					<figure class="home-react-model model-media">
-						<img src="<?php echo esc_url( REACT2U_URI . '/assets/images/react-wiel.png' ); ?>" width="1024" height="1024" alt="<?php esc_attr_e( 'Het REACT-model van React2u: Results, Expertise, Attention, Coaching, Together', 'react2u' ); ?>" loading="lazy" decoding="async">
+						<img <?php echo react2u_quality_image_attrs( REACT2U_URI . '/assets/images/react-wiel.png' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> width="1024" height="1024" alt="<?php esc_attr_e( 'Het REACT-model van React2u: Results, Expertise, Attention, Coaching, Together', 'react2u' ); ?>" loading="lazy" fetchpriority="low" decoding="async">
 					</figure>
 				</div>
 

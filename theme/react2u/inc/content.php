@@ -377,9 +377,13 @@ function react2u_author_photo( int $author_id, int $size = 96 ): string {
 	$custom = react2u_author_photo_url( $author_id );
 
 	if ( '' !== $custom ) {
+		$attachment_id = attachment_url_to_postid( $custom );
+		if ( $attachment_id ) {
+			return wp_get_attachment_image( $attachment_id, 'react2u-author', false, array( 'alt' => $name, 'class' => 'author-avatar-image', 'width' => $size, 'height' => $size, 'sizes' => $size . 'px', 'loading' => 'lazy', 'decoding' => 'async' ) );
+		}
 		return sprintf(
-			'<img src="%1$s" alt="%2$s" width="%3$d" height="%3$d" loading="lazy" decoding="async" class="author-avatar-image">',
-			esc_url( $custom ),
+			'<img %1$s alt="%2$s" width="%3$d" height="%3$d" loading="lazy" fetchpriority="low" decoding="async" class="author-avatar-image">',
+			react2u_quality_image_attrs( $custom, $size . 'px' ),
 			esc_attr( $name ),
 			$size
 		);

@@ -6,7 +6,7 @@
  */
 get_header();
 ?>
-<main id="main" class="site-main">
+<main tabindex="-1" id="main" class="site-main">
 	<div class="archive-page">
 		<header class="archive-header">
 			<div class="shell archive-header-inner">

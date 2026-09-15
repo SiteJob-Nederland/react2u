@@ -55,7 +55,7 @@ if ( $banner && ! empty( $banner['file'] ) ) :
 	<figure class="banner is-fallback has-photo">
 		<img
 			class="banner-image"
-			src="<?php echo esc_url( react2u_image_url( (string) $banner['file'] ) ); ?>"
+			<?php echo react2u_quality_image_attrs( react2u_image_url( (string) $banner['file'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			alt="<?php echo esc_attr( (string) ( $banner['alt'] ?? '' ) ); ?>"
 			width="1360" height="420"
 			loading="eager" fetchpriority="high" decoding="async"

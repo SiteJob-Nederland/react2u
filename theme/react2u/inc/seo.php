@@ -30,6 +30,12 @@ function react2u_seo_plugin_active(): bool {
  * dienstverlening. Ze staan in de zoekresultaten, dus ze verkopen mee.
  */
 function react2u_meta_description(): string {
+	/* quality: meta_description override */
+	if ( is_singular() ) {
+		$override = trim( (string) get_post_meta( (int) get_queried_object_id(), '_react2u_meta_description', true ) );
+		if ( '' !== $override ) { return $override; }
+	}
+
 	$site = get_bloginfo( 'name' );
 
 	if ( is_front_page() ) {
@@ -122,6 +128,12 @@ function react2u_meta_description(): string {
 
 /** Canonieke URL van de huidige weergave. */
 function react2u_canonical_url(): string {
+	/* quality: canonical_url override */
+	if ( is_singular() ) {
+		$override = trim( (string) get_post_meta( (int) get_queried_object_id(), '_react2u_canonical_url', true ) );
+		if ( '' !== $override ) { return $override; }
+	}
+
 	if ( is_front_page() ) {
 		return home_url( '/' );
 	}
@@ -342,25 +354,15 @@ function react2u_output_schema(): void {
 		);
 	}
 
-	/*
-	 * De sterrenscore hoort alleen in het schema als hij echt is ingevuld.
-	 * Een placeholder als aggregateRating publiceren zou een verzonnen cijfer
-	 * aan Google doorgeven.
-	 */
-	$rating_count  = (string) react2u_get( 'rating.count' );
-	$rating_digits = (string) preg_replace( '/\D/', '', $rating_count );
-	$rating_score  = react2u_rating_value();
-	if (
-		$rating_score > 0
-		&& ! react2u_is_placeholder( (string) react2u_get( 'rating.score' ) )
-		&& ! react2u_is_placeholder( $rating_count )
-		&& '' !== $rating_digits
-	) {
+	/* Badge en schema delen één fail-closed bron voor publieke ratingdata. */
+	$rating = react2u_public_rating_data();
+	if ( null !== $rating ) {
 		$organization['aggregateRating'] = array(
 			'@type'       => 'AggregateRating',
-			'ratingValue' => (string) $rating_score,
-			'bestRating'  => (string) react2u_get( 'rating.max', '5' ),
-			'ratingCount' => (int) $rating_digits,
+			'ratingValue' => $rating['score_normalized'],
+			'bestRating'  => $rating['max_normalized'],
+			'worstRating' => '1',
+			'ratingCount' => (int) $rating['count_number'],
 		);
 	}
 
@@ -591,3 +593,13 @@ function react2u_register_seo_meta(): void {
 	}
 }
 add_action( 'init', 'react2u_register_seo_meta' );
+
+/** Native SEO-titel; de bestaande documenttitel blijft de terugval. */
+function react2u_seo_title_parts( array $parts ): array {
+	if ( is_singular() ) {
+		$title = trim( (string) get_post_meta( (int) get_queried_object_id(), '_react2u_seo_title', true ) );
+		if ( '' !== $title ) { return array( 'title' => $title ); }
+	}
+	return $parts;
+}
+add_filter( 'document_title_parts', 'react2u_seo_title_parts', 30 );

@@ -34,3 +34,5 @@ require REACT2U_DIR . '/inc/sitemap.php';      // werkende /sitemap.xml
 require REACT2U_DIR . '/inc/customizer.php';   // invulvelden voor de klant
 require REACT2U_DIR . '/inc/patterns.php';     // blokpatronen voor de editor
 require REACT2U_DIR . '/inc/products.php';     // OPTIONEEL productcatalogus — uit tenzij ingeschakeld
+
+require REACT2U_DIR . '/inc/quality.php'; // Gedeelde technische ondergrens.

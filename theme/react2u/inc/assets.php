@@ -109,11 +109,10 @@ function react2u_favicon(): void {
 }
 add_action( 'wp_head', 'react2u_favicon', 2 );
 
-/**
- * Kleur van de browserbalk. PER KLANT: dezelfde waarde als --bg in style.css.
- */
+/** Kleur van de browserbalk: gelijk aan --paper en de paper-preset. */
 function react2u_theme_color(): void {
-	echo "<meta name=\"theme-color\" content=\"#FBFBFD\">\n";
+	$canvas = '#FBFBFD';
+	printf( "<meta name=\"theme-color\" content=\"%s\">\n", esc_attr( $canvas ) );
 }
 add_action( 'wp_head', 'react2u_theme_color', 3 );
 

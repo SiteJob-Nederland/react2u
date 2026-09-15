@@ -28,11 +28,38 @@ if ( react2u_is_service_page() ) {
 
 get_header();
 ?>
-<main id="main" class="site-main">
+<main tabindex="-1" id="main" class="site-main">
 	<?php
 	while ( have_posts() ) :
 		the_post();
-		$prepared = react2u_prepare_content( (string) apply_filters( 'the_content', get_the_content() ) );
+		$raw_content = (string) apply_filters( 'the_content', get_the_content() );
+		$content_text = html_entity_decode(
+			wp_strip_all_tags( $raw_content ),
+			ENT_QUOTES | ENT_HTML5,
+			get_bloginfo( 'charset' ) ?: 'UTF-8'
+		);
+		$content_is_pending = react2u_is_placeholder( $raw_content )
+			|| 1 === preg_match( '/(?:\[(?:placeholder|tbd|todo)\]|\b(?:tbd|todo)\b)/iu', $content_text );
+
+		$excerpt            = has_excerpt() ? trim( get_the_excerpt() ) : '';
+		$excerpt_is_pending = react2u_is_placeholder( $excerpt )
+			|| 1 === preg_match( '/(?:\[(?:placeholder|tbd|todo)\]|\b(?:tbd|todo)\b)/iu', $excerpt );
+
+		if ( $content_is_pending ) {
+			$temporary_content = sprintf(
+				'<p>%1$s <a href="%2$s">%3$s</a>.</p>',
+				esc_html__( 'De inhoud van deze pagina is nog niet beschikbaar.', 'react2u' ),
+				esc_url( home_url( '/contact/' ) ),
+				esc_html__( 'Neem contact met ons op als je een vraag hebt', 'react2u' )
+			);
+			$prepared = array(
+				'content' => $temporary_content,
+				'toc'     => array(),
+				'faq'     => '',
+			);
+		} else {
+			$prepared = react2u_prepare_content( $raw_content );
+		}
 		?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'resource' ); ?> data-variant="page">
 			<header class="resource-header page-hero page-hero--generic has-react-route">
@@ -40,8 +67,8 @@ get_header();
 					<?php react2u_breadcrumbs(); ?>
 
 					<h1 class="resource-title"><?php the_title(); ?></h1>
-					<?php if ( has_excerpt() ) : ?>
-						<p class="resource-intro"><?php echo esc_html( get_the_excerpt() ); ?></p>
+					<?php if ( '' !== $excerpt && ! $excerpt_is_pending ) : ?>
+						<p class="resource-intro"><?php echo esc_html( $excerpt ); ?></p>
 					<?php endif; ?>
 					<div class="react-route react-route--hero" aria-hidden="true"><span class="react-route-signals"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="react-route-line"></span><span class="react-route-destination"></span></div>
 				</div>
@@ -64,9 +91,11 @@ get_header();
 				</div>
 			<?php endif; ?>
 
-			<section class="resource-final-cta" aria-label="<?php esc_attr_e( 'Volgende stap', 'react2u' ); ?>">
-				<div class="shell"><?php react2u_cta( array( 'variant' => 'quote', 'tone' => 'dark', 'rating' => true, 'secondary' => false ) ); ?></div>
-			</section>
+			<?php if ( ! $content_is_pending ) : ?>
+				<section class="resource-final-cta" aria-label="<?php esc_attr_e( 'Volgende stap', 'react2u' ); ?>">
+					<div class="shell"><?php react2u_cta( array( 'variant' => 'quote', 'tone' => 'dark', 'rating' => true, 'secondary' => false ) ); ?></div>
+				</section>
+			<?php endif; ?>
 		</article>
 		<?php
 	endwhile;

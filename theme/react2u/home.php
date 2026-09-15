@@ -8,7 +8,7 @@ get_header();
 
 $posts_page = (int) get_option( 'page_for_posts' );
 ?>
-<main id="main" class="site-main">
+<main tabindex="-1" id="main" class="site-main">
 	<?php
 	get_template_part(
 		'template-parts/content/archive-loop',

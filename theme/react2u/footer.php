@@ -91,16 +91,19 @@ foreach ( array( 'score', 'max', 'count', 'source', 'url' ) as $footer_rating_ke
 $footer_rating_score = str_replace( ',', '.', trim( (string) ( $footer_rating['score'] ?? '' ) ) );
 $footer_rating_max   = str_replace( ',', '.', trim( (string) ( $footer_rating['max'] ?? '' ) ) );
 $footer_rating_count = trim( (string) ( $footer_rating['count'] ?? '' ) );
+$footer_rating_count_number = (string) preg_replace( '/\D+/u', '', $footer_rating_count );
+$footer_rating_count_valid = 1 === preg_match( '/^(?:[1-9][0-9]*|[1-9][0-9]{0,2}(?:(?:[.,\x{00A0}\s])[0-9]{3})+)\+?$/u', $footer_rating_count );
 $footer_rating_valid = ! $footer_proof_has_placeholder( $footer_rating )
 	&& ! $footer_proof_is_explicitly_unconfirmed( $footer_rating )
 	&& $footer_proof_is_text( $footer_rating_count )
 	&& $footer_proof_is_text( $footer_rating['source'] ?? '' )
 	&& 1 === preg_match( '/^[0-9]+(?:\.[0-9]+)?$/', $footer_rating_score )
 	&& 1 === preg_match( '/^[0-9]+(?:\.[0-9]+)?$/', $footer_rating_max )
+	&& $footer_rating_count_valid
 	&& (float) $footer_rating_score > 0
 	&& (float) $footer_rating_max > 0
 	&& (float) $footer_rating_score <= (float) $footer_rating_max
-	&& 1 === preg_match( '/[1-9]/', $footer_rating_count );
+	&& (int) $footer_rating_count_number > 0;
 ?>
 <footer class="site-footer">
 	<?php if ( $footer_rating_valid || $footer_stats ) : ?>
@@ -168,10 +171,12 @@ $footer_rating_valid = ! $footer_proof_has_placeholder( $footer_rating )
 						<?php echo react2u_text( react2u_get( 'contact.phone' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</a>
 				<?php endif; ?>
-				<a href="mailto:<?php echo esc_attr( str_replace( REACT2U_PLACEHOLDER . ' ', '', (string) react2u_get( 'contact.email' ) ) ); ?>">
-					<?php echo react2u_icon( 'mail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					<?php echo react2u_text( react2u_get( 'contact.email' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				</a>
+				<?php if ( react2u_has_email() ) : ?>
+					<a href="mailto:<?php echo esc_attr( react2u_email_link() ); ?>">
+						<?php echo react2u_icon( 'mail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php echo esc_html( react2u_email_link() ); ?>
+					</a>
+				<?php endif; ?>
 				<span class="footer-address">
 					<?php echo react2u_icon( 'pin' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<span>
@@ -211,6 +216,7 @@ $footer_rating_valid = ! $footer_proof_has_placeholder( $footer_rating )
 			);
 			?>
 		</nav>
+		<small class="footer-sitejob"><?php esc_html_e( 'Gemaakt door', 'react2u' ); ?> <a href="https://sitejob.nl/">SiteJob</a></small>
 	</div>
 </footer>
 <?php wp_footer(); ?>

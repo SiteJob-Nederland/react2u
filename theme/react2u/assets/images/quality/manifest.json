@@ -1,0 +1,908 @@
+{
+  "assets/images/contact-balie-higgsfield-v2.webp": {
+    "sourceWidth": 1920,
+    "sourceHeight": 1080,
+    "sourceBytes": 85000,
+    "variants": [
+      {
+        "width": 240,
+        "height": 135,
+        "bytes": 4680,
+        "path": "assets/images/quality/4d4d34f4072e36d2-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 202,
+        "bytes": 8288,
+        "path": "assets/images/quality/4d4d34f4072e36d2-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 270,
+        "bytes": 12408,
+        "path": "assets/images/quality/4d4d34f4072e36d2-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 432,
+        "bytes": 23070,
+        "path": "assets/images/quality/4d4d34f4072e36d2-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "bytes": 32548,
+        "path": "assets/images/quality/4d4d34f4072e36d2-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "bytes": 44430,
+        "path": "assets/images/quality/4d4d34f4072e36d2-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "bytes": 57740,
+        "path": "assets/images/quality/4d4d34f4072e36d2-1600.webp"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "bytes": 77962,
+        "path": "assets/images/quality/4d4d34f4072e36d2-1920.webp"
+      }
+    ]
+  },
+  "assets/images/contact-balie.webp": {
+    "sourceWidth": 1400,
+    "sourceHeight": 1050,
+    "sourceBytes": 71622,
+    "variants": [
+      {
+        "width": 240,
+        "height": 180,
+        "bytes": 6080,
+        "path": "assets/images/quality/13252aebf6ba263c-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 270,
+        "bytes": 10318,
+        "path": "assets/images/quality/13252aebf6ba263c-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 360,
+        "bytes": 14520,
+        "path": "assets/images/quality/13252aebf6ba263c-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 576,
+        "bytes": 26502,
+        "path": "assets/images/quality/13252aebf6ba263c-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 720,
+        "bytes": 34932,
+        "path": "assets/images/quality/13252aebf6ba263c-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 960,
+        "bytes": 48324,
+        "path": "assets/images/quality/13252aebf6ba263c-1280.webp"
+      },
+      {
+        "width": 1400,
+        "height": 1050,
+        "bytes": 60268,
+        "path": "assets/images/quality/13252aebf6ba263c-1400.webp"
+      }
+    ]
+  },
+  "assets/images/dienst-coaching-higgsfield-v2-960.webp": {
+    "sourceWidth": 960,
+    "sourceHeight": 540,
+    "sourceBytes": 63066,
+    "variants": [
+      {
+        "width": 240,
+        "height": 135,
+        "bytes": 9460,
+        "path": "assets/images/quality/145443ef5c46285c-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 202,
+        "bytes": 17050,
+        "path": "assets/images/quality/145443ef5c46285c-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 270,
+        "bytes": 26690,
+        "path": "assets/images/quality/145443ef5c46285c-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 432,
+        "bytes": 43390,
+        "path": "assets/images/quality/145443ef5c46285c-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "bytes": 61990,
+        "path": "assets/images/quality/145443ef5c46285c-960.webp"
+      }
+    ]
+  },
+  "assets/images/dienst-coaching-higgsfield-v2.webp": {
+    "sourceWidth": 1920,
+    "sourceHeight": 1080,
+    "sourceBytes": 178536,
+    "variants": [
+      {
+        "width": 240,
+        "height": 135,
+        "bytes": 9388,
+        "path": "assets/images/quality/570407b6b4aa2c9d-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 202,
+        "bytes": 17484,
+        "path": "assets/images/quality/570407b6b4aa2c9d-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 270,
+        "bytes": 26778,
+        "path": "assets/images/quality/570407b6b4aa2c9d-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 432,
+        "bytes": 49208,
+        "path": "assets/images/quality/570407b6b4aa2c9d-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "bytes": 69488,
+        "path": "assets/images/quality/570407b6b4aa2c9d-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "bytes": 94742,
+        "path": "assets/images/quality/570407b6b4aa2c9d-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "bytes": 124008,
+        "path": "assets/images/quality/570407b6b4aa2c9d-1600.webp"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "bytes": 169338,
+        "path": "assets/images/quality/570407b6b4aa2c9d-1920.webp"
+      }
+    ]
+  },
+  "assets/images/dienst-erd-higgsfield-v2.webp": {
+    "sourceWidth": 1920,
+    "sourceHeight": 1080,
+    "sourceBytes": 74520,
+    "variants": [
+      {
+        "width": 240,
+        "height": 135,
+        "bytes": 3068,
+        "path": "assets/images/quality/0a26e2f79f2ab873-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 202,
+        "bytes": 5324,
+        "path": "assets/images/quality/0a26e2f79f2ab873-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 270,
+        "bytes": 8068,
+        "path": "assets/images/quality/0a26e2f79f2ab873-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 432,
+        "bytes": 15356,
+        "path": "assets/images/quality/0a26e2f79f2ab873-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "bytes": 24022,
+        "path": "assets/images/quality/0a26e2f79f2ab873-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "bytes": 33686,
+        "path": "assets/images/quality/0a26e2f79f2ab873-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "bytes": 43854,
+        "path": "assets/images/quality/0a26e2f79f2ab873-1600.webp"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "bytes": 67742,
+        "path": "assets/images/quality/0a26e2f79f2ab873-1920.webp"
+      }
+    ]
+  },
+  "assets/images/dienst-erd.webp": {
+    "sourceWidth": 1200,
+    "sourceHeight": 900,
+    "sourceBytes": 78520,
+    "variants": [
+      {
+        "width": 240,
+        "height": 180,
+        "bytes": 7008,
+        "path": "assets/images/quality/94905386f4292976-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 270,
+        "bytes": 11482,
+        "path": "assets/images/quality/94905386f4292976-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 360,
+        "bytes": 16340,
+        "path": "assets/images/quality/94905386f4292976-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 576,
+        "bytes": 29730,
+        "path": "assets/images/quality/94905386f4292976-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 720,
+        "bytes": 38756,
+        "path": "assets/images/quality/94905386f4292976-960.webp"
+      },
+      {
+        "width": 1200,
+        "height": 900,
+        "bytes": 65172,
+        "path": "assets/images/quality/94905386f4292976-1200.webp"
+      }
+    ]
+  },
+  "assets/images/dienst-preventie-higgsfield-v2.webp": {
+    "sourceWidth": 1920,
+    "sourceHeight": 1080,
+    "sourceBytes": 109992,
+    "variants": [
+      {
+        "width": 240,
+        "height": 135,
+        "bytes": 4574,
+        "path": "assets/images/quality/4fd022a543468d3c-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 202,
+        "bytes": 7806,
+        "path": "assets/images/quality/4fd022a543468d3c-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 270,
+        "bytes": 11732,
+        "path": "assets/images/quality/4fd022a543468d3c-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 432,
+        "bytes": 23464,
+        "path": "assets/images/quality/4fd022a543468d3c-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "bytes": 34920,
+        "path": "assets/images/quality/4fd022a543468d3c-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "bytes": 51674,
+        "path": "assets/images/quality/4fd022a543468d3c-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "bytes": 70042,
+        "path": "assets/images/quality/4fd022a543468d3c-1600.webp"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "bytes": 104116,
+        "path": "assets/images/quality/4fd022a543468d3c-1920.webp"
+      }
+    ]
+  },
+  "assets/images/dienst-risico-higgsfield-v2.webp": {
+    "sourceWidth": 1920,
+    "sourceHeight": 1080,
+    "sourceBytes": 102828,
+    "variants": [
+      {
+        "width": 240,
+        "height": 135,
+        "bytes": 6868,
+        "path": "assets/images/quality/1db91e1e55f02845-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 202,
+        "bytes": 12096,
+        "path": "assets/images/quality/1db91e1e55f02845-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 270,
+        "bytes": 17954,
+        "path": "assets/images/quality/1db91e1e55f02845-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 432,
+        "bytes": 31054,
+        "path": "assets/images/quality/1db91e1e55f02845-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "bytes": 43032,
+        "path": "assets/images/quality/1db91e1e55f02845-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "bytes": 57500,
+        "path": "assets/images/quality/1db91e1e55f02845-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "bytes": 70434,
+        "path": "assets/images/quality/1db91e1e55f02845-1600.webp"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "bytes": 95230,
+        "path": "assets/images/quality/1db91e1e55f02845-1920.webp"
+      }
+    ]
+  },
+  "assets/images/dienst-risico.webp": {
+    "sourceWidth": 1200,
+    "sourceHeight": 900,
+    "sourceBytes": 55730,
+    "variants": [
+      {
+        "width": 240,
+        "height": 180,
+        "bytes": 5176,
+        "path": "assets/images/quality/a6ada0ad183b18a3-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 270,
+        "bytes": 8432,
+        "path": "assets/images/quality/a6ada0ad183b18a3-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 360,
+        "bytes": 12050,
+        "path": "assets/images/quality/a6ada0ad183b18a3-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 576,
+        "bytes": 21690,
+        "path": "assets/images/quality/a6ada0ad183b18a3-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 720,
+        "bytes": 27556,
+        "path": "assets/images/quality/a6ada0ad183b18a3-960.webp"
+      },
+      {
+        "width": 1200,
+        "height": 900,
+        "bytes": 45434,
+        "path": "assets/images/quality/a6ada0ad183b18a3-1200.webp"
+      }
+    ]
+  },
+  "assets/images/dienst-trainingen-higgsfield-v2.webp": {
+    "sourceWidth": 1920,
+    "sourceHeight": 1080,
+    "sourceBytes": 145198,
+    "variants": [
+      {
+        "width": 240,
+        "height": 135,
+        "bytes": 7862,
+        "path": "assets/images/quality/b2da9f6ad7fd89e4-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 202,
+        "bytes": 14360,
+        "path": "assets/images/quality/b2da9f6ad7fd89e4-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 270,
+        "bytes": 21192,
+        "path": "assets/images/quality/b2da9f6ad7fd89e4-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 432,
+        "bytes": 39118,
+        "path": "assets/images/quality/b2da9f6ad7fd89e4-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "bytes": 55278,
+        "path": "assets/images/quality/b2da9f6ad7fd89e4-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "bytes": 75644,
+        "path": "assets/images/quality/b2da9f6ad7fd89e4-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "bytes": 96926,
+        "path": "assets/images/quality/b2da9f6ad7fd89e4-1600.webp"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "bytes": 134852,
+        "path": "assets/images/quality/b2da9f6ad7fd89e4-1920.webp"
+      }
+    ]
+  },
+  "assets/images/dienst-trainingen.webp": {
+    "sourceWidth": 1200,
+    "sourceHeight": 900,
+    "sourceBytes": 73818,
+    "variants": [
+      {
+        "width": 240,
+        "height": 180,
+        "bytes": 6206,
+        "path": "assets/images/quality/9b5e3ab1874cd388-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 270,
+        "bytes": 9918,
+        "path": "assets/images/quality/9b5e3ab1874cd388-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 360,
+        "bytes": 14488,
+        "path": "assets/images/quality/9b5e3ab1874cd388-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 576,
+        "bytes": 26682,
+        "path": "assets/images/quality/9b5e3ab1874cd388-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 720,
+        "bytes": 35146,
+        "path": "assets/images/quality/9b5e3ab1874cd388-960.webp"
+      },
+      {
+        "width": 1200,
+        "height": 900,
+        "bytes": 65042,
+        "path": "assets/images/quality/9b5e3ab1874cd388-1200.webp"
+      }
+    ]
+  },
+  "assets/images/dienst-wvp-higgsfield-v2.webp": {
+    "sourceWidth": 1920,
+    "sourceHeight": 1080,
+    "sourceBytes": 89158,
+    "variants": [
+      {
+        "width": 240,
+        "height": 135,
+        "bytes": 4742,
+        "path": "assets/images/quality/d2836ddf5b86a993-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 202,
+        "bytes": 8412,
+        "path": "assets/images/quality/d2836ddf5b86a993-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 270,
+        "bytes": 12736,
+        "path": "assets/images/quality/d2836ddf5b86a993-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 432,
+        "bytes": 23484,
+        "path": "assets/images/quality/d2836ddf5b86a993-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "bytes": 33850,
+        "path": "assets/images/quality/d2836ddf5b86a993-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "bytes": 47246,
+        "path": "assets/images/quality/d2836ddf5b86a993-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "bytes": 60080,
+        "path": "assets/images/quality/d2836ddf5b86a993-1600.webp"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "bytes": 82686,
+        "path": "assets/images/quality/d2836ddf5b86a993-1920.webp"
+      }
+    ]
+  },
+  "assets/images/diensten-overzicht-higgsfield-v1.webp": {
+    "sourceWidth": 1920,
+    "sourceHeight": 1080,
+    "sourceBytes": 106584,
+    "variants": [
+      {
+        "width": 240,
+        "height": 135,
+        "bytes": 5166,
+        "path": "assets/images/quality/4b5394dd57052720-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 202,
+        "bytes": 8830,
+        "path": "assets/images/quality/4b5394dd57052720-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 270,
+        "bytes": 13076,
+        "path": "assets/images/quality/4b5394dd57052720-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 432,
+        "bytes": 24230,
+        "path": "assets/images/quality/4b5394dd57052720-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "bytes": 35558,
+        "path": "assets/images/quality/4b5394dd57052720-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "bytes": 50062,
+        "path": "assets/images/quality/4b5394dd57052720-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "bytes": 65876,
+        "path": "assets/images/quality/4b5394dd57052720-1600.webp"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "bytes": 95952,
+        "path": "assets/images/quality/4b5394dd57052720-1920.webp"
+      }
+    ]
+  },
+  "assets/images/hero-mensen-higgsfield-v2.webp": {
+    "sourceWidth": 1920,
+    "sourceHeight": 1080,
+    "sourceBytes": 87930,
+    "variants": [
+      {
+        "width": 240,
+        "height": 135,
+        "bytes": 5266,
+        "path": "assets/images/quality/a75370464f8d5b7e-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 202,
+        "bytes": 8994,
+        "path": "assets/images/quality/a75370464f8d5b7e-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 270,
+        "bytes": 13510,
+        "path": "assets/images/quality/a75370464f8d5b7e-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 432,
+        "bytes": 24292,
+        "path": "assets/images/quality/a75370464f8d5b7e-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "bytes": 33898,
+        "path": "assets/images/quality/a75370464f8d5b7e-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "bytes": 46822,
+        "path": "assets/images/quality/a75370464f8d5b7e-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "bytes": 58742,
+        "path": "assets/images/quality/a75370464f8d5b7e-1600.webp"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "bytes": 80990,
+        "path": "assets/images/quality/a75370464f8d5b7e-1920.webp"
+      }
+    ]
+  },
+  "assets/images/hero-mensen.webp": {
+    "sourceWidth": 1600,
+    "sourceHeight": 1200,
+    "sourceBytes": 102770,
+    "variants": [
+      {
+        "width": 240,
+        "height": 180,
+        "bytes": 6584,
+        "path": "assets/images/quality/76f270016d653f2c-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 270,
+        "bytes": 10714,
+        "path": "assets/images/quality/76f270016d653f2c-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 360,
+        "bytes": 15466,
+        "path": "assets/images/quality/76f270016d653f2c-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 576,
+        "bytes": 27344,
+        "path": "assets/images/quality/76f270016d653f2c-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 720,
+        "bytes": 37100,
+        "path": "assets/images/quality/76f270016d653f2c-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 960,
+        "bytes": 51912,
+        "path": "assets/images/quality/76f270016d653f2c-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1200,
+        "bytes": 80656,
+        "path": "assets/images/quality/76f270016d653f2c-1600.webp"
+      }
+    ]
+  },
+  "assets/images/over-ons-team-higgsfield-v2.webp": {
+    "sourceWidth": 1920,
+    "sourceHeight": 1080,
+    "sourceBytes": 173758,
+    "variants": [
+      {
+        "width": 240,
+        "height": 135,
+        "bytes": 6278,
+        "path": "assets/images/quality/20bf6adb5d5cc274-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 202,
+        "bytes": 11058,
+        "path": "assets/images/quality/20bf6adb5d5cc274-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 270,
+        "bytes": 16864,
+        "path": "assets/images/quality/20bf6adb5d5cc274-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 432,
+        "bytes": 34714,
+        "path": "assets/images/quality/20bf6adb5d5cc274-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "bytes": 53508,
+        "path": "assets/images/quality/20bf6adb5d5cc274-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "bytes": 79230,
+        "path": "assets/images/quality/20bf6adb5d5cc274-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "bytes": 106716,
+        "path": "assets/images/quality/20bf6adb5d5cc274-1600.webp"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "bytes": 162028,
+        "path": "assets/images/quality/20bf6adb5d5cc274-1920.webp"
+      }
+    ]
+  },
+  "assets/images/over-ons-team.webp": {
+    "sourceWidth": 1400,
+    "sourceHeight": 933,
+    "sourceBytes": 97644,
+    "variants": [
+      {
+        "width": 240,
+        "height": 160,
+        "bytes": 9406,
+        "path": "assets/images/quality/1c038a286e4c4c30-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 240,
+        "bytes": 16312,
+        "path": "assets/images/quality/1c038a286e4c4c30-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 320,
+        "bytes": 23818,
+        "path": "assets/images/quality/1c038a286e4c4c30-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 512,
+        "bytes": 43094,
+        "path": "assets/images/quality/1c038a286e4c4c30-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 640,
+        "bytes": 55902,
+        "path": "assets/images/quality/1c038a286e4c4c30-960.webp"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "bytes": 77582,
+        "path": "assets/images/quality/1c038a286e4c4c30-1280.webp"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "bytes": 91476,
+        "path": "assets/images/quality/1c038a286e4c4c30-1400.webp"
+      }
+    ]
+  },
+  "assets/images/react-wiel.png": {
+    "sourceWidth": 1024,
+    "sourceHeight": 1024,
+    "sourceBytes": 213018,
+    "variants": [
+      {
+        "width": 240,
+        "height": 240,
+        "bytes": 9820,
+        "path": "assets/images/quality/116e469e9eeacb41-240.webp"
+      },
+      {
+        "width": 360,
+        "height": 360,
+        "bytes": 16262,
+        "path": "assets/images/quality/116e469e9eeacb41-360.webp"
+      },
+      {
+        "width": 480,
+        "height": 480,
+        "bytes": 22524,
+        "path": "assets/images/quality/116e469e9eeacb41-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 768,
+        "bytes": 36016,
+        "path": "assets/images/quality/116e469e9eeacb41-768.webp"
+      },
+      {
+        "width": 960,
+        "height": 960,
+        "bytes": 44240,
+        "path": "assets/images/quality/116e469e9eeacb41-960.webp"
+      },
+      {
+        "width": 1024,
+        "height": 1024,
+        "bytes": 47278,
+        "path": "assets/images/quality/116e469e9eeacb41-1024.webp"
+      }
+    ]
+  }
+}

@@ -12,10 +12,53 @@
 
 get_header();
 
-$all_services = (array) react2u_get( 'services', array() );
-$steps        = (array) react2u_get( 'steps', array() );
+$all_services   = (array) react2u_get( 'services', array() );
+$steps          = (array) react2u_get( 'steps', array() );
+$contact_person = (array) react2u_get( 'people.contact', array() );
+
+$contact_person_has_pending_value = static function ( mixed $value ) use ( &$contact_person_has_pending_value ): bool {
+	if ( is_array( $value ) ) {
+		foreach ( $value as $nested_value ) {
+			if ( $contact_person_has_pending_value( $nested_value ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	if ( ! is_string( $value ) ) {
+		return false;
+	}
+
+	$text = strtolower( trim( wp_strip_all_tags( $value ) ) );
+	return react2u_is_placeholder( $value )
+		|| 1 === preg_match( '/\[(?:placeholder|onbevestigd|unconfirmed|unverified)\]/i', $value )
+		|| in_array( $text, array( 'placeholder', 'tbd', 'todo', 'n.t.b.', 'ntb', 'nog aan te leveren', 'nog in te vullen' ), true );
+};
+
+$contact_person_is_unconfirmed = static function ( array $person ): bool {
+	foreach ( array( 'placeholder', 'is_placeholder' ) as $flag ) {
+		if ( array_key_exists( $flag, $person ) && true === filter_var( $person[ $flag ], FILTER_VALIDATE_BOOLEAN ) ) {
+			return true;
+		}
+	}
+
+	foreach ( array( 'verified', 'confirmed', 'is_verified', 'is_confirmed' ) as $flag ) {
+		if ( array_key_exists( $flag, $person ) && true !== filter_var( $person[ $flag ], FILTER_VALIDATE_BOOLEAN ) ) {
+			return true;
+		}
+	}
+
+	$status = strtolower( trim( (string) ( $person['status'] ?? '' ) ) );
+	return in_array( $status, array( '0', 'concept', 'draft', 'onbevestigd', 'pending', 'placeholder', 'todo', 'unconfirmed', 'unverified' ), true );
+};
+
+$contact_person_is_valid = ! $contact_person_has_pending_value( $contact_person )
+	&& ! $contact_person_is_unconfirmed( $contact_person )
+	&& '' !== trim( wp_strip_all_tags( (string) ( $contact_person['name'] ?? '' ) ) )
+	&& '' !== trim( wp_strip_all_tags( (string) ( $contact_person['role'] ?? '' ) ) );
 ?>
-<main id="main" class="site-main">
+<main tabindex="-1" id="main" class="site-main">
 	<?php
 	while ( have_posts() ) :
 		the_post();
@@ -28,6 +71,12 @@ $steps        = (array) react2u_get( 'steps', array() );
 		$service_title = (string) ( $service['title'] ?? get_the_title() );
 		$service_text  = trim( (string) ( $service['text'] ?? '' ) );
 		$hero_intro    = has_excerpt() ? trim( get_the_excerpt() ) : $service_text;
+		$service_image = sanitize_file_name( (string) ( $service['image'] ?? '' ) );
+		if ( '' === $service_image || ! file_exists( REACT2U_DIR . '/assets/images/' . $service_image ) ) {
+			$service_image = 'diensten-overzicht-higgsfield-v1.webp';
+		}
+		$service_image_960 = (string) preg_replace( '/\.webp$/i', '-960.webp', $service_image );
+		$service_image_alt = trim( (string) ( $service['image_alt'] ?? '' ) );
 		$ctas          = react2u_content_ctas( $post_id );
 
 		$prepared = react2u_prepare_content( (string) apply_filters( 'the_content', get_the_content() ) );
@@ -156,7 +205,11 @@ $steps        = (array) react2u_get( 'steps', array() );
 					</div>
 
 					<figure class="dienst-hero-model">
-						<img src="<?php echo esc_url( REACT2U_URI . '/assets/images/react-wiel.png' ); ?>" width="1024" height="1024" alt="" fetchpriority="high" decoding="async">
+						<picture class="human-photo dienst-hero-picture">
+
+							<img class="dienst-hero-photo" <?php echo react2u_quality_image_attrs( REACT2U_URI . '/assets/images/' . $service_image ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> width="1920" height="1080" alt="<?php echo esc_attr( $service_image_alt ); ?>" loading="eager" fetchpriority="high" decoding="async">
+						</picture>
+						<img class="dienst-hero-wheel" <?php echo react2u_quality_image_attrs( REACT2U_URI . '/assets/images/react-wiel.png' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> width="1024" height="1024" alt="" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true">
 						<figcaption class="dienst-banner-label">
 							<span class="dienst-banner-label-kicker"><?php esc_html_e( 'De REACT-aanpak', 'react2u' ); ?></span>
 							<strong><?php esc_html_e( 'Results · Expertise · Attention · Coaching · Together', 'react2u' ); ?></strong>
@@ -167,7 +220,7 @@ $steps        = (array) react2u_get( 'steps', array() );
 
 			<?php if ( '' !== $service_text || $expectations ) : ?>
 				<section class="dienst-kern" aria-labelledby="dienst-kern-title">
-					<div class="shell dienst-kern-inner">
+					<div class="shell dienst-kern-inner<?php echo $expectations ? '' : ' dienst-kern-inner--zonder-punten'; ?><?php echo '' !== $service_text ? '' : ' dienst-kern-inner--zonder-belofte'; ?>">
 						<header class="dienst-kern-heading">
 							<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><?php esc_html_e( 'In het kort', 'react2u' ); ?></p>
 							<h2 id="dienst-kern-title"><?php esc_html_e( 'Dit kun je van React2u verwachten', 'react2u' ); ?></h2>
@@ -204,7 +257,7 @@ $steps        = (array) react2u_get( 'steps', array() );
 								'tone'    => 'light',
 								'heading' => 'p',
 								'rating'  => true,
-								'person'  => true,
+								'person'  => $contact_person_is_valid,
 								'eyebrow' => __( 'Hulp nodig?', 'react2u' ),
 								'text'    => __( 'Vertel wat je nodig hebt. We reageren binnen één werkdag.', 'react2u' ),
 							)

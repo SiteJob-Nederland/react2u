@@ -16,7 +16,7 @@ $kort      = $term instanceof WP_Term ? trim( wp_strip_all_tags( (string) $term-
 $onder     = $term_id ? (string) get_term_meta( $term_id, '_react2u_onder_tekst', true ) : '';
 $onder     = react2u_prepare_content( (string) apply_filters( 'the_content', $onder ) );
 ?>
-<main id="main" class="site-main">
+<main tabindex="-1" id="main" class="site-main">
 	<div class="archive-page">
 		<header class="archive-header">
 			<div class="shell archive-header-inner">

@@ -97,3 +97,26 @@ Nederlands, je-vorm. Ook in code-commentaar. Merktermen zoals de klant ze schrij
 ## Niet in deze fase
 
 - ...
+
+## Gedeelde kwaliteitscontrole
+
+`npm --prefix qa run alles` voert ook de centrale techscanregels en drie mobiele
+Lighthouse-metingen per vertegenwoordigd paginatype uit. `npm --prefix qa run
+oplevering` vereist daarnaast gedateerd handmatig bewijs. Lees
+`../../docs/website-kwaliteit.md`. Behoud `quality.config.json` en projectspecifieke
+checks bij updates; werk beheerde bestanden bij via `scripts/kwaliteit-sync.mjs`.
+
+## Git en GitHub — vaste werkwijze
+
+Deze site heeft een eigen privé-repository bij SiteJob-Nederland. Lees
+`../../docs/git-per-site.md`; het centrale register is `../../sites/repositories.json`.
+Werk vanuit deze map en controleer bij de start `git status --short --branch`.
+Gebruik voor nieuwe werkzaamheden een `codex/<onderwerp>`-branch.
+Maak na ieder afgerond onderdeel een gerichte Nederlandse commit en push de
+werkbranch. Hiervoor is geen nieuwe toestemmingsvraag nodig. Controleer de
+remote commit; meld ontbrekende toegang of resterend werk expliciet.
+Commit alleen beoordeelde bestanden; neem andermans lopende wijzigingen niet
+blind mee. Een WIP-commit bewaart werk, maar bewijst geen geslaagde website-QA.
+Geen force-push, stilzwijgende merge naar main of automatische deployment.
+Installeer de meegeleverde hooks met `git config core.hooksPath .githooks`;
+`gitleaks` is vereist. Geheimen, dumps, exports en runtime horen niet in Git.

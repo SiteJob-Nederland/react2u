@@ -30,10 +30,12 @@
 					<span><?php echo react2u_text( react2u_get( 'contact.phone' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 				</a>
 			<?php endif; ?>
-			<a href="mailto:<?php echo esc_attr( str_replace( REACT2U_PLACEHOLDER . ' ', '', (string) react2u_get( 'contact.email' ) ) ); ?>">
-				<?php echo react2u_icon( 'mail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				<span><?php echo react2u_text( react2u_get( 'contact.email' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-			</a>
+			<?php if ( react2u_has_email() ) : ?>
+				<a href="mailto:<?php echo esc_attr( react2u_email_link() ); ?>">
+					<?php echo react2u_icon( 'mail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<span><?php echo esc_html( react2u_email_link() ); ?></span>
+				</a>
+			<?php endif; ?>
 		</p>
 	</div>
 </div>

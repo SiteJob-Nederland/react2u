@@ -32,6 +32,37 @@ function react2u_block( string $name, array $args = array() ): void {
  */
 function react2u_cta( array $args = array() ): void {
 	$variant = $args['variant'] ?? 'quote';
+	$pricing_value = static function ( mixed $value ): string {
+		if ( ! is_string( $value ) && ! is_int( $value ) && ! is_float( $value ) ) {
+			return '';
+		}
+
+		$value   = html_entity_decode( wp_strip_all_tags( (string) $value ), ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+		$trimmed = preg_replace( '/^[\s\p{Z}\p{Cf}]+|[\s\p{Z}\p{Cf}]+$/u', '', $value );
+
+		return is_string( $trimmed ) ? $trimmed : '';
+	};
+	$pricing_is_confirmed = static function ( string $value ): bool {
+		if ( '' === $value || react2u_is_placeholder( $value ) ) {
+			return false;
+		}
+
+		$pending_pattern = '/(?:\[(?:placeholder|onbevestigd|unconfirmed|unverified|todo|tbd|n\.?\s*t\.?\s*b\.?)\]|(?:^|[\s:;,_-])(?:placeholder|onbevestigd|unconfirmed|unverified|todo|tbd|n\.?\s*t\.?\s*b\.?|nog\s+aan\s+te\s+leveren|nog\s+in\s+te\s+vullen)(?:$|[\s:;,_-]))/iu';
+
+		return 0 === preg_match( $pending_pattern, $value );
+	};
+
+	$pricing_from = $pricing_value( react2u_get( 'pricing.from', '' ) );
+	$pricing_unit = $pricing_value( react2u_get( 'pricing.unit', '' ) );
+	$pricing_text = __( 'Voor een passend tarief maken we graag een voorstel op basis van je situatie.', 'react2u' );
+	if ( $pricing_is_confirmed( $pricing_from ) && $pricing_is_confirmed( $pricing_unit ) ) {
+		$pricing_text = sprintf(
+			/* translators: 1: vanafprijs, 2: eenheid */
+			__( 'Het begint bij %1$s %2$s. Wat jij betaalt hangt af van je situatie.', 'react2u' ),
+			$pricing_from,
+			$pricing_unit
+		);
+	}
 
 	$presets = array(
 		'quote' => array(
@@ -44,12 +75,7 @@ function react2u_cta( array $args = array() ): void {
 		'pricing' => array(
 			'eyebrow'   => __( 'Tarieven', 'react2u' ),
 			'title'     => __( 'Wat kost het?', 'react2u' ),
-			'text'      => sprintf(
-				/* translators: 1: vanafprijs, 2: eenheid */
-				__( 'Het begint bij %1$s %2$s. Wat jij betaalt hangt af van je situatie.', 'react2u' ),
-				(string) react2u_get( 'pricing.from' ),
-				(string) react2u_get( 'pricing.unit' )
-			),
+			'text'      => $pricing_text,
 			'primary'   => 'pricing',
 			'secondary' => 'quote',
 		),
@@ -335,6 +361,12 @@ function react2u_icon( string $name, array $args = array() ): string {
 		'youtube'  => '<rect x="3" y="6" width="18" height="12" rx="3.5"/><path d="M10.5 9.5v5l4.2-2.5z"/>',
 		'globe'    => '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/>',
 		'check'    => '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+		'route'    => '<circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="14" cy="18" r="2"/><path d="M7 18h5M14 16v-4a4 4 0 0 1 4-4"/>',
+		'map'      => '<path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3zM9 3v15M15 6v15"/>',
+		'health'   => '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M9 5V3h6v2M12 9v6M9 12h6"/>',
+		'chat'     => '<path d="M4 5h11a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3H9l-4 3v-3H4a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"/><path d="M18 10h1a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-1v3l-4-3h-3"/>',
+		'edit'     => '<path d="M4 4h10M4 4v16h16V10"/><path d="m10 14 1-4 7-7 3 3-7 7zM17 4l3 3"/>',
+		'balance'  => '<path d="M12 4v16M7 20h10M4 7h16M7 7l-4 7h8zM17 7l-4 7h8z"/>',
 	);
 
 	if ( ! isset( $icons[ $name ] ) ) {
@@ -379,9 +411,9 @@ function react2u_logo( array $args = array() ): string {
 	$ratio = react2u_logo_ratio( REACT2U_DIR . '/assets/images/' . $bestand );
 
 	return sprintf(
-		'<img class="%1$s" src="%2$s" alt="%3$s" width="%4$d" height="%5$d" decoding="async">',
+		'<img class="%1$s" %2$s alt="%3$s" width="%4$d" height="%5$d" decoding="async">',
 		esc_attr( $class ),
-		esc_url( REACT2U_URI . '/assets/images/' . $bestand ),
+		react2u_quality_image_attrs( REACT2U_URI . '/assets/images/' . $bestand, $width . 'px' ),
 		esc_attr( (string) get_bloginfo( 'name' ) ),
 		$width,
 		(int) round( $width * $ratio )
@@ -415,7 +447,7 @@ function react2u_logo_mark( int $size = 72 ): string {
 	}
 
 	return sprintf(
-		'<img class="logo-mark" src="%1$s" alt="" width="%2$d" height="%2$d" loading="lazy" decoding="async" aria-hidden="true">',
+		'<img class="logo-mark" src="%1$s" alt="" width="%2$d" height="%2$d" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true">',
 		esc_url( REACT2U_URI . '/assets/images/mark.png' ),
 		$size
 	);
@@ -424,6 +456,128 @@ function react2u_logo_mark( int $size = 72 ): string {
 /** URL van een foto uit de themamap. */
 function react2u_image_url( string $file ): string {
 	return REACT2U_URI . '/assets/images/' . ltrim( $file, '/' );
+}
+
+/**
+ * Alleen bevestigde, volledig ingevulde persoonsdata mag publiek renderen.
+ *
+ * @param mixed $person Persoonsdata, of null voor people.contact.
+ * @return array<string,mixed>|null
+ */
+function react2u_public_person_data( mixed $person = null ): ?array {
+	if ( null === $person ) {
+		$person = react2u_get( 'people.contact', array() );
+	}
+
+	if ( ! is_array( $person ) || ! $person ) {
+		return null;
+	}
+
+	$trim_unicode = static function ( string $value ): string {
+		$trimmed = preg_replace( '/^[\s\p{Z}\p{Cf}]+|[\s\p{Z}\p{Cf}]+$/u', '', $value );
+
+		return is_string( $trimmed ) ? $trimmed : '';
+	};
+	$normalize_text = static function ( mixed $value ) use ( $trim_unicode ): ?string {
+		if ( ! is_string( $value ) && ! is_int( $value ) && ! is_float( $value ) ) {
+			return null;
+		}
+
+		$text = html_entity_decode( wp_strip_all_tags( (string) $value ), ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+
+		return $trim_unicode( $text );
+	};
+	$validate_boolean = static function ( mixed $value ) use ( $trim_unicode ): ?bool {
+		if ( ! is_bool( $value ) && ! is_int( $value ) && ! is_string( $value ) ) {
+			return null;
+		}
+
+		if ( is_int( $value ) && ! in_array( $value, array( 0, 1 ), true ) ) {
+			return null;
+		}
+
+		if ( is_string( $value ) ) {
+			$value = $trim_unicode( $value );
+			if ( '' === $value ) {
+				return null;
+			}
+		}
+
+		return filter_var( $value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE );
+	};
+	$has_pending_text = static function ( string $value ): bool {
+		if ( react2u_is_placeholder( $value ) ) {
+			return true;
+		}
+
+		$bracket_token = preg_match( '/\[[^\]\r\n]+\]/u', $value );
+		$pending_text  = preg_match(
+			'/(?:^|[\s:;,_-])(?:placeholder|onbevestigd|unconfirmed|unverified|todo|tbd|n\.?\s*t\.?\s*b\.?|nog\s+aan\s+te\s+leveren|nog\s+in\s+te\s+vullen)(?:$|[\s:;,_-])/iu',
+			$value
+		);
+
+		/* Een regexfout is ook onbevestigde data: publiek altijd fail-closed. */
+		return 0 !== $bracket_token || 0 !== $pending_text;
+	};
+
+	foreach ( array( 'placeholder', 'is_placeholder', 'unconfirmed', 'is_unconfirmed', 'unverified', 'is_unverified', 'draft', 'is_draft', 'pending', 'is_pending' ) as $flag ) {
+		if ( array_key_exists( $flag, $person ) && false !== $validate_boolean( $person[ $flag ] ) ) {
+			return null;
+		}
+	}
+
+	foreach ( array( 'verified', 'confirmed', 'is_verified', 'is_confirmed' ) as $flag ) {
+		if ( array_key_exists( $flag, $person ) && true !== $validate_boolean( $person[ $flag ] ) ) {
+			return null;
+		}
+	}
+
+	if ( array_key_exists( 'status', $person ) ) {
+		$status = $normalize_text( $person['status'] );
+		if ( null === $status || ! in_array( strtolower( $status ), array( '1', 'active', 'approved', 'confirmed', 'live', 'published', 'verified' ), true ) ) {
+			return null;
+		}
+	}
+
+	$name = $normalize_text( $person['name'] ?? null );
+	$role = $normalize_text( $person['role'] ?? null );
+	if (
+		null === $name
+		|| null === $role
+		|| '' === $name
+		|| '' === $role
+		|| react2u_is_placeholder( $person['name'] ?? null )
+		|| react2u_is_placeholder( $person['role'] ?? null )
+		|| $has_pending_text( $name )
+		|| $has_pending_text( $role )
+		|| 1 !== preg_match( '/\p{L}/u', $name )
+		|| 1 !== preg_match( '/\p{L}/u', $role )
+	) {
+		return null;
+	}
+
+	$invalid_name = array( 'naam', 'naam aanspreekpunt', 'naam contactpersoon', 'contactpersoon', 'voornaam achternaam', 'name', 'contact name' );
+	$invalid_role = array( 'rol', 'role', 'functie', 'functietitel', 'job title' );
+	if ( in_array( strtolower( $name ), $invalid_name, true ) || in_array( strtolower( $role ), $invalid_role, true ) ) {
+		return null;
+	}
+
+	$person['name'] = $name;
+	$person['role'] = $role;
+	foreach ( array( 'photo', 'note' ) as $field ) {
+		if ( ! array_key_exists( $field, $person ) ) {
+			continue;
+		}
+
+		$value = $normalize_text( $person[ $field ] );
+		if ( null === $value || react2u_is_placeholder( $person[ $field ] ) || ( '' !== $value && $has_pending_text( $value ) ) ) {
+			return null;
+		}
+
+		$person[ $field ] = $value;
+	}
+
+	return $person;
 }
 
 /**
@@ -436,9 +590,9 @@ function react2u_image_url( string $file ): string {
  * @param array<string,mixed> $args layout: card | inline
  */
 function react2u_person( array $args = array() ): void {
-	$person = $args['person'] ?? (array) react2u_get( 'people.contact', array() );
+	$person = react2u_public_person_data( $args['person'] ?? null );
 
-	if ( ! $person ) {
+	if ( null === $person ) {
 		return;
 	}
 

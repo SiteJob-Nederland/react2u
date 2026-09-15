@@ -12,6 +12,7 @@ patchDnsLookup();
 
 const baseUrl = (process.env.SITE_URL || 'http://127.0.0.1:8103').replace(/\/$/, '');
 const origin = new URL(baseUrl).origin;
+const indexable = process.env.EXPECT_INDEXABLE !== '0';
 
 const meldingen = [];
 const meld = (ernst, waar, tekst) => meldingen.push({ ernst, waar, tekst });
@@ -28,7 +29,7 @@ async function haal(pad, opties = {}) {
 /* ---- Sitemap en robots -------------------------------------------------- */
 
 const sitemapKort = await haal('/sitemap.xml');
-if (sitemapKort) {
+if (sitemapKort && indexable) {
 	if (sitemapKort.status === 301 || sitemapKort.status === 302) {
 		const doel = sitemapKort.headers.get('location') ?? '';
 		if (!doel.includes('sitemap')) meld('FOUT', '/sitemap.xml', `stuurt door naar ${doel}, geen sitemap`);
@@ -38,7 +39,9 @@ if (sitemapKort) {
 }
 
 const sitemap = await fetch(origin + '/wp-sitemap.xml', { redirect: 'follow' }).catch(() => null);
-if (!sitemap || sitemap.status !== 200) {
+if (!indexable) {
+	if (sitemap?.status !== 404) meld('FOUT', '/wp-sitemap.xml', 'staging hoort geen publieke core-sitemap te leveren');
+} else if (!sitemap || sitemap.status !== 200) {
 	meld('FOUT', '/wp-sitemap.xml', `HTTP ${sitemap?.status ?? 'onbereikbaar'}`);
 } else {
 	const xml = await sitemap.text();
@@ -52,8 +55,8 @@ if (!robots || robots.status !== 200) {
 	meld('FOUT', '/robots.txt', `HTTP ${robots?.status ?? 'onbereikbaar'}`);
 } else {
 	const tekst = await robots.text();
-	if (!/sitemap:/i.test(tekst)) meld('FOUT', '/robots.txt', 'geen Sitemap-regel');
-	if (/Disallow: \/$/m.test(tekst)) meld('WAARSCHUWING', '/robots.txt', 'de hele site staat op Disallow — bedoeld?');
+	if (indexable && !/sitemap:/i.test(tekst)) meld('FOUT', '/robots.txt', 'geen Sitemap-regel');
+	if (indexable && /Disallow: \/$/m.test(tekst)) meld('WAARSCHUWING', '/robots.txt', 'de hele site staat op Disallow — bedoeld?');
 }
 
 /* ---- Schema per paginatype ---------------------------------------------- */

@@ -26,6 +26,55 @@ function react2u_enable_core_sitemaps( bool $enabled ): bool {
 add_filter( 'wp_sitemaps_enabled', 'react2u_enable_core_sitemaps' );
 
 /**
+ * Voorkom een onterechte 404-status op geldige sitemaps zonder blogberichten.
+ *
+ * WordPress bepaalt de HTTP-status vóór WP_Sitemaps de XML rendert. Op een
+ * nieuwe site zonder berichten ziet de hoofdquery niets en zet core alvast een
+ * 404, ook wanneer de sitemapindex daarna wél pagina-URL's bevat. Alleen
+ * aantoonbaar geldige sitemaproutes slaan die vroege statusbepaling over;
+ * onbekende providers en lege pagina's behouden daardoor hun echte 404.
+ */
+function react2u_sitemap_pre_handle_404( bool $preempt, WP_Query $query ): bool {
+	if ( $preempt || ! react2u_sitemaps_enabled() ) {
+		return $preempt;
+	}
+
+	$stylesheet = sanitize_text_field( (string) $query->get( 'sitemap-stylesheet' ) );
+	if ( in_array( $stylesheet, array( 'sitemap', 'index' ), true ) ) {
+		status_header( 200 );
+		return true;
+	}
+
+	$sitemap = sanitize_text_field( (string) $query->get( 'sitemap' ) );
+	if ( '' === $sitemap ) {
+		return $preempt;
+	}
+
+	$server = wp_sitemaps_get_server();
+	if ( 'index' === $sitemap ) {
+		status_header( 200 );
+		return true;
+	}
+
+	$provider = $server->registry->get_provider( $sitemap );
+	if ( ! $provider ) {
+		return $preempt;
+	}
+
+	$page     = max( 1, absint( $query->get( 'paged' ) ) );
+	$subtype  = sanitize_text_field( (string) $query->get( 'sitemap-subtype' ) );
+	$url_list = $provider->get_url_list( $page, $subtype );
+
+	if ( ! empty( $url_list ) ) {
+		status_header( 200 );
+		return true;
+	}
+
+	return $preempt;
+}
+add_filter( 'pre_handle_404', 'react2u_sitemap_pre_handle_404', 10, 2 );
+
+/**
  * /sitemap.xml en /sitemap_index.xml wijzen naar de echte sitemap.
  * Een 301 zodat een crawler het adres onthoudt.
  */

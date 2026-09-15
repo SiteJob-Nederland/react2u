@@ -8,10 +8,19 @@
     "links": "node qa-links.mjs",
     "seo": "node qa-seo.mjs",
     "musthaves": "node qa-musthaves.mjs",
-    "alles": "node qa-thema.mjs && node qa-links.mjs && node qa-seo.mjs && node qa-musthaves.mjs",
-    "beeld": "node qa-beeld.mjs"
+    "alles": "node quality/all.mjs",
+    "beeld": "node qa-beeld.mjs",
+    "kwaliteit": "node quality/runner.mjs",
+    "kwaliteit:surface": "node quality/runner.mjs surface",
+    "kwaliteit:performance": "node quality/runner.mjs performance",
+    "oplevering": "node quality/runner.mjs release",
+    "alles:bestaand": "node qa-thema.mjs && node qa-links.mjs && node qa-seo.mjs && node qa-musthaves.mjs"
   },
   "devDependencies": {
-    "playwright": "^1.49.0"
+    "playwright": "^1.49.0",
+    "axe-core": "4.13.0",
+    "fast-xml-parser": "5.11.1",
+    "lighthouse": "13.4.1",
+    "puppeteer-core": "25.3.0"
   }
 }

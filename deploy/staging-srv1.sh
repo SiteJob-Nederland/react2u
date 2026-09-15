@@ -43,6 +43,7 @@ DB_USER="react2u_wp"
 PHP_VERSION="8.4"
 THEME_SLUG="react2u"
 THEME_ZIP="/tmp/react2u.zip"
+CONTENT_API_ZIP="/tmp/react2u-content-api.zip"
 PLUGIN_ZIP="/tmp/react2u-hardening.zip"
 MAIL_ZIP="/tmp/react2u-mail.zip"
 SEED="/tmp/react2u_seed.php"
@@ -268,6 +269,11 @@ server {
 
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-Content-Type-Options "nosniff";
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), browsing-topics=()" always;
+    add_header Strict-Transport-Security "max-age=86400" always;
+
+    add_header Content-Security-Policy "base-uri 'self'; object-src 'none'; frame-ancestors 'self'" always;
 
     charset utf-8;
     client_max_body_size 64M;
@@ -364,6 +370,13 @@ if [[ -f "${MAIL_ZIP}" ]]; then
 	run_wp plugin install "${MAIL_ZIP}" --force --activate
 else
 	echo "LET OP: ${MAIL_ZIP} ontbreekt — deze site verstuurt via PHP mail()."
+fi
+
+# Native contentvelden horen bij het thema, ook zonder vendorplugin.
+if [[ -f "${CONTENT_API_ZIP}" ]]; then
+    run_wp plugin install "${CONTENT_API_ZIP}" --force --activate
+else
+    echo "LET OP: content-API ZIP ontbreekt; native SEO-velden zijn nog niet beschikbaar."
 fi
 
 if [[ -f "${SEED}" ]]; then

@@ -35,7 +35,7 @@ $before  = (string) ( $args['before'] ?? '' );
 				<?php
 				while ( have_posts() ) :
 					the_post();
-					get_template_part( 'template-parts/content/card', null, array( 'post_id' => get_the_ID() ) );
+					get_template_part( 'template-parts/content/card', null, array( 'priority' => 0 === (int) $GLOBALS['wp_query']->current_post, 'post_id' => get_the_ID() ) );
 				endwhile;
 				?>
 			</div>

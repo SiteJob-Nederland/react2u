@@ -1,0 +1,18 @@
+{
+  "localUrl": "http://127.0.0.1:8103",
+  "localIndexable": false,
+  "paths": [
+    "/"
+  ],
+  "noindexPaths": [],
+  "performancePaths": [
+    "/"
+  ],
+  "maxPages": 500,
+  "budget": {
+    "lcp": 2500,
+    "cls": 0.1,
+    "tbt": 200,
+    "performance": 0.9
+  }
+}

@@ -8,7 +8,7 @@ get_header();
 
 $knowledge = post_type_exists( 'react2u_kennisbank' ) ? get_post_type_archive_link( 'react2u_kennisbank' ) : '';
 ?>
-<main id="main" class="site-main">
+<main tabindex="-1" id="main" class="site-main">
 	<div class="archive-page">
 		<header class="archive-header page-hero page-hero--error has-react-route">
 			<div class="shell archive-header-inner">

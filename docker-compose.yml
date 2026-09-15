@@ -48,7 +48,9 @@ services:
     volumes:
       - wordpress_data:/var/www/html
       - ./theme/react2u:/var/www/html/wp-content/themes/react2u
+      - ./deploy/quality/apache-local.conf:/etc/apache2/conf-enabled/sitejob-quality.conf:ro
       - ./plugins/react2u-hardening:/var/www/html/wp-content/plugins/react2u-hardening
+      - ./plugins/react2u-content-api:/var/www/html/wp-content/plugins/react2u-content-api
       - ./plugins/react2u-mail:/var/www/html/wp-content/plugins/react2u-mail
     networks:
       - wordpress_internal
@@ -70,6 +72,7 @@ services:
       - wordpress_data:/var/www/html
       - ./theme/react2u:/var/www/html/wp-content/themes/react2u
       - ./plugins/react2u-hardening:/var/www/html/wp-content/plugins/react2u-hardening
+      - ./plugins/react2u-content-api:/var/www/html/wp-content/plugins/react2u-content-api
       - ./plugins/react2u-mail:/var/www/html/wp-content/plugins/react2u-mail
       - ./deploy:/deploy
     networks:

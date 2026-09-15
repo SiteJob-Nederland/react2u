@@ -132,3 +132,5 @@ function react2u_hardening_generic_login_error(): string {
 	return __( 'De combinatie van gebruikersnaam en wachtwoord klopt niet.', 'react2u-hardening' );
 }
 add_filter( 'login_errors', 'react2u_hardening_generic_login_error' );
+
+require __DIR__ . '/quality-headers.php';

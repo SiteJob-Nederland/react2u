@@ -18,7 +18,7 @@ if ( $author_id ) {
 }
 $card = (string) ob_get_clean();
 ?>
-<main id="main" class="site-main">
+<main tabindex="-1" id="main" class="site-main">
 	<?php
 	get_template_part(
 		'template-parts/content/archive-loop',
