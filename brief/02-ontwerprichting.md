@@ -1,5 +1,23 @@
 # Ontwerprichting — React2u
 
+## Actuele binnenpagina's — duidelijk beeldritme (22 september 2026)
+
+De goedgekeurde entree met twee doelgroeproutes blijft ongewijzigd. De
+binnenpagina's volgen wel de schaal en compositie die Kas in
+[Acture](https://acture.nl/) aanwijst: een uitgesproken donker tekstvlak naast
+een groot beeld, warme lichte ruimte en afwisseling tussen beeld, uitleg en
+donkere inhoudssecties. Dit is een toepassing van het principe op React2u,
+geen kopie van Acture. Het React2u-logo, de merkkleuren, Figtree/DM Sans en
+de brongetrouwe inhoud blijven behouden.
+
+Op de werkgeverspagina vervangt een grote gefotografeerde WVP-route het
+voormalige raster van zes vergelijkbare fotokaarten. De vijf andere diensten
+staan eronder als compacte ingangen met foto en korte uitleg. De
+werknemerspagina krijgt drie duidelijke fotografische taakroutes. De
+verdiepingspagina's gebruiken dezelfde typografische schaal en afwisselende
+contrastvlakken. Fotografie benadrukt het menselijke contact, zonder
+gegenereerde personen als echte React2u-medewerkers voor te stellen.
+
 ## Actuele richting — entree met twee werelden (22 september 2026)
 
 De homepage is geen inhoudelijke overzichtspagina meer. Zij toont alleen het
