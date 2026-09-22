@@ -233,6 +233,53 @@ h1,h2,h3{letter-spacing:-.035em}.hero-warm h1{letter-spacing:-.04em}.button{whit
   .service-feature .editorial-photo img{aspect-ratio:1.3}
 }
 
+/* De entree is alleen een keuze; de twee doelgroeppagina's dragen de inhoud. */
+.page-chooser{background:var(--paper)}
+.chooser-header{width:min(var(--shell),calc(100% - var(--gutter)*2));min-height:86px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.chooser-header .logo img{width:117px;height:auto}
+.chooser-header p{font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--brand-deep)}
+.gateway-intro{display:flex;align-items:end;justify-content:space-between;gap:30px;padding-block:27px 32px}
+.gateway-intro p{order:2;padding-bottom:6px;color:var(--brand);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.gateway-intro h1{font-size:clamp(34px,3.6vw,52px);font-weight:760;line-height:1.04;letter-spacing:-.055em;color:var(--brand-deep)}
+.audience-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.audience-choice{position:relative;display:block;min-width:0;min-height:clamp(430px,calc(100svh - 225px),680px);overflow:hidden;isolation:isolate;border-radius:26px 26px 4px 4px;color:var(--white);background:var(--brand-deep)}
+.audience-choice>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 260ms var(--ease)}
+.audience-choice-employer>img{object-position:52% 40%}
+.audience-choice-employee>img{object-position:36% 39%}
+.audience-choice::after{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,color-mix(in srgb,var(--brand-deep) 9%,transparent) 0%,color-mix(in srgb,var(--brand-deep) 12%,transparent) 37%,color-mix(in srgb,var(--brand-deep) 90%,transparent) 100%)}
+.choice-copy{position:absolute;z-index:1;inset:auto 0 0;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:16px;padding:clamp(24px,3.5vw,46px)}
+.choice-kicker,.choice-detail{grid-column:1}
+.choice-kicker{font-size:12px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
+.choice-copy h2{grid-column:1;font-size:clamp(46px,5.1vw,75px);font-weight:770;line-height:.98;letter-spacing:-.065em;margin-top:15px}
+.choice-detail{font-size:15px;font-weight:550;line-height:1.4;margin-top:19px}
+.choice-arrow{grid-column:2;grid-row:1/4;display:grid;place-items:center;width:58px;height:58px;border:1px solid currentColor;border-radius:50%;transition:transform 220ms var(--ease)}
+.choice-arrow .arrow{width:26px;height:26px}
+.audience-choice:focus-visible{outline:4px solid var(--orange);outline-offset:4px}
+.chooser-footer{width:min(var(--shell),calc(100% - var(--gutter)*2));min-height:64px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--ink-soft);font-size:12px}
+.chooser-footer nav{display:flex;flex-wrap:wrap;gap:14px}
+.chooser-footer a{text-decoration:underline;text-underline-offset:3px}
+@media(hover:hover) and (pointer:fine){.audience-choice:hover>img{transform:scale(1.025)}.audience-choice:hover .choice-arrow{transform:translateX(4px)}}
+@media(max-width:760px){
+  .chooser-header{min-height:66px}
+  .chooser-header .logo img{width:92px}
+  .chooser-header p{font-size:10px}
+  .gateway-intro{display:block;padding-block:12px 18px}
+  .gateway-intro p{display:none}
+  .gateway-intro h1{font-size:clamp(27px,7.6vw,39px)}
+  .audience-choices{grid-template-columns:1fr;gap:9px}
+  .audience-choice{min-height:clamp(205px,calc((100svh - 180px)/2),330px);border-radius:16px 16px 3px 3px}
+  .audience-choice-employer>img{object-position:50% 37%}
+  .choice-copy{padding:19px 21px;column-gap:10px}
+  .choice-kicker{font-size:10px}
+  .choice-copy h2{font-size:clamp(36px,10vw,50px);margin-top:6px}
+  .choice-detail{font-size:12px;margin-top:8px}
+  .choice-arrow{width:37px;height:37px}
+  .choice-arrow .arrow{width:19px;height:19px}
+  .chooser-footer{padding-block:16px;align-items:start}
+}
+@media(max-width:370px){.chooser-header p{display:none}.choice-copy h2{font-size:35px}.choice-detail{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.audience-choice>img,.choice-arrow{transition:none!important}}
+
 
 /* Compositieherziening: beeldvullende opening, overlappende redactie en beeldgedreven routes. */
 .feature-hero{position:relative;background:var(--paper);padding-bottom:0}

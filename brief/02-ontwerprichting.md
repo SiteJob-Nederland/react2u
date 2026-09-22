@@ -1,6 +1,23 @@
 # Ontwerprichting — React2u
 
-## Structurele herziening na tweede feedback
+## Actuele richting — entree met twee werelden (22 september 2026)
+
+De homepage is geen inhoudelijke overzichtspagina meer. Zij toont alleen het
+React2u-logo, een korte keuzevraag en twee even prominente, volledig klikbare
+fotovlakken: **Ik ben werkgever** en **Ik ben werknemer**. De werkgever komt op
+`/werkgevers/`, de werknemer op `/werknemers/`. Diensten, werkwijze, FAQ,
+sliders en langere teksten staan op de passende binnenpagina's; de homepage
+bevat ze niet meer. Op mobiel blijven beide keuzes direct herkenbaar.
+
+[Acture](https://acture.nl/) is de primaire visuele referentie: fors maar
+verzorgd typografisch contrast, rustige lichte ruimte rond krachtige grote
+vlakken en een redactionele compositie. De React2u-uitwerking behoudt het eigen
+logo, indigo, Figtree/DM Sans en mensgerichte fotografie. Geen nabouw van
+Acture-illustraties of claims. De foto’s dienen de keuze, niet als voorstelling
+van echte React2u-medewerkers. De werkgever- en werknemerspagina hebben elk
+een eigen inhoudelijke en SEO-route. CRO blijft uit.
+
+## Historische herziening vóór de huidige doelgroepentree
 
 Kas ziet ook in de rustige vervolgversie vooral een kleurwijziging: de
 compositie bleef een standaard tekst/foto-splitsing met kaarten eronder.
@@ -12,8 +29,8 @@ diensten staan als gefotografeerde navigatierijen op de homepage. De
 fotocarrousel toont één groot beeld met een compact tekstpaneel. De
 binnenpagina's krijgen eveneens een foto-eerst hero met overlappende titel.
 
-Dit vervangt de eerdere aanwijzingen hieronder over een split hero, twee
-tegels of twee platte navigatieregels. Logo, React2u-merkkleuren en
+Deze compositie is voor de homepage vervangen door de doelgroepentree hierboven.
+Logo, React2u-merkkleuren en
 Figtree/DM Sans blijven intact; de kleurvlakken blijven beperkt.
 
 ## Bijsturing: geen kleurplaat
@@ -32,7 +49,7 @@ het logo en kleine functionele accenten. Subpagina's gebruiken dezelfde
 fotografische opbouw. De eerder beschreven grote verzadigde keuzevlakken zijn
 hiermee vervallen.
 
-## Richting na feedback: meer lef en drie referenties
+## Historische variant: meer lef en drie referenties
 
 Kas vindt de eerste lokale ontwerpversie te braaf en te standaard. Als
 visuele referenties noemt hij [ArboNed](https://www.arboned.nl/en),
@@ -44,7 +61,7 @@ duidelijke inhoudelijke ingangen; Acture gebruikt een asymmetrische verdeling
 van donker tekstvlak en licht beeldvlak. Dit zijn referenties voor ritme en
 lef, geen bron voor React2u-cijfers, claims, beelden of diensten.
 
-De nieuwe React2u-richting gebruikt het eigen indigo als groot contrastvlak,
+Deze eerdere React2u-variant gebruikte het eigen indigo als groot contrastvlak,
 de bestaande dienstkleuren als stevige keuzevlakken, forsere Figtree-koppen,
 een beeldgedreven hero en kaarten die deels over het hoofdbeeld vallen.
 Werkgevers en werknemers blijven twee gelijkwaardige routes en komen op
@@ -111,13 +128,12 @@ De leesbare inhoud heeft voorrang op animatie; geen CRO/tracking.
 
 ## Waar het op moet lijken (en waarop niet)
 
-- Referenties: geen expliciete referentiesites van de klant beschikbaar
-  (nieuwe site, geen apart gesprek gevoerd) — [PLACEHOLDER] voor een echt
-  klantgesprek. De richting hieronder is afgeleid van wat er al staat en van
-  de harde eisen van de kit.
+- Referenties van Kas: [Acture](https://acture.nl/) als primaire referentie;
+  [ArboNed](https://www.arboned.nl/en) en [Arbo Unie](https://www.arbounie.nl/)
+  als aanvullende voorbeelden voor schaal, fotografie en ritme.
 - Wat aan de huidige site goed is: de menselijke toon, de gekleurde
   dienstencodering, het REACT-wiel als eigen merkasset.
-- Wat we bewust anders doen: minder drukte per sectie, geen stockfoto's, meer
+- Wat we bewust anders doen: minder drukte per sectie, mensgerichte fotografie, meer
   wit/ademruimte tussen de kleurblokken, scherpere typografische hiërarchie
   (de huidige site zet bijna alles vet en in hoofdletters).
 
@@ -134,18 +150,11 @@ blijft leesbaar en menselijk.
 
 ## Homepage en doelgroepkeuze
 
-1. Compacte header: logo, **Werkgevers**, **Werknemers**, Over React2u, Contact.
-   Inloggen is een aparte hulplink zodra de juiste bestemming bekend is.
-2. Korte gezamenlijke introductie met één H1 die beide doelgroepen aanspreekt.
-   Daar direct bij twee gelijkwaardige ingangen: **Ik ben werkgever** en
-   **Ik ben werknemer**, elk met een korte uitleg en een eigen bestemming.
-   Op mobiel staan beide routes vóór de uitgebreide merk- en dienstinformatie.
-3. Gezamenlijke werkwijze: gezond, menselijk, duidelijk; compact uitgelegd met
-   bestaand merkbeeld, zonder onbevestigde resultaatclaims.
-4. Korte introductie van React2u en relevante verwijzing naar de eigen route.
-   De uitgebreide dienstencatalogus hoort bij werkgevers.
-5. Contact met een herkenbare keuze tussen een zakelijke kennismaking en een
-   vraag over begeleiding. Geen offerteknop als standaardactie voor werknemers.
+1. Compacte header met het eigen logo en een korte merkregel.
+2. Eén H1 als keuzevraag en twee gelijkwaardige, gefotografeerde routevlakken.
+3. Alleen een kleine juridische footer; geen extra inhoudssecties op de entree.
+4. De uitgebreide dienstencatalogus hoort bij werkgevers. Praktische
+   begeleidingsinformatie en het verzuimprotocol horen bij werknemers.
 
 Geen verplichte keuzepopup, intro-animatie of overlay. Beide routes blijven
 gewone links en zijn rechtstreeks bereikbaar en deelbaar, ook zonder JavaScript.

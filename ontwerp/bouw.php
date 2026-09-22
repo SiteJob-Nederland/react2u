@@ -42,13 +42,16 @@ function page(string $name, string $title, string $description, string $body): v
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow"><meta name="description" content="<?= e($description) ?>">
-  <title><?= e($title) ?> · React2u ontwerp</title>
+  <title><?= e($title) ?> · React2u</title>
   <link rel="icon" href="assets/favicon.png"><link rel="stylesheet" href="<?= e($css) ?>">
   <link rel="preload" href="assets/display-var-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script src="<?= e($js) ?>" defer></script>
 </head>
-<body>
+<body class="<?= $name === 'home' ? 'page-chooser' : 'page-' . e($name) ?>">
 <a class="skip" href="#main">Ga naar inhoud</a>
+<?php if ($name === 'home'): ?>
+<header class="chooser-header"><a class="logo" href="index.html" aria-label="React2u — naar home"><img src="assets/logo.png" width="164" height="101" alt="React2u"></a><p>Gezond. Menselijk. Duidelijk.</p></header>
+<?php else: ?>
 <header class="header"><div class="shell header-inner">
   <a class="logo" href="index.html" aria-label="React2u — naar home"><img src="assets/logo.png" width="164" height="101" alt="React2u"></a>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigatie"><span data-menu-label>Menu</span><svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
@@ -59,7 +62,11 @@ function page(string $name, string $title, string $description, string $body): v
     <a class="contact-link" href="contact.html"<?= $name === 'contact' ? ' aria-current="page"' : '' ?>>Contact <span aria-hidden="true">↗</span></a>
   </nav>
 </div></header>
+<?php endif; ?>
 <main id="main" tabindex="-1"><?= $body ?></main>
+<?php if ($name === 'home'): ?>
+<footer class="chooser-footer"><span>React2u</span><nav aria-label="Documenten"><a href="https://react2u.nl/wp-content/uploads/2025/05/Privacy%20reglement%20r2u.pdf">Privacy</a><a href="https://react2u.nl/wp-content/uploads/2025/05/Klachtenprocedure%20r2u.pdf">Klachtenprocedure</a><a href="https://react2u.nl/wp-content/uploads/2025/05/Algemene%20voorwaarden%20r2u.pdf">Voorwaarden</a></nav></footer>
+<?php else: ?>
 <footer class="footer"><div class="shell">
   <div class="footer-grid">
     <div class="footer-brand"><a class="logo" href="index.html" aria-label="React2u — naar home"><img src="assets/logo.png" width="164" height="101" loading="lazy" alt="React2u"></a><p class="footer-tagline"><?= e($contact['tagline']) ?>.</p></div>
@@ -68,6 +75,7 @@ function page(string $name, string $title, string $description, string $body): v
   </div>
   <div class="footer-bottom"><span>React2u · Gezond. Menselijk. Duidelijk.</span><nav class="legal" aria-label="Documenten"><a href="https://react2u.nl/wp-content/uploads/2025/05/Privacy%20reglement%20r2u.pdf">Privacy</a><a href="https://react2u.nl/wp-content/uploads/2025/05/Klachtenprocedure%20r2u.pdf">Klachtenprocedure</a><a href="https://react2u.nl/wp-content/uploads/2025/05/Algemene%20voorwaarden%20r2u.pdf">Voorwaarden</a></nav></div>
 </div></footer>
+<?php endif; ?>
 </body></html>
 <?php
     file_put_contents(__DIR__ . '/' . ($name === 'home' ? 'index' : $name) . '.html', ob_get_clean());
@@ -75,45 +83,43 @@ function page(string $name, string $title, string $description, string $body): v
 
 require __DIR__ . '/verdieping.php';
 
-$homeServiceRows = '';
-foreach ($config['services'] as $index => $service) {
-    $serviceImage = $serviceContent[trim($service['path'], '/')]['image'];
-    $homeServiceRows .= '<a class="home-service-row" href="' . e(trim($service['path'], '/') . '.html') . '"><span class="home-service-number">' . str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) . '</span>' . photo($serviceImage, '', '(max-width:760px) 86px, 132px') . '<span class="home-service-copy"><strong>' . e($service['title']) . '</strong><span>' . e($service['text']) . '</span></span><span class="home-service-arrow">' . arrow() . '</span></a>';
-}
-$home = '<section class="feature-hero" aria-labelledby="hero-title">
-  <figure class="feature-hero-image">' . photo('aandacht', 'twee mensen in een warm en aandachtig gesprek aan tafel.', '100vw', true) . '</figure>
-  <div class="feature-hero-panel shell"><div class="feature-hero-copy"><p class="eyebrow">Gezond. Menselijk. Duidelijk.</p><h1 id="hero-title">Aandacht voor mensen.<br><span>Ruimte voor herstel.</span></h1><p>Of je nu voor je mensen zorgt of zelf begeleiding zoekt. We luisteren, denken mee en helpen je verder.</p></div>
-  <nav class="feature-routes" aria-label="Kies jouw route"><a class="route" href="werkgevers.html"><span class="feature-route-index">01 / voor organisaties</span><h2>Ik ben werkgever</h2><p>Goed voor je mensen en je organisatie.</p><span class="arrow-circle">' . arrow() . '</span></a><a class="route" href="werknemers.html"><span class="feature-route-index">02 / voor jou</span><h2>Ik ben werknemer</h2><p>Aandacht voor jou. Hulp bij je volgende stap.</p><span class="arrow-circle">' . arrow() . '</span></a></nav></div>
-</section>
-<section class="manifesto-section" id="over-react2u" aria-labelledby="about-title"><div class="shell"><div class="manifesto-heading"><p class="section-kicker">Dit is React2u</p><h2 id="about-title">Het begint niet bij een dossier.<br><span>Het begint bij jou.</span></h2></div><div class="manifesto-layout"><div class="manifesto-main-photo">' . editorialPhoto('persoonlijk-gesprek') . '</div><div class="manifesto-side"><div class="manifesto-copy"><p>Werk is een belangrijk deel van je leven. Als het even niet gaat, wil je iemand die naast je staat. Die luistert, overzicht geeft en samen met jou kijkt naar wat er wél kan.</p><p>Dat is de aandacht van React2u. Voor werkgevers én werknemers.</p><a class="text-link" href="over-react2u.html">Maak kennis met ons' . arrow() . '</a></div>' . editorialPhoto('op-de-werkvloer') . '</div></div></div></section>
-<section class="home-services-section" id="expertise" aria-labelledby="expertise-title"><div class="shell"><div class="home-services-heading"><div><p class="section-kicker">Waar we bij helpen</p><h2 id="expertise-title">Ieder verhaal vraagt<br>om aandacht.</h2></div><p>Van verzuimbegeleiding tot preventie, coaching en trainingen. Bekijk hoe React2u werkgevers en werknemers ondersteunt.</p></div><div class="home-service-list">' . $homeServiceRows . '</div></div></section>
-<section class="moments-section" aria-labelledby="moments-title" data-slider>
-  <div class="shell moments-heading"><div><p class="section-kicker">Aandacht maakt het verschil</p><h2 id="moments-title">Kleine momenten.<br>Een groot verschil.</h2></div><div class="slider-controls" hidden><button type="button" class="slider-button previous" aria-label="Vorig beeld" aria-controls="momenten">' . arrow() . '</button><span class="slider-status" aria-live="polite">1 / 3</span><button type="button" class="slider-button next" aria-label="Volgend beeld" aria-controls="momenten">' . arrow() . '</button></div></div>
-  <div class="moments-track" id="momenten" tabindex="0" role="region" aria-label="Momenten van aandacht, begeleiding en werkplezier">
-    <article class="moment" aria-label="1 van 3: Samen kom je verder"><figure>' . photo('samen-leren', photoDescription('samen-leren'), '(max-width:760px) 85vw, 65vw') . '</figure><div class="moment-copy"><span class="moment-kicker">Leren van elkaar</span><h3>Samen kom je verder.</h3><p>Nieuwe inzichten ontstaan wanneer je ervaringen met elkaar deelt.</p><a class="text-link" href="trainingen-en-workshops.html">Over trainingen en workshops' . arrow() . '</a></div></article>
-    <article class="moment" aria-label="2 van 3: Samen weer vooruit"><figure>' . photo('samen-buiten', 'twee mensen die samen wandelen en praten in een groen park.', '(max-width:760px) 85vw, 65vw') . '</figure><div class="moment-copy"><span class="moment-kicker">Op jouw manier</span><h3>Samen weer vooruit.</h3><p>Kijken naar mogelijkheden. Met aandacht voor de mens en de situatie.</p><a class="text-link" href="werknemers.html">Voor jou als werknemer' . arrow() . '</a></div></article>
-    <article class="moment" aria-label="3 van 3: Fijn om er weer bij te zijn"><figure>' . photo('werkplezier', 'drie collega’s die ontspannen samen aan tafel zitten.', '(max-width:760px) 85vw, 65vw') . '</figure><div class="moment-copy"><span class="moment-kicker">Gezond aan het werk</span><h3>Fijn om erbij te zijn.</h3><p>Aandacht voor werkplezier, preventie en een prettige werkomgeving.</p><a class="text-link" href="werkgevers.html#diensten">Voor jouw organisatie' . arrow() . '</a></div></article>
-  </div>
-</section>
-<section class="section values-section" aria-labelledby="values-title"><div class="shell"><div class="values-heading"><p class="section-kicker">Waar je op kunt rekenen</p><h2 id="values-title">Professioneel in wat we doen.<br>Persoonlijk in hoe we het doen.</h2></div>
-  <div class="principles"><article><h3><span class="principle-dot" aria-hidden="true"></span>Gezond</h3><p>Oog voor herstel, preventie en een prettige werkomgeving.</p></article><article><h3><span class="principle-dot" aria-hidden="true"></span>Menselijk</h3><p>Luisteren naar het verhaal achter de situatie. Met persoonlijke aandacht.</p></article><article><h3><span class="principle-dot" aria-hidden="true"></span>Duidelijk</h3><p>Begrijpelijke uitleg en overzicht in de stappen die we samen zetten.</p></article></div></div>
-</section>' . band('Zullen we eens praten?', 'Een goed gesprek is een mooi begin.', 'contact.html', 'Neem contact op');
-page('home', 'Aandacht voor gezond werken', 'Ontwerpvoorstel React2u: persoonlijke arbodienstverlening met een duidelijke route voor werkgevers en werknemers.', $home);
+$home = '<section class="audience-gateway" id="keuze" aria-labelledby="chooser-title">
+  <div class="gateway-intro shell"><p>Welkom bij React2u</p><h1 id="chooser-title">Waar kunnen we je mee helpen?</h1></div>
+  <nav class="audience-choices shell" aria-label="Kies jouw route">
+    <a class="audience-choice audience-choice-employer" href="werkgevers.html">
+      ' . photo('werkplezier', '', '(max-width:760px) 100vw, 50vw', true) . '
+      <span class="choice-copy"><span class="choice-kicker">Voor organisaties</span><h2>Ik ben<br>werkgever</h2><span class="choice-detail">Voor mijn mensen en organisatie</span><span class="choice-arrow">' . arrow() . '</span></span>
+    </a>
+    <a class="audience-choice audience-choice-employee" href="werknemers.html">
+      ' . photo('persoonlijk-gesprek', '', '(max-width:760px) 100vw, 50vw', true) . '
+      <span class="choice-copy"><span class="choice-kicker">Voor jou</span><h2>Ik ben<br>werknemer</h2><span class="choice-detail">Voor mijn herstel en werk</span><span class="choice-arrow">' . arrow() . '</span></span>
+    </a>
+  </nav>
+</section>';
+page('home', 'Kies jouw route | Werkgevers of werknemers', 'React2u helpt werkgevers en werknemers. Kies de informatie en begeleiding die bij jouw situatie past.', $home);
 
 $services = '';
 foreach ($config['services'] as $service) {
     $serviceImage = $serviceContent[trim($service['path'], '/')]['image'];
     $services .= '<a class="service service-with-photo" data-service="' . e($service['slug']) . '" href="' . e(trim($service['path'], '/') . '.html') . '">' . photo($serviceImage, '', '(max-width:760px) 90vw, 42vw') . '<span class="service-dot" aria-hidden="true"></span><div><h3>' . e($service['title']) . '</h3><p>' . e($service['text']) . '</p></div>' . arrow() . '</a>';
 }
-$employers = '<div class="shell"><nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="index.html#hero-title">Voor wie</a><span aria-hidden="true">/</span><span aria-current="page">Werkgevers</span></nav>
+$employers = '<div class="shell"><nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="index.html#keuze">Voor wie</a><span aria-hidden="true">/</span><span aria-current="page">Werkgevers</span></nav>
 <section class="subhero" aria-labelledby="employer-title"><div><p class="eyebrow">Voor werkgevers</p><h1 id="employer-title">Jouw mensen.<br>Onze aandacht.</h1><p class="hero-intro">Van verzuimbegeleiding tot preventie. We helpen je overzicht te houden en geven je medewerkers de persoonlijke begeleiding die ze nodig hebben.</p><div class="button-row">' . button('contact.html#werkgever', 'Laten we kennismaken') . button('#diensten', 'Bekijk onze diensten', true) . '</div></div>
 <figure class="subhero-photo">' . photo('werkplezier', 'collega’s delen een ontspannen moment op het werk.', '(max-width:760px) 90vw, 40vw', true) . '<figcaption>Goed voor je mensen.<br>Goed voor je organisatie.</figcaption></figure></section></div>
 <section class="section divider shell" id="diensten" aria-labelledby="services-title"><div class="section-heading"><div><p class="section-kicker">Onze dienstverlening</p><h2 id="services-title">Wat speelt er<br>in jouw organisatie?</h2></div><p>Ondersteuning bij verzuim én aandacht voor wat je kunt voorkomen. Bekijk welke dienstverlening past bij jouw vraag.</p></div><div class="services">' . $services . '</div></section>
 <section class="section muted-section" aria-labelledby="approach-title"><div class="shell about"><div><p class="section-kicker">Onze aanpak</p><h2 id="approach-title">Duidelijke structuur.<br>Persoonlijk betrokken.</h2></div><div class="about-copy"><p>Elke organisatie en iedere medewerker is anders. We kijken samen wat er nodig is, brengen de betrokken partijen bij elkaar en begeleiden het vervolg.</p><a class="text-link" href="contact.html#werkgever">Bespreek jouw vraag' . arrow() . '</a></div></div></section>' . band('Goed voor je mensen.<br>Goed voor je organisatie.', 'We maken graag kennis en bespreken wat er speelt.', 'contact.html#werkgever', 'Plan een kennismaking');
-$employers = str_replace('<section class="contact-band"', $employerDetail . '<section class="contact-band"', $employers);
-page('werkgevers', 'Voor werkgevers', 'Ontwerpvoorstel voor werkgevers: bekijk de diensten van React2u en maak kennis met de persoonlijke aanpak.', $employers);
+$employerMoments = '<section class="moments-section" aria-labelledby="moments-title" data-slider>
+  <div class="shell moments-heading"><div><p class="section-kicker">Mensen in beweging</p><h2 id="moments-title">Wat een gezonde<br>werkplek mogelijk maakt.</h2></div><div class="slider-controls" hidden><button type="button" class="slider-button previous" aria-label="Vorig beeld" aria-controls="momenten">' . arrow() . '</button><span class="slider-status" aria-live="polite">1 / 3</span><button type="button" class="slider-button next" aria-label="Volgend beeld" aria-controls="momenten">' . arrow() . '</button></div></div>
+  <div class="moments-track" id="momenten" tabindex="0" role="region" aria-label="Preventie, begeleiding en werkplezier voor organisaties">
+    <article class="moment" aria-label="1 van 3: Aandacht voor werkplezier"><figure>' . photo('werkplezier', '', '(max-width:760px) 85vw, 65vw') . '</figure><div class="moment-copy"><span class="moment-kicker">Preventie</span><h3>Ruimte voor werkplezier.</h3><p>Een gezonde werkomgeving begint met aandacht voor de mensen die er werken.</p><a class="text-link" href="preventie-en-vitaliteit.html">Bekijk preventie en vitaliteit' . arrow() . '</a></div></article>
+    <article class="moment" aria-label="2 van 3: Samen leren"><figure>' . photo('samen-leren', '', '(max-width:760px) 85vw, 65vw') . '</figure><div class="moment-copy"><span class="moment-kicker">Ontwikkeling</span><h3>Samen verder leren.</h3><p>Met praktische trainingen geef je leidinggevenden en teams meer houvast.</p><a class="text-link" href="trainingen-en-workshops.html">Bekijk trainingen en workshops' . arrow() . '</a></div></article>
+    <article class="moment" aria-label="3 van 3: Persoonlijke begeleiding"><figure>' . photo('persoonlijk-gesprek', '', '(max-width:760px) 85vw, 65vw') . '</figure><div class="moment-copy"><span class="moment-kicker">Begeleiding</span><h3>Elk verhaal telt.</h3><p>Als iemand uitvalt, helpen we je om het vervolg persoonlijk en duidelijk te maken.</p><a class="text-link" href="verzuimbegeleiding-wvp.html">Bekijk verzuimbegeleiding' . arrow() . '</a></div></article>
+  </div>
+</section>';
+$employers = str_replace('<section class="contact-band"', $employerDetail . $employerMoments . '<section class="contact-band"', $employers);
+page('werkgevers', 'Arbodienst voor werkgevers', 'React2u ondersteunt werkgevers bij verzuimbegeleiding, preventie en duurzame inzetbaarheid. Ontdek onze persoonlijke aanpak en diensten.', $employers);
 
-$employees = '<div class="shell"><nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="index.html#hero-title">Voor wie</a><span aria-hidden="true">/</span><span aria-current="page">Werknemers</span></nav>
+$employees = '<div class="shell"><nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="index.html#keuze">Voor wie</a><span aria-hidden="true">/</span><span aria-current="page">Werknemers</span></nav>
 <section class="subhero" aria-labelledby="employee-title"><div><p class="eyebrow">Voor werknemers</p><h1 id="employee-title">Even uit het werk.<br>Niet uit beeld.</h1><p class="hero-intro">Als werken even niet gaat, komt er veel op je af. We luisteren naar jouw verhaal en helpen je op weg. Met aandacht voor jou en duidelijkheid over de begeleiding.</p><div class="button-row">' . button('#hulp', 'Waar kunnen we je bij helpen?') . '</div></div>
 <figure class="subhero-photo">' . photo('samen-buiten', 'twee mensen wandelen samen in een zonnig park.', '(max-width:760px) 90vw, 40vw', true) . '<figcaption>Je hoeft het niet<br>alleen uit te zoeken.</figcaption></figure></section></div>
 <section class="section divider shell" id="hulp" aria-labelledby="help-title"><div class="section-heading"><div><p class="section-kicker">Snel naar de juiste informatie</p><h2 id="help-title">Hoe kunnen we<br>je helpen?</h2></div><p>Een helder vertrekpunt voor je vragen over verzuim, begeleiding en contact met React2u.</p></div>
@@ -125,17 +131,17 @@ faq('Waar vind ik het verzuimprotocol?', 'Het verzuimprotocol staat op de websit
 faq('Bij wie kan ik terecht met een vraag?', 'Je kunt React2u bellen of mailen via de <a href="contact.html#werknemer">contactpagina voor werknemers</a>. Daar vind je de contactgegevens.') .
 '</div></div></section>' . band('Jouw verhaal telt.', 'Heb je een vraag of behoefte aan uitleg? Neem contact op.', 'contact.html#werknemer', 'Stel je vraag');
 $employees = str_replace('<section class="section shell" aria-labelledby="faq-title">', $employeeDetail . '<section class="section shell" aria-labelledby="faq-title">', $employees);
-page('werknemers', 'Voor werknemers', 'Ontwerpvoorstel voor werknemers: vind informatie over begeleiding, het verzuimprotocol en contact met React2u.', $employees);
+page('werknemers', 'Hulp bij verzuim en re-integratie voor werknemers', 'Ben je ziek of bezig met terugkeer naar werk? Lees hoe React2u je begeleidt, vind het verzuimprotocol en stel je vraag.', $employees);
 
 function contactMethods(): string {
     global $config;
     $c = $config['contact'];
     return '<div class="contact-methods"><a href="tel:' . e($c['phone_link']) . '"><span>' . e($c['phone']) . '</span><small>Bellen ↗</small></a><a href="mailto:' . e($c['email']) . '"><span>' . e($c['email']) . '</span><small>E-mail opstellen ↗</small></a></div>';
 }
-$contactPage = '<div class="shell"><nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="index.html#over-react2u">React2u</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav>
+$contactPage = '<div class="shell"><nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="over-react2u.html">React2u</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav>
 <section class="subhero" aria-labelledby="contact-title"><div><p class="eyebrow">Kom met ons in contact</p><h1 id="contact-title">Goed dat je<br>contact zoekt.</h1><p class="hero-intro">Een kennismaking voor je organisatie of een vraag over je begeleiding. We horen graag van je.</p></div><figure class="subhero-photo">' . photo('even-bellen', photoDescription('even-bellen'), '(max-width:760px) 90vw, 40vw', true) . '<figcaption>We horen graag<br>jouw verhaal.</figcaption></figure></section>
 <div class="contact-options"><section class="contact-option" id="werkgever" aria-labelledby="contact-employer"><p class="section-kicker">Voor werkgevers</p>' . editorialPhoto('werkplezier') . '<h2 id="contact-employer">Laten we kennismaken.</h2><p>Bespreek je vraag over verzuim, preventie of ondersteuning voor je organisatie.</p>' . contactMethods() . '</section><section class="contact-option" id="werknemer" aria-labelledby="contact-employee"><p class="section-kicker">Voor werknemers</p>' . editorialPhoto('persoonlijk-gesprek') . '<h2 id="contact-employee">Waar kunnen we je bij helpen?</h2><p>Neem contact op met een vraag over React2u of je begeleiding.</p>' . contactMethods() . '</section></div></div>';
-page('contact', 'Neem contact op', 'Ontwerpvoorstel contact: kennismaken als werkgever of een vraag stellen als werknemer.', $contactPage);
+page('contact', 'Neem contact op', 'Werkgever met een vraag of werknemer die begeleiding zoekt? Neem contact op met React2u.', $contactPage);
 
 $assets = __DIR__ . '/assets';
 if (!is_dir($assets)) mkdir($assets, 0755, true);

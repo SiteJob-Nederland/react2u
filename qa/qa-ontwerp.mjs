@@ -47,8 +47,8 @@ try {
         main: document.querySelectorAll('main').length,
         overflow: document.documentElement.scrollWidth > innerWidth,
         images: [...document.images].filter(i => !i.complete || !i.naturalWidth).length,
-        navVisible: !!document.querySelector('.nav').getClientRects().length,
-        toggleVisible: !!document.querySelector('.menu-toggle').getClientRects().length,
+        navVisible: !!document.querySelector('.nav, .audience-choices')?.getClientRects().length,
+        toggleVisible: !!document.querySelector('.menu-toggle')?.getClientRects().length,
         description: !!document.querySelector('meta[name=description]')?.content,
         hashes: [...document.querySelectorAll('a[href^="#"]')].filter(a => !document.getElementById(a.hash.slice(1))).map(a => a.hash),
       }));
@@ -80,6 +80,12 @@ try {
   assert.equal(await page.evaluate(() => document.activeElement.id), 'main');
   report.interactions.push('Skiplink verplaatst focus naar main');
 
+  assert.equal(await page.locator('.audience-choice').count(), 2);
+  assert.equal(await page.locator('main section').count(), 1);
+  assert.equal(await page.locator('.home-services-section, .moments-section, .manifesto-section').count(), 0);
+  report.interactions.push('Homepage toont alleen de twee doelgroepkeuzes');
+
+  await page.goto(`${origin}/werkgevers.html`);
   const toggle = page.locator('.menu-toggle');
   await toggle.focus();
   await page.keyboard.press('Enter');
@@ -91,7 +97,8 @@ try {
   assert.equal(await page.evaluate(() => document.activeElement.className), 'menu-toggle');
   report.interactions.push('Mobiel menu werkt met Enter, Tab en Escape; focus keert terug');
 
-  await page.locator('.route').filter({ hasText:'Ik ben werknemer' }).click();
+  await page.goto(`${origin}/index.html`);
+  await page.locator('.audience-choice-employee').click();
   assert.equal(new URL(page.url()).pathname, '/werknemers.html');
   await page.getByRole('link', { name:'Waar kunnen we je bij helpen?', exact:true }).click();
   assert.equal(new URL(page.url()).hash, '#hulp');
@@ -102,7 +109,7 @@ try {
   report.interactions.push('Werknemersroute, hulpanker, FAQ en eigen contactanker werken');
 
   await page.goto(`${origin}/index.html`);
-  await page.locator('.route').filter({ hasText:'Ik ben werkgever' }).click();
+  await page.locator('.audience-choice-employer').click();
   await page.getByRole('link', { name:'Laten we kennismaken', exact:true }).click();
   assert.equal(new URL(page.url()).hash, '#werkgever');
   report.interactions.push('Werkgeversroute en eigen contactanker werken');
@@ -117,16 +124,30 @@ try {
   const noJsPage = await noJs.newPage();
   for (const file of files) {
     await noJsPage.goto(`${origin}/${file}`);
-    assert(await noJsPage.getByRole('navigation',{name:'Hoofdnavigatie'}).isVisible());
+    assert(await noJsPage.getByRole('navigation',{name:file === 'index.html' ? 'Kies jouw route' : 'Hoofdnavigatie'}).isVisible());
     assert(await noJsPage.locator('h1').isVisible());
   }
   await noJs.close();
   report.interactions.push('Alle twaalf pagina’s en navigatie bruikbaar zonder JavaScript');
 
-  // Functionele slider: aanwijzer, toetsenbord en beide eindpunten.
-  await page.emulateMedia({ reducedMotion:'reduce' });
   await page.goto(`${origin}/index.html`);
+  const audienceUrls = await page.locator('.audience-choice').evaluateAll(links => links.map(link => new URL(link.href).pathname));
+  assert.deepEqual(audienceUrls, ['/werkgevers.html', '/werknemers.html']);
+  const audienceMeta = {
+    'werkgevers.html': ['Arbodienst voor werkgevers', 'React2u ondersteunt werkgevers'],
+    'werknemers.html': ['Hulp bij verzuim en re-integratie voor werknemers', 'Ben je ziek of bezig met terugkeer naar werk?'],
+  };
+  for (const [file, [title, description]] of Object.entries(audienceMeta)) {
+    await page.goto(`${origin}/${file}`);
+    assert((await page.title()).startsWith(title));
+    assert((await page.locator('meta[name=description]').getAttribute('content')).startsWith(description));
+  }
+  report.interactions.push('Doelgroeppagina’s hebben eigen routes en beschrijvingen');
+
+  await page.emulateMedia({ reducedMotion:'reduce' });
+  await page.goto(`${origin}/werkgevers.html`);
   const track = page.locator('.moments-track');
+  assert.equal(await page.locator('[data-slider]').count(), 1);
   await page.locator('.next').click();
   await page.waitForFunction(() => document.querySelector('.moments-track').scrollLeft > 100);
   await page.locator('.next').click();
@@ -136,7 +157,7 @@ try {
   await page.waitForFunction(() => !document.querySelector('.next').disabled);
   await page.keyboard.press('ArrowLeft');
   await page.waitForFunction(() => document.querySelector('.previous').disabled);
-  report.interactions.push('Slider: klikken, pijltjestoetsen, status en beide eindpunten');
+  report.interactions.push('Werkgeversslider: klikken, toetsenbord en beide eindpunten');
 
   for (const width of [390,1440]) {
     await page.setViewportSize({width,height:900});
