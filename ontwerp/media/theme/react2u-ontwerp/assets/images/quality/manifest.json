@@ -36,6 +36,161 @@
       }
     ]
   },
+  "assets/images/bron/even-bellen.png": {
+    "sourceWidth": 2048,
+    "sourceHeight": 1360,
+    "sourceBytes": 4225482,
+    "variants": [
+      {
+        "width": 480,
+        "height": 319,
+        "bytes": 26592,
+        "path": "assets/images/quality/df2c50df1323e1c1-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 510,
+        "bytes": 55056,
+        "path": "assets/images/quality/df2c50df1323e1c1-768.webp"
+      },
+      {
+        "width": 1280,
+        "height": 850,
+        "bytes": 122128,
+        "path": "assets/images/quality/df2c50df1323e1c1-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1063,
+        "bytes": 174772,
+        "path": "assets/images/quality/df2c50df1323e1c1-1600.webp"
+      }
+    ]
+  },
+  "assets/images/bron/gezonde-werkplek.png": {
+    "sourceWidth": 2048,
+    "sourceHeight": 1360,
+    "sourceBytes": 3879989,
+    "variants": [
+      {
+        "width": 480,
+        "height": 319,
+        "bytes": 25876,
+        "path": "assets/images/quality/ac2cc4d8cbb1d4f7-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 510,
+        "bytes": 53006,
+        "path": "assets/images/quality/ac2cc4d8cbb1d4f7-768.webp"
+      },
+      {
+        "width": 1280,
+        "height": 850,
+        "bytes": 107942,
+        "path": "assets/images/quality/ac2cc4d8cbb1d4f7-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1063,
+        "bytes": 148094,
+        "path": "assets/images/quality/ac2cc4d8cbb1d4f7-1600.webp"
+      }
+    ]
+  },
+  "assets/images/bron/op-de-werkvloer.png": {
+    "sourceWidth": 2048,
+    "sourceHeight": 1360,
+    "sourceBytes": 3663754,
+    "variants": [
+      {
+        "width": 480,
+        "height": 319,
+        "bytes": 23212,
+        "path": "assets/images/quality/d6596041fc53106b-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 510,
+        "bytes": 43466,
+        "path": "assets/images/quality/d6596041fc53106b-768.webp"
+      },
+      {
+        "width": 1280,
+        "height": 850,
+        "bytes": 85360,
+        "path": "assets/images/quality/d6596041fc53106b-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1063,
+        "bytes": 114980,
+        "path": "assets/images/quality/d6596041fc53106b-1600.webp"
+      }
+    ]
+  },
+  "assets/images/bron/persoonlijk-gesprek.png": {
+    "sourceWidth": 2048,
+    "sourceHeight": 1360,
+    "sourceBytes": 4320107,
+    "variants": [
+      {
+        "width": 480,
+        "height": 319,
+        "bytes": 26520,
+        "path": "assets/images/quality/b26bd0b630522e74-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 510,
+        "bytes": 57592,
+        "path": "assets/images/quality/b26bd0b630522e74-768.webp"
+      },
+      {
+        "width": 1280,
+        "height": 850,
+        "bytes": 128826,
+        "path": "assets/images/quality/b26bd0b630522e74-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1063,
+        "bytes": 184034,
+        "path": "assets/images/quality/b26bd0b630522e74-1600.webp"
+      }
+    ]
+  },
+  "assets/images/bron/ruimte-buiten.png": {
+    "sourceWidth": 2048,
+    "sourceHeight": 1360,
+    "sourceBytes": 4413947,
+    "variants": [
+      {
+        "width": 480,
+        "height": 319,
+        "bytes": 35480,
+        "path": "assets/images/quality/062df064102d2799-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 510,
+        "bytes": 70310,
+        "path": "assets/images/quality/062df064102d2799-768.webp"
+      },
+      {
+        "width": 1280,
+        "height": 850,
+        "bytes": 142986,
+        "path": "assets/images/quality/062df064102d2799-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1063,
+        "bytes": 190932,
+        "path": "assets/images/quality/062df064102d2799-1600.webp"
+      }
+    ]
+  },
   "assets/images/bron/samen-buiten.png": {
     "sourceWidth": 1024,
     "sourceHeight": 688,
@@ -58,6 +213,37 @@
         "height": 688,
         "bytes": 94720,
         "path": "assets/images/quality/9860cd8c8d9b7fed-1024.webp"
+      }
+    ]
+  },
+  "assets/images/bron/samen-leren.png": {
+    "sourceWidth": 2048,
+    "sourceHeight": 1360,
+    "sourceBytes": 4269579,
+    "variants": [
+      {
+        "width": 480,
+        "height": 319,
+        "bytes": 32308,
+        "path": "assets/images/quality/50ba97fe03040689-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 510,
+        "bytes": 65872,
+        "path": "assets/images/quality/50ba97fe03040689-768.webp"
+      },
+      {
+        "width": 1280,
+        "height": 850,
+        "bytes": 134838,
+        "path": "assets/images/quality/50ba97fe03040689-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1063,
+        "bytes": 182752,
+        "path": "assets/images/quality/50ba97fe03040689-1600.webp"
       }
     ]
   },

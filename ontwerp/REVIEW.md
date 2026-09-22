@@ -73,3 +73,32 @@ De gehele opdracht eindigt **niet groen**:
 Geen dummyartikelen ingevoegd om een controle groen te maken en geen grenzen
 of testdetectie verlaagd. Deze basisproblemen moeten bij de WordPress-integratie
 worden opgelost; geen productiepublicatie of volledige oplevering geclaimd.
+
+## Fotografie uitgebreid — 22 september 2026
+
+Zes extra illustratieve foto’s gemaakt via Higgsfield (2K-bronnen behouden),
+met persoonlijke gesprekken, samen leren, de werkvloer, een gezonde werkplek,
+buiten wandelen en telefonisch contact. Herkomst en job-ID’s staan in
+`media/HERKOMST.md`. Geen voorstelling als echte medewerkers of klantcases.
+
+Het ontwerp gebruikt nu negen verschillende beelden. De homepage bevat vijf
+foto’s, iedere dienstpagina drie verschillende foto’s en de werkgeverspagina
+negen plaatsingen (zes verschillende beelden), inclusief fotografie op de
+dienstenkaarten. Ook werknemers, over ons, contact en protocol hebben beelden
+tussen de inhoud. Bestaande inhoud behouden; geen nieuwe teamclaims toegevoegd.
+
+Alle beelden gebouwd met de gedeelde kwaliteitsscripts: responsive WebP in
+480/768/1280/1600 pixels, afmetingen vastgelegd en lazy loading buiten de hero.
+
+Validatie na deze wijziging op http://127.0.0.1:8133:
+- `npm --prefix qa run ontwerp`: alle 72 pagina/breedtecombinaties geslaagd;
+  geen fouten of onvolledige axe-resultaten. Beelddecodering, interne routes,
+  slider, echte scrollentree en reduced motion opnieuw gecontroleerd.
+- Visueel beoordeeld: werkgevers mobiel en coaching desktop/mobiel, inclusief
+  de uitsneden en nieuwe foto/tekstblokken. Homepage in de browser vernieuwd.
+- Drie mobiele Lighthouse-runs: mediaan 99/100, LCP 2026 ms, CLS 0.001 en
+  TBT 0 ms. Alle bestaande grenzen gehaald. Alleen homepage gemeten.
+- Geen wijzigingen aan motionlogica. Eerdere motionreview blijft van toepassing.
+
+Dit betreft de lokale ontwerp-preview. De hierboven vastgelegde beperkingen
+van de bestaande WordPress-basis blijven bestaan; geen productie-deployment.

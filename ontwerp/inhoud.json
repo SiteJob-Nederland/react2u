@@ -3,94 +3,266 @@
     "title": "Verzuimbegeleiding WVP",
     "headline": "Grip op het traject. Aandacht voor je medewerker.",
     "intro": "Een ziekmelding brengt vragen en afspraken met zich mee. React2u begeleidt het traject rond de Wet verbetering poortwachter: van ziekmelding en plan van aanpak tot dossieropbouw en begeleiding richting het UWV.",
-    "image": "aandacht", "label": "Persoonlijke begeleiding bij verzuim",
+    "image": "aandacht",
+    "label": "Persoonlijke begeleiding bij verzuim",
     "context": "Je wilt weten wat de volgende stap is, wie die zet en hoe je medewerker verder kan. Onze vaste casemanager houdt overzicht en verbindt werkgever, werknemer en betrokken professionals. We kijken naar het hele verhaal: gezondheid, werk en de omstandigheden die herstel beïnvloeden.",
     "sections": [
-      ["Een vaste casemanager", "Een eigen aanspreekpunt bewaakt het traject en onderhoudt contact met jou en je medewerker. We ondersteunen bij het plan van aanpak, volgen evaluatiemomenten en helpen afspraken en voortgang vast te leggen. Zo blijft de begeleiding overzichtelijk, ook wanneer een situatie verandert."],
-      ["Samen met de bedrijfsarts", "React2u werkt met taakgedelegeerden die bepaalde taken onder verantwoordelijkheid van de bedrijfsarts uitvoeren. De bedrijfsarts blijft verantwoordelijk voor medische besluiten. Deze samenwerking verbindt de dagelijkse begeleiding aan de medische expertise die nodig is."],
-      ["Overzicht in het dossier", "In het online verzuimregistratiesysteem komen rapportages, afspraken en documenten samen. Dat ondersteunt de dossieropbouw en helpt evaluatiemomenten en deadlines te bewaken. Je kunt zo volgen waar het traject staat en welke vervolgstappen aandacht vragen."],
-      ["De juiste specialist erbij", "Wanneer aanvullende ondersteuning nodig is, kan React2u een netwerk van bedrijfsartsen, psychologen, fysiotherapeuten en arbeidsdeskundigen inzetten. We kijken welke interventie past bij de situatie en hoe die kan bijdragen aan een duurzame terugkeer naar werk."]
+      [
+        "Een vaste casemanager",
+        "Een eigen aanspreekpunt bewaakt het traject en onderhoudt contact met jou en je medewerker. We ondersteunen bij het plan van aanpak, volgen evaluatiemomenten en helpen afspraken en voortgang vast te leggen. Zo blijft de begeleiding overzichtelijk, ook wanneer een situatie verandert."
+      ],
+      [
+        "Samen met de bedrijfsarts",
+        "React2u werkt met taakgedelegeerden die bepaalde taken onder verantwoordelijkheid van de bedrijfsarts uitvoeren. De bedrijfsarts blijft verantwoordelijk voor medische besluiten. Deze samenwerking verbindt de dagelijkse begeleiding aan de medische expertise die nodig is."
+      ],
+      [
+        "Overzicht in het dossier",
+        "In het online verzuimregistratiesysteem komen rapportages, afspraken en documenten samen. Dat ondersteunt de dossieropbouw en helpt evaluatiemomenten en deadlines te bewaken. Je kunt zo volgen waar het traject staat en welke vervolgstappen aandacht vragen."
+      ],
+      [
+        "De juiste specialist erbij",
+        "Wanneer aanvullende ondersteuning nodig is, kan React2u een netwerk van bedrijfsartsen, psychologen, fysiotherapeuten en arbeidsdeskundigen inzetten. We kijken welke interventie past bij de situatie en hoe die kan bijdragen aan een duurzame terugkeer naar werk."
+      ]
     ],
     "leftTitle": "Wat doe jij als werkgever?",
-    "left": ["In gesprek blijven met je medewerker", "Samen een plan van aanpak opstellen", "Mogelijkheden voor passend werk onderzoeken", "Afspraken naleven en vastleggen"],
+    "left": [
+      "In gesprek blijven met je medewerker",
+      "Samen een plan van aanpak opstellen",
+      "Mogelijkheden voor passend werk onderzoeken",
+      "Afspraken naleven en vastleggen"
+    ],
     "rightTitle": "Wat neemt React2u uit handen?",
-    "right": ["Begeleiden en bewaken van het WVP-traject", "De situatie vanuit verschillende kanten bekijken", "Adviseren over passend werk en interventies", "Ondersteunen bij dossieropbouw en wettelijke stappen"]
+    "right": [
+      "Begeleiden en bewaken van het WVP-traject",
+      "De situatie vanuit verschillende kanten bekijken",
+      "Adviseren over passend werk en interventies",
+      "Ondersteunen bij dossieropbouw en wettelijke stappen"
+    ],
+    "detailImage": "persoonlijk-gesprek",
+    "closingImage": "op-de-werkvloer"
   },
   "verzuimbegeleiding-erd-zw": {
     "title": "Verzuimbegeleiding ERD/ZW",
     "headline": "Ook na het dienstverband betrokken.",
     "intro": "Ben je eigenrisicodrager voor de Ziektewet? React2u ondersteunt bij de begeleiding en re-integratie van zieke werknemers en ex-werknemers, met aandacht voor de bijzondere situatie van tijdelijke medewerkers en uitzendkrachten.",
-    "image": "aandacht", "label": "Voor organisaties en de flexbranche",
+    "image": "op-de-werkvloer",
+    "label": "Voor organisaties en de flexbranche",
     "context": "In de flexbranche kunnen meerdere partijen bij een verzuimtraject betrokken zijn. Dan helpen een duidelijk protocol, zorgvuldige registratie en persoonlijk contact. Onze casemanagers brengen de begeleiding en de te nemen stappen bij elkaar, zodat de medewerker in beeld blijft.",
     "sections": [
-      ["Kennis van organisaties én flex", "React2u heeft ervaring met verzuim en re-integratie binnen reguliere organisaties en de flexbranche. We houden rekening met de verschillende procedures en betrokken partijen en ondersteunen bij het coördineren van het traject."],
-      ["Een duidelijk ERD-protocol", "Een vaste werkwijze helpt verzuimgegevens en re-integratieactiviteiten zorgvuldig te registreren. React2u helpt bij het opstellen van het protocol en ondersteunt de communicatie tussen werkgever, werknemer, arbodienst en andere betrokken partijen."],
-      ["Medische expertise dichtbij", "Bedrijfsartsen en taakgedelegeerden maken deel uit van de begeleiding. De bedrijfsarts brengt de medische kennis in die nodig is voor beoordeling en advies over re-integratie. Samen kijken we naar mogelijkheden voor terugkeer naar werk."],
-      ["Ondersteuning die verder kijkt", "Naast de begeleiding van verzuim kan React2u meedenken over preventie, coaching en trainingen. Zo kun je ook aandacht geven aan de factoren die binnen jouw organisatie bijdragen aan gezond en prettig werken."]
+      [
+        "Kennis van organisaties én flex",
+        "React2u heeft ervaring met verzuim en re-integratie binnen reguliere organisaties en de flexbranche. We houden rekening met de verschillende procedures en betrokken partijen en ondersteunen bij het coördineren van het traject."
+      ],
+      [
+        "Een duidelijk ERD-protocol",
+        "Een vaste werkwijze helpt verzuimgegevens en re-integratieactiviteiten zorgvuldig te registreren. React2u helpt bij het opstellen van het protocol en ondersteunt de communicatie tussen werkgever, werknemer, arbodienst en andere betrokken partijen."
+      ],
+      [
+        "Medische expertise dichtbij",
+        "Bedrijfsartsen en taakgedelegeerden maken deel uit van de begeleiding. De bedrijfsarts brengt de medische kennis in die nodig is voor beoordeling en advies over re-integratie. Samen kijken we naar mogelijkheden voor terugkeer naar werk."
+      ],
+      [
+        "Ondersteuning die verder kijkt",
+        "Naast de begeleiding van verzuim kan React2u meedenken over preventie, coaching en trainingen. Zo kun je ook aandacht geven aan de factoren die binnen jouw organisatie bijdragen aan gezond en prettig werken."
+      ]
     ],
     "leftTitle": "Wat doe jij als werkgever?",
-    "left": ["Zorgen voor een ERD-protocol binnen je organisatie", "De werknemer tijdig uit dienst melden", "Contact houden met de werknemer of ex-werknemer", "Adviezen van de bedrijfsarts opvolgen"],
+    "left": [
+      "Zorgen voor een ERD-protocol binnen je organisatie",
+      "De werknemer tijdig uit dienst melden",
+      "Contact houden met de werknemer of ex-werknemer",
+      "Adviezen van de bedrijfsarts opvolgen"
+    ],
     "rightTitle": "Waar helpt React2u bij?",
-    "right": ["Opstellen van het verzuimprotocol", "Bewaken van stappen en verplichtingen rond de Ziektewet", "Organiseren van medische beoordelingen", "Informeren over vervolgstappen richting werk"]
+    "right": [
+      "Opstellen van het verzuimprotocol",
+      "Bewaken van stappen en verplichtingen rond de Ziektewet",
+      "Organiseren van medische beoordelingen",
+      "Informeren over vervolgstappen richting werk"
+    ],
+    "detailImage": "even-bellen",
+    "closingImage": "persoonlijk-gesprek"
   },
   "preventie-en-vitaliteit": {
     "title": "Preventie & vitaliteit",
     "headline": "Goed zorgen begint vóór iemand uitvalt.",
     "intro": "Gezond en prettig kunnen werken vraagt om aandacht. Samen met je organisatie kijkt React2u naar signalen, risico’s en mogelijkheden om het welzijn van medewerkers te ondersteunen.",
-    "image": "werkplezier", "label": "Ruimte voor gezond werkplezier",
+    "image": "gezonde-werkplek",
+    "label": "Ruimte voor gezond werkplezier",
     "context": "Preventie gaat over meer dan een losse gezondheidscheck. We kijken naar lichamelijke en mentale gezondheid, gedrag, de werkomgeving en de wisselwerking tussen werk en privé. Vanuit dat beeld helpen we kiezen welke maatregelen, gesprekken of onderzoeken bij jouw organisatie passen.",
     "sections": [
-      ["Preventief medisch onderzoek", "Een PMO wordt afgestemd op de werkzaamheden, gezondheidsrisico’s en behoeften van medewerkers. De uitkomsten helpen om gerichte ondersteuning en passende interventies te kiezen. De inhoud en aanpak kunnen daarom per organisatie verschillen."],
-      ["Preventieve gesprekken", "Een gesprek kan zichtbaar maken waar iemand tegenaan loopt, voordat problemen groter worden. Ons verzuimteam denkt mee over fysieke en mentale belasting en welke ondersteuning passend kan zijn."],
-      ["Medewerkerstevredenheid", "Met een medewerkerstevredenheidsonderzoek (MTO) breng je in kaart hoe tevreden, betrokken en gemotiveerd mensen zijn. Verschillende thema’s maken duidelijk waar verbeteringen mogelijk zijn en wat als eerste aandacht verdient."],
-      ["De hele situatie in beeld", "Gezondheid, gedrag, sociale omstandigheden en werk beïnvloeden elkaar. React2u kijkt naar die samenhang en helpt bijvoorbeeld bij preventieve maatregelen, een passende werkplek, vitaliteitschecks en trainingen."],
-      ["Aanvullende deskundigheid", "Wanneer dat nodig is, betrekken we gespecialiseerde zorgverleners uit ons netwerk. Denk aan bedrijfsartsen, psychologen, fysiotherapeuten en arbeidsdeskundigen. De vraag van de medewerker en organisatie bepaalt welke expertise past."],
-      ["Vroeg signaleren en blijven volgen", "Gesprekken en vragenlijsten helpen risico’s eerder te herkennen. Samen met de werkgever vertalen we bevindingen naar maatregelen en kijken we hoe die een vaste plek kunnen krijgen in het gezondheidsbeleid."]
+      [
+        "Preventief medisch onderzoek",
+        "Een PMO wordt afgestemd op de werkzaamheden, gezondheidsrisico’s en behoeften van medewerkers. De uitkomsten helpen om gerichte ondersteuning en passende interventies te kiezen. De inhoud en aanpak kunnen daarom per organisatie verschillen."
+      ],
+      [
+        "Preventieve gesprekken",
+        "Een gesprek kan zichtbaar maken waar iemand tegenaan loopt, voordat problemen groter worden. Ons verzuimteam denkt mee over fysieke en mentale belasting en welke ondersteuning passend kan zijn."
+      ],
+      [
+        "Medewerkerstevredenheid",
+        "Met een medewerkerstevredenheidsonderzoek (MTO) breng je in kaart hoe tevreden, betrokken en gemotiveerd mensen zijn. Verschillende thema’s maken duidelijk waar verbeteringen mogelijk zijn en wat als eerste aandacht verdient."
+      ],
+      [
+        "De hele situatie in beeld",
+        "Gezondheid, gedrag, sociale omstandigheden en werk beïnvloeden elkaar. React2u kijkt naar die samenhang en helpt bijvoorbeeld bij preventieve maatregelen, een passende werkplek, vitaliteitschecks en trainingen."
+      ],
+      [
+        "Aanvullende deskundigheid",
+        "Wanneer dat nodig is, betrekken we gespecialiseerde zorgverleners uit ons netwerk. Denk aan bedrijfsartsen, psychologen, fysiotherapeuten en arbeidsdeskundigen. De vraag van de medewerker en organisatie bepaalt welke expertise past."
+      ],
+      [
+        "Vroeg signaleren en blijven volgen",
+        "Gesprekken en vragenlijsten helpen risico’s eerder te herkennen. Samen met de werkgever vertalen we bevindingen naar maatregelen en kijken we hoe die een vaste plek kunnen krijgen in het gezondheidsbeleid."
+      ]
     ],
-    "leftTitle": "Wat doe jij als werkgever?", "left": ["Inventariseren wat er speelt", "Signalen herkennen", "Gezondheid en werkdruk bespreekbaar maken", "Ruimte en middelen bieden voor verbeteringen"],
-    "rightTitle": "Wat doet React2u?", "right": ["Samen tot de kern van de vraag komen", "De situatie analyseren", "Adviseren en begeleiden", "Maatregelen samen met de werkgever borgen"]
+    "leftTitle": "Wat doe jij als werkgever?",
+    "left": [
+      "Inventariseren wat er speelt",
+      "Signalen herkennen",
+      "Gezondheid en werkdruk bespreekbaar maken",
+      "Ruimte en middelen bieden voor verbeteringen"
+    ],
+    "rightTitle": "Wat doet React2u?",
+    "right": [
+      "Samen tot de kern van de vraag komen",
+      "De situatie analyseren",
+      "Adviseren en begeleiden",
+      "Maatregelen samen met de werkgever borgen"
+    ],
+    "detailImage": "ruimte-buiten",
+    "closingImage": "werkplezier"
   },
   "begeleiding-en-coaching": {
-    "title": "Begeleiding & coaching", "headline": "Ruimte voor jouw verhaal. Richting voor je volgende stap.",
+    "title": "Begeleiding & coaching",
+    "headline": "Ruimte voor jouw verhaal. Richting voor je volgende stap.",
     "intro": "Veranderingen in werk of privé kunnen je uit balans brengen. Onze coaches luisteren, helpen je te ontdekken wat je nodig hebt en werken met je aan haalbare doelen. Persoonlijk, praktisch en afgestemd op jou.",
-    "image": "samen-buiten", "label": "Samen ontdekken wat bij je past",
+    "image": "persoonlijk-gesprek",
+    "label": "Samen ontdekken wat bij je past",
     "context": "Coaching begint bij de persoon of het team en de vraag die er ligt. Met gesprekken, oefeningen en feedback ondersteunen we zelfreflectie, zelfvertrouwen en de ontwikkeling van vaardigheden. De begeleiding sluit aan op je leerbehoefte en de verandering waar je aan wilt werken.",
     "sections": [
-      ["Eén-op-één coaching", "In persoonlijke sessies is er aandacht voor je professionele en persoonlijke situatie. Samen onderzoeken we wat je belemmert en waar je verder in wilt groeien. Oefeningen en praktische handvatten helpen om inzichten toe te passen in je dagelijks leven en werk."],
-      ["Coaching bij burn-out", "React2u biedt persoonlijke begeleiding bij vragen rond burn-out. Gesprekken en oefeningen richten zich onder meer op inzicht in je behoeften en het herkennen en bewaken van grenzen. We stemmen de begeleiding af op de situatie en betrekken waar nodig andere vakspecialisten."],
-      ["Leven- en loopbaancoaching", "Waar krijg je energie van, wat zijn je sterke kanten en wat past bij je? We helpen je interesses, talenten en drijfveren te verkennen. Zo ontstaat meer inzicht in mogelijke stappen in je werk en persoonlijke ontwikkeling."],
-      ["De passende deskundigheid", "React2u werkt met ervaren en gediplomeerde coaches. Als een vraag om aanvullende expertise vraagt, kunnen andere specialisten aansluiten, zoals een psycholoog, fysiotherapeut of bedrijfsarts. De begeleiding wordt afgestemd op wat iemand nodig heeft."]
+      [
+        "Eén-op-één coaching",
+        "In persoonlijke sessies is er aandacht voor je professionele en persoonlijke situatie. Samen onderzoeken we wat je belemmert en waar je verder in wilt groeien. Oefeningen en praktische handvatten helpen om inzichten toe te passen in je dagelijks leven en werk."
+      ],
+      [
+        "Coaching bij burn-out",
+        "React2u biedt persoonlijke begeleiding bij vragen rond burn-out. Gesprekken en oefeningen richten zich onder meer op inzicht in je behoeften en het herkennen en bewaken van grenzen. We stemmen de begeleiding af op de situatie en betrekken waar nodig andere vakspecialisten."
+      ],
+      [
+        "Leven- en loopbaancoaching",
+        "Waar krijg je energie van, wat zijn je sterke kanten en wat past bij je? We helpen je interesses, talenten en drijfveren te verkennen. Zo ontstaat meer inzicht in mogelijke stappen in je werk en persoonlijke ontwikkeling."
+      ],
+      [
+        "De passende deskundigheid",
+        "React2u werkt met ervaren en gediplomeerde coaches. Als een vraag om aanvullende expertise vraagt, kunnen andere specialisten aansluiten, zoals een psycholoog, fysiotherapeut of bedrijfsarts. De begeleiding wordt afgestemd op wat iemand nodig heeft."
+      ]
     ],
-    "leftTitle": "De rol van de werkgever", "left": ["Signalen herkennen en inventariseren", "De hulpvraag bespreekbaar maken", "Ruimte bieden voor begeleiding", "Samen aandacht houden voor het vervolg"],
-    "rightTitle": "De rol van React2u", "right": ["Tot de kern van de coachingsvraag komen", "De medewerker helpen zelf stappen te zetten", "Zo nodig een specialist betrekken", "Met de werkgever zorgen voor een passend vervolg"]
+    "leftTitle": "De rol van de werkgever",
+    "left": [
+      "Signalen herkennen en inventariseren",
+      "De hulpvraag bespreekbaar maken",
+      "Ruimte bieden voor begeleiding",
+      "Samen aandacht houden voor het vervolg"
+    ],
+    "rightTitle": "De rol van React2u",
+    "right": [
+      "Tot de kern van de coachingsvraag komen",
+      "De medewerker helpen zelf stappen te zetten",
+      "Zo nodig een specialist betrekken",
+      "Met de werkgever zorgen voor een passend vervolg"
+    ],
+    "detailImage": "ruimte-buiten",
+    "closingImage": "aandacht"
   },
   "trainingen-en-workshops": {
-    "title": "Trainingen & workshops", "headline": "Samen leren. Anders naar morgen kijken.",
+    "title": "Trainingen & workshops",
+    "headline": "Samen leren. Anders naar morgen kijken.",
     "intro": "Van verzuimgesprekken tot werkplezier en samenwerking: onze trainingen geven medewerkers, leidinggevenden en professionals praktische handvatten. Met ruimte voor de vragen die in jouw organisatie leven.",
-    "image": "werkplezier", "label": "Leren met elkaar, vanuit de praktijk",
+    "image": "samen-leren",
+    "label": "Leren met elkaar, vanuit de praktijk",
     "context": "Onze trainers werken aan inzicht, betrokkenheid en vaardigheden die je op de werkvloer kunt gebruiken. Verschillen tussen mensen kunnen juist waardevol zijn wanneer je ze leert herkennen en waarderen. We kijken samen naar de vraag, de doelgroep en een aanpak die daarbij past.",
     "sections": [
-      ["Verzuimtraining", "Inzicht in de oorzaken van verzuim en hoe je daarmee omgaat staat centraal. Leidinggevenden krijgen handvatten voor contact met een verzuimende medewerker en uitleg over de wet- en regelgeving die bij de begeleiding komt kijken."],
-      ["Management en leiderschap", "React2u denkt mee over verzuim- en preventiebeleid. Samen met de organisatie kijken we wat nodig is om nieuw of verbeterd beleid te ontwikkelen en te laten aansluiten bij de mensen die ermee werken."],
-      ["Communicatie en gesprekken", "Actief luisteren, goede vragen stellen en feedback geven helpen bij constructieve gesprekken. In de training communicatietechnieken is aandacht voor vaardigheden die professionele en persoonlijke verhoudingen ondersteunen."],
-      ["Vitaliteit en preventie", "Met praktische oefeningen en bewustwording besteden we aandacht aan fysieke en mentale gezondheid. Deelnemers onderzoeken gedrag en mogelijkheden om gezonder en prettiger te werken."],
-      ["Een vraag die om maatwerk vraagt", "Ook voor een specifieke workshop kun je bij ons terecht. We bespreken jullie wensen en stemmen de inhoud daarop af. Denk aan samenwerken, weerbaarheid, omgaan met burn-outklachten of meer inzicht in gedrag en handelen."]
+      [
+        "Verzuimtraining",
+        "Inzicht in de oorzaken van verzuim en hoe je daarmee omgaat staat centraal. Leidinggevenden krijgen handvatten voor contact met een verzuimende medewerker en uitleg over de wet- en regelgeving die bij de begeleiding komt kijken."
+      ],
+      [
+        "Management en leiderschap",
+        "React2u denkt mee over verzuim- en preventiebeleid. Samen met de organisatie kijken we wat nodig is om nieuw of verbeterd beleid te ontwikkelen en te laten aansluiten bij de mensen die ermee werken."
+      ],
+      [
+        "Communicatie en gesprekken",
+        "Actief luisteren, goede vragen stellen en feedback geven helpen bij constructieve gesprekken. In de training communicatietechnieken is aandacht voor vaardigheden die professionele en persoonlijke verhoudingen ondersteunen."
+      ],
+      [
+        "Vitaliteit en preventie",
+        "Met praktische oefeningen en bewustwording besteden we aandacht aan fysieke en mentale gezondheid. Deelnemers onderzoeken gedrag en mogelijkheden om gezonder en prettiger te werken."
+      ],
+      [
+        "Een vraag die om maatwerk vraagt",
+        "Ook voor een specifieke workshop kun je bij ons terecht. We bespreken jullie wensen en stemmen de inhoud daarop af. Denk aan samenwerken, weerbaarheid, omgaan met burn-outklachten of meer inzicht in gedrag en handelen."
+      ]
     ],
-    "leftTitle": "Voorbeelden van trainingen", "left": ["Communicatietechnieken", "Verzuim en preventie", "Leiderschap en management", "Conflicthantering", "Vitaliteit"],
-    "rightTitle": "Voorbeelden van workshops", "right": ["Weerbaarheid", "Omgaan met burn-outklachten", "Preventief werken", "Inzicht in gedrag en handelen", "Teambuilding"]
+    "leftTitle": "Voorbeelden van trainingen",
+    "left": [
+      "Communicatietechnieken",
+      "Verzuim en preventie",
+      "Leiderschap en management",
+      "Conflicthantering",
+      "Vitaliteit"
+    ],
+    "rightTitle": "Voorbeelden van workshops",
+    "right": [
+      "Weerbaarheid",
+      "Omgaan met burn-outklachten",
+      "Preventief werken",
+      "Inzicht in gedrag en handelen",
+      "Teambuilding"
+    ],
+    "detailImage": "werkplezier",
+    "closingImage": "op-de-werkvloer"
   },
   "risicomanagement": {
-    "title": "RI&E & risicomanagement", "headline": "Zicht op risico’s. Ruimte om te verbeteren.",
+    "title": "RI&E & risicomanagement",
+    "headline": "Zicht op risico’s. Ruimte om te verbeteren.",
     "intro": "Een veilige en gezonde werkomgeving begint bij weten wat er speelt. Met een risico-inventarisatie en -evaluatie (RI&E) helpt React2u risico’s in kaart te brengen en te vertalen naar een plan van aanpak.",
-    "image": "werkplezier", "label": "Aandacht voor de hele werkomgeving",
+    "image": "op-de-werkvloer",
+    "label": "Aandacht voor de hele werkomgeving",
     "context": "Sommige risico’s zijn direct zichtbaar, zoals werken met machines. Andere zijn minder tastbaar, zoals hoge werkdruk of ongewenst gedrag. Onze deskundigen kijken naar de omstandigheden binnen je organisatie en welke verbeteringen de veiligheid en gezondheid kunnen ondersteunen.",
     "sections": [
-      ["De bedrijfsarts", "De bedrijfsarts is specialist in arbeid en gezondheid en adviseert over gezond blijven en herstel. Daarbij is aandacht voor de medewerker, de uitvoering van het werk en het beleid van de organisatie."],
-      ["De arbeidshygiënist", "Deze deskundige kijkt naar omgevingsfactoren die de gezondheid op het werk kunnen beïnvloeden. Denk aan stoffen, geluid, trillingen of herhalende belasting. Het advies helpt om blootstelling en belasting beter te beheersen."],
-      ["De hogere veiligheidskundige", "Deze specialist richt zich op risicobeoordeling en veiligheid op de werkplek. De adviezen ondersteunen een veilige werkomgeving en het verbeteren van de arbeidsomstandigheden binnen je organisatie."],
-      ["De arbeids- en organisatiedeskundige", "Deze deskundige kijkt naar de manier waarop werk is georganiseerd en de invloed daarvan op mensen. Onderwerpen zijn onder meer werkdruk, stress, ongewenst gedrag en het functioneren van medewerkers en teams."]
+      [
+        "De bedrijfsarts",
+        "De bedrijfsarts is specialist in arbeid en gezondheid en adviseert over gezond blijven en herstel. Daarbij is aandacht voor de medewerker, de uitvoering van het werk en het beleid van de organisatie."
+      ],
+      [
+        "De arbeidshygiënist",
+        "Deze deskundige kijkt naar omgevingsfactoren die de gezondheid op het werk kunnen beïnvloeden. Denk aan stoffen, geluid, trillingen of herhalende belasting. Het advies helpt om blootstelling en belasting beter te beheersen."
+      ],
+      [
+        "De hogere veiligheidskundige",
+        "Deze specialist richt zich op risicobeoordeling en veiligheid op de werkplek. De adviezen ondersteunen een veilige werkomgeving en het verbeteren van de arbeidsomstandigheden binnen je organisatie."
+      ],
+      [
+        "De arbeids- en organisatiedeskundige",
+        "Deze deskundige kijkt naar de manier waarop werk is georganiseerd en de invloed daarvan op mensen. Onderwerpen zijn onder meer werkdruk, stress, ongewenst gedrag en het functioneren van medewerkers en teams."
+      ]
     ],
-    "leftTitle": "Wat brengen we in beeld?", "left": ["Zichtbare veiligheidsrisico’s op de werkplek", "Omgevingsfactoren en lichamelijke belasting", "Werkdruk en psychosociale belasting", "Mogelijkheden om de werkomstandigheden te verbeteren"],
-    "rightTitle": "Waar werk je naartoe?", "right": ["Een overzicht van risico’s binnen de organisatie", "Advies vanuit de passende deskundigheid", "Een bruikbaar plan van aanpak", "Concrete aanknopingspunten voor veiliger en gezonder werk"]
+    "leftTitle": "Wat brengen we in beeld?",
+    "left": [
+      "Zichtbare veiligheidsrisico’s op de werkplek",
+      "Omgevingsfactoren en lichamelijke belasting",
+      "Werkdruk en psychosociale belasting",
+      "Mogelijkheden om de werkomstandigheden te verbeteren"
+    ],
+    "rightTitle": "Waar werk je naartoe?",
+    "right": [
+      "Een overzicht van risico’s binnen de organisatie",
+      "Advies vanuit de passende deskundigheid",
+      "Een bruikbaar plan van aanpak",
+      "Concrete aanknopingspunten voor veiliger en gezonder werk"
+    ],
+    "detailImage": "gezonde-werkplek",
+    "closingImage": "samen-leren"
   }
 }

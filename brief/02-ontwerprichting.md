@@ -178,3 +178,12 @@ Niet van toepassing — React2u verkoopt diensten, geen producten.
 - [ ] Kennisbankartikel-sjabloon (idem)
 - [ ] Overzichten (blog, kennisbank, categorie, auteur, zoeken, 404)
 - [ ] 390 en 1440 gecontroleerd
+
+## Fotografie uitgebreid na feedback — 22 september 2026
+
+De gebruiker vindt de hoeveelheid fotografie nog te klein. Daarom wordt beeld
+onderdeel van de hele pagina: zes nieuwe hoogwaardige beelden, negen unieke
+foto’s totaal. Dienstpagina’s krijgen drie beelden per pagina; op werkgevers
+ook fotografie in de diensttegels. Persoonlijke gesprekken, werkplekken,
+samen leren, wandelen en bellen zorgen voor meer variatie in context.
+Tekstinhoud blijft behouden. Foto’s laden responsief en onder de vouw lazy.

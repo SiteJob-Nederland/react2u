@@ -16,6 +16,42 @@
       1280,
       1600,
       1920
+    ],
+    "assets/images/bron/persoonlijk-gesprek.png": [
+      480,
+      768,
+      1280,
+      1600
+    ],
+    "assets/images/bron/samen-leren.png": [
+      480,
+      768,
+      1280,
+      1600
+    ],
+    "assets/images/bron/op-de-werkvloer.png": [
+      480,
+      768,
+      1280,
+      1600
+    ],
+    "assets/images/bron/gezonde-werkplek.png": [
+      480,
+      768,
+      1280,
+      1600
+    ],
+    "assets/images/bron/ruimte-buiten.png": [
+      480,
+      768,
+      1280,
+      1600
+    ],
+    "assets/images/bron/even-bellen.png": [
+      480,
+      768,
+      1280,
+      1600
     ]
   },
   "exclude": [
