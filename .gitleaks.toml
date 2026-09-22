@@ -1,0 +1,11 @@
+# De siteKey is een openbare website-identiteit, geen toegangssleutel.
+# Alleen de exact gegenereerde ID in het intakebestand is uitgezonderd.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Openbare React2u-website-ID uit de intake"
+condition = "AND"
+paths = ['''^brief/06-opties\.json$''']
+regexTarget = "secret"
+regexes = ['''^0e840f3e-365f-4264-a529-ebc253a972f6$''']

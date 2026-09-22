@@ -1,5 +1,46 @@
 # Intake — eerst vragen, dan bouwen
 
+## Klantopdracht — 22 september 2026
+
+Bron: Kas in de projectchat. Deze opdracht gaat vóór eerdere ontwerpvoorstellen.
+
+- Huidige website: <https://react2u.nl/>.
+- Geen CRO: geen PostHog, sessieopnames, automatische maandreview of AI-analyse.
+  Vastgelegd in `06-opties.json`; dit is een intakekeuze, geen runtimewijziging.
+- Duidelijke splitsing tussen werkgevers en werknemers: beide direct herkenbaar
+  op de homepage, in het hoofdmenu en in hun eigen vervolgroutes.
+- UI is een hoofdprioriteit voor de klant. De doelgroepkeuze, typografie,
+  witruimte, mobiele navigatie en interactiestaten verdienen een afzonderlijke
+  ontwerpbeoordeling vóór de bouw.
+- Er bestaat al een project met thema en een intake uit augustus. Hierop
+  voortbouwen; geen tweede project of overschrijving van bestaande klantcontent.
+
+Op 22 september zijn de publieke homepage, werknemerspagina en over-ons-pagina
+opnieuw bekeken. De homepage is primair werkgeversgericht. Werknemers hebben
+een menupunt, maar geen gelijkwaardige ingang in de hero. De huidige
+inlogknop verwijst naar de homepage; de echte portaalbestemming is nog nodig.
+De bestaande bronopname onder `assets/huidige-site/` blijft historisch materiaal.
+
+### Voorstel, nog geen goedgekeurd ontwerp
+
+Logo en herkenbare merkkleuren behouden, met een vernieuwde UI. Eén gezamenlijke
+homepage met twee gelijkwaardige routes: **Voor werkgevers** en **Voor werknemers**.
+Zie `02-ontwerprichting.md` voor de inhoud en acceptatiepunten per route.
+
+### Nog te bepalen
+
+- Ontwerpvrijheid en eventuele referentiesites: gevraagd aan Kas in deze chat.
+- Eigen foto's, gebruiksrechten en definitieve teksten: bevestigen vóór gebruik.
+  De eerdere merkbrief en aanleverlijst beschrijven verschillende beeldkeuzes;
+  die gelden niet automatisch als actuele klantgoedkeuring.
+- Deadline, aanleververantwoordelijke en gewenste hostingomgeving.
+- Werkelijke portaal-URL en eventuele afzonderlijke ingangen per doelgroep.
+- GA4 en Search Console zijn afzonderlijke keuzes en blijven onbeslist/uit.
+- Privacy- en cookie-inrichting beoordelen op de uiteindelijk gebruikte diensten.
+- Dashboardbedrijfstoewijzing ontbreekt; er is geen registratie uitgevoerd.
+
+## Vragenlijst voor de resterende intake
+
 Vóór er ook maar één regel vormgeving komt, hoort dit gesprek plaats te vinden.
 Zonder dit bouw je op aannames, en dan komt de site er generiek uit.
 

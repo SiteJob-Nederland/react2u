@@ -10,12 +10,20 @@
 
 ## Volgorde in de sessie
 
+Bijsturing 22 september 2026: eerst de resterende ontwerpintake afronden en een
+ontwerp voor de homepage plus werkgevers- en werknemersroute beoordelen. De
+onderstaande bouwstappen volgen daarna. Geen CRO: de opties staan in
+`06-opties.json`; GA4/Search Console en privacy zijn nog niet afgerond.
+
 1. `inc/proof.php` vullen met wat geverifieerd is; de rest blijft `[PLACEHOLDER]`
 2. Tokens in `style.css` blok 1 op de huisstijl zetten
 3. Fonts erin, `fonts.css` en `theme.json` bijwerken
 4. Logo, beeldmerk en favicon in `assets/images/`
 5. Terugvalmenu's in `inc/setup.php` naar de echte paden
 6. Homepage ontwerpen (`front-page.php` + `style.css` blok 16)
+   - Twee gelijkwaardige ingangen, met eigen werkgevers- en werknemersroute.
+   - Navigatie, mobiele doelgroepkeuze en contactacties per doelgroep uitwerken.
+   - Bestaande URL's en sitemap controleren vóór een nieuwe werkgeverspagina.
 7. Artikel- en kennisbanksjabloon nalopen op de huisstijl
 8. Overzichten en 404 nalopen
 9. Beweging nalopen met de `review-animations`-skill, bevindingen oplossen
@@ -24,6 +32,10 @@
 
 ## Acceptatie — klaar om op te sturen
 
+- [ ] Homepage en beide doelgroeppagina's visueel beoordeeld op desktop en mobiel
+- [ ] Werkgevers en werknemers vinden direct hun eigen route en kunnen wisselen
+- [ ] Werknemers krijgen praktische hulp; werkgevers een zakelijke kennismaking
+- [ ] Geen CRO-tracking, sessieopnames, automatische maandreview of AI-analyse actief
 - [ ] `npm run alles` in `qa/` geeft geen fouten
 - [ ] Precies één H1 per sjabloon
 - [ ] Kruimelpad van drie niveaus, zichtbaar én in het schema

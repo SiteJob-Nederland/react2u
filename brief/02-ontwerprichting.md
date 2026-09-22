@@ -1,5 +1,13 @@
 # Ontwerprichting — React2u
 
+## Leidende opdracht — 22 september 2026
+
+Kas vraagt een duidelijke splitsing tussen werkgevers en werknemers en legt
+extra nadruk op UI. CRO is uitgesloten. De visuele uitwerking hieronder is een
+voorstel; behoud van logo en kleuren is als richting voorgelegd aan Kas.
+Historische beschrijvingen van de bestaande assets zijn geen actuele
+goedkeuring van beeldrechten, teksten of ontwerp.
+
 ## Vertrekpunt: de bestaande site
 
 - Huidige site: <https://react2u.nl>
@@ -52,25 +60,46 @@ werkwijzemodel dat niemand anders heeft. Typografie draagt gezag zonder kil te
 worden — DM Sans in de koppen geeft net genoeg karakter, Figtree in de tekst
 blijft leesbaar en menselijk.
 
-## Homepage
+## Homepage en doelgroepkeuze
 
-1. Hero — één belofte ("Jouw mensen, onze aandacht"), één knop. Geen
-   stockfoto; de stippenwolk uit het logo als subtiel decoratief patroon
-   rechts, geen cirkelfoto.
-2. Bewijs (cijfers) — blijft `[PLACEHOLDER]` tot de klant cijfers aanlevert;
-   QA-rapport en dashboardmelding maken dat zichtbaar.
-3. Wat we doen — de zes dienstenkaarten, elk in zijn eigen kleur, met de
-   echte eenregelige omschrijving van de huidige site.
-4. Hoe het werkt — "Zo werkt het" afgeleid uit de terugkerende structuur op
-   elke dienstpagina (kennismaking → analyse → plan van aanpak → begeleiding).
-5. Wie we zijn — "Dit is React2u!" met het REACT-wiel, echte tekst van de
-   huidige over-ons-pagina.
-6. Reviews / cases — `[PLACEHOLDER]`, geen citaten aangetroffen op de huidige
-   site om over te nemen.
-7. Laatste artikelen — blog/kennisbank bestaan nog niet bij deze klant; het
-   sjabloon blijft staan (vaste laag van de kit) maar de sectie verschijnt pas
-   zodra er content is (front-page.php checkt al `$latest->have_posts()`).
-8. Afsluitende CTA — "Kom met ons in contact", telefoonnummer + offerteknop.
+1. Compacte header: logo, **Werkgevers**, **Werknemers**, Over React2u, Contact.
+   Inloggen is een aparte hulplink zodra de juiste bestemming bekend is.
+2. Korte gezamenlijke introductie met één H1 die beide doelgroepen aanspreekt.
+   Daar direct bij twee gelijkwaardige ingangen: **Ik ben werkgever** en
+   **Ik ben werknemer**, elk met een korte uitleg en een eigen bestemming.
+   Op mobiel staan beide routes vóór de uitgebreide merk- en dienstinformatie.
+3. Gezamenlijke werkwijze: gezond, menselijk, duidelijk; compact uitgelegd met
+   bestaand merkbeeld, zonder onbevestigde resultaatclaims.
+4. Korte introductie van React2u en relevante verwijzing naar de eigen route.
+   De uitgebreide dienstencatalogus hoort bij werkgevers.
+5. Contact met een herkenbare keuze tussen een zakelijke kennismaking en een
+   vraag over begeleiding. Geen offerteknop als standaardactie voor werknemers.
+
+Geen verplichte keuzepopup, intro-animatie of overlay. Beide routes blijven
+gewone links en zijn rechtstreeks bereikbaar en deelbaar, ook zonder JavaScript.
+De gekozen doelgroep blijft herkenbaar in navigatie en paginakop; wisselen
+blijft mogelijk. Geen opgeslagen bezoekersprofiel nodig voor deze navigatie.
+
+## Werkgeversroute — voorstel `/werkgevers/`
+
+- Kernvraag: wat kan React2u voor mijn organisatie en medewerkers betekenen?
+- Overzicht van de zes bestaande diensten, met herkenbare dienstkleuren.
+- Werkwijze en taakverdeling, met verdere uitleg op de bestaande dienstpagina's.
+- Hoofdactie: kennismaken via Contact.
+- Klantcases, cijfers en reviews alleen tonen zodra onderbouwd en aangeleverd.
+
+## Werknemersroute — bestaande `/werknemers/`
+
+- Kernvraag: wat betekent de begeleiding voor mij en waar kan ik terecht?
+- Eerst praktische ingangen: begeleiding, verzuimprotocol en contact.
+- Rustige, begrijpelijke uitleg van wat de bezoeker kan verwachten; de precieze
+  procesinhoud wordt met React2u gecontroleerd vóór publicatie.
+- Veelgestelde vragen vanuit de werknemer, zonder zakelijke verkooppitch.
+- Portaal alleen opnemen met de geverifieerde URL; geen inloglink naar home.
+
+Behoud bestaande dienst- en informatie-URL's. `/werkgevers/` is een voorgestelde
+nieuwe overzichtspagina; vóór implementatie bestaande sitemap en eventuele
+`/werkgever/`-routes controleren om dubbele landingspagina's te voorkomen.
 
 ## Blog, kennisbank, auteurspagina — de vaste laag
 
@@ -101,6 +130,15 @@ Niet van toepassing — React2u verkoopt diensten, geen producten.
 `inc/products.php` blijft uit.
 
 ## Kwaliteitslat (UI)
+
+- Beide doelgroepen zijn in de eerste schermsectie herkenbaar; de bezoeker hoeft
+  geen dienstenjargon te begrijpen om de juiste ingang te kiezen.
+- Eén samenhangende huisstijl. Gebruik labels, inhoud en actieve navigatie om
+  routes te onderscheiden; kleur is nooit de enige aanwijzing.
+- Beoordeel homepage én beide landingspagina's op desktop en mobiel vóór bouw.
+- Controleer menu, focus, hover en actieve toestand; doelgroeplinks zijn echte
+  links met een groot klikvlak en blijven bruikbaar met toetsenbord en zonder JS.
+- Geen CRO-provider, opnames, maandreview of AI-analyse aan dit ontwerp koppelen.
 
 - Ademruimte boven dichtheid — expliciet een correctie op de huidige site, die
   secties dicht op elkaar stapelt.

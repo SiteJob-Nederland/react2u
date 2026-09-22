@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 2,
+  "crm": {
+    "choice": "deferred",
+    "mode": "off",
+    "provider": "",
+    "retentionDays": null,
+    "evidence": "Kas, 15-09-2026: CRM uitgesteld; eerst het eigen CRO-platform en optimalisatie."
+  },
+  "analytics": {
+    "choice": "pending",
+    "provider": "",
+    "evidence": "22-09-2026: nog niet afzonderlijk besloten; geen activering zonder keuze."
+  },
+  "searchConsole": {
+    "choice": "pending",
+    "property": "",
+    "evidence": "22-09-2026: nog niet afzonderlijk besloten; geen activering zonder keuze."
+  },
+  "privacy": {
+    "reviewed": false,
+    "banner": "pending",
+    "cmp": "",
+    "privacyPath": "",
+    "cookiesPath": "",
+    "evidence": ""
+  },
+  "croPlatform": {
+    "siteKey": "0e840f3e-365f-4264-a529-ebc253a972f6",
+    "companyReference": "",
+    "registration": "automatic",
+    "cro": {
+      "choice": "no",
+      "evidence": "Kas, projectchat 22-09-2026: geen CRO erop. Daarom ook geen CRO-meting, sessieopnames, maandreview of AI-analyse."
+    },
+    "measurement": {
+      "provider": "none",
+      "evidence": "Kas, projectchat 22-09-2026: geen CRO erop. Daarom ook geen CRO-meting, sessieopnames, maandreview of AI-analyse."
+    },
+    "sessionReplay": {
+      "choice": "no",
+      "evidence": "Kas, projectchat 22-09-2026: geen CRO erop. Daarom ook geen CRO-meting, sessieopnames, maandreview of AI-analyse."
+    },
+    "monthlyReview": {
+      "choice": "no",
+      "evidence": "Kas, projectchat 22-09-2026: geen CRO erop. Daarom ook geen CRO-meting, sessieopnames, maandreview of AI-analyse."
+    },
+    "aiAnalysis": {
+      "choice": "no",
+      "evidence": "Kas, projectchat 22-09-2026: geen CRO erop. Daarom ook geen CRO-meting, sessieopnames, maandreview of AI-analyse."
+    },
+    "reviewTimezone": "Europe/Amsterdam"
+  }
+}
