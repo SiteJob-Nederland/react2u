@@ -1,0 +1,89 @@
+{
+  "assets/images/bron/aandacht-definitief.png": {
+    "sourceWidth": 2048,
+    "sourceHeight": 1360,
+    "sourceBytes": 3880986,
+    "variants": [
+      {
+        "width": 480,
+        "height": 319,
+        "bytes": 28624,
+        "path": "assets/images/quality/e29feb8a00d7b24d-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 510,
+        "bytes": 58856,
+        "path": "assets/images/quality/e29feb8a00d7b24d-768.webp"
+      },
+      {
+        "width": 1280,
+        "height": 850,
+        "bytes": 120190,
+        "path": "assets/images/quality/e29feb8a00d7b24d-1280.webp"
+      },
+      {
+        "width": 1600,
+        "height": 1063,
+        "bytes": 161106,
+        "path": "assets/images/quality/e29feb8a00d7b24d-1600.webp"
+      },
+      {
+        "width": 1920,
+        "height": 1275,
+        "bytes": 207606,
+        "path": "assets/images/quality/e29feb8a00d7b24d-1920.webp"
+      }
+    ]
+  },
+  "assets/images/bron/samen-buiten.png": {
+    "sourceWidth": 1024,
+    "sourceHeight": 688,
+    "sourceBytes": 1260431,
+    "variants": [
+      {
+        "width": 480,
+        "height": 323,
+        "bytes": 33368,
+        "path": "assets/images/quality/9860cd8c8d9b7fed-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 516,
+        "bytes": 63718,
+        "path": "assets/images/quality/9860cd8c8d9b7fed-768.webp"
+      },
+      {
+        "width": 1024,
+        "height": 688,
+        "bytes": 94720,
+        "path": "assets/images/quality/9860cd8c8d9b7fed-1024.webp"
+      }
+    ]
+  },
+  "assets/images/bron/werkplezier.png": {
+    "sourceWidth": 1024,
+    "sourceHeight": 688,
+    "sourceBytes": 1198889,
+    "variants": [
+      {
+        "width": 480,
+        "height": 323,
+        "bytes": 26134,
+        "path": "assets/images/quality/5e6d87d755392f2d-480.webp"
+      },
+      {
+        "width": 768,
+        "height": 516,
+        "bytes": 53180,
+        "path": "assets/images/quality/5e6d87d755392f2d-768.webp"
+      },
+      {
+        "width": 1024,
+        "height": 688,
+        "bytes": 82862,
+        "path": "assets/images/quality/5e6d87d755392f2d-1024.webp"
+      }
+    ]
+  }
+}

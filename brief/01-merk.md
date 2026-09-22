@@ -69,8 +69,8 @@ achtergrond.
 
 | Rol | Familie | Gewichten | Licentie |
 |---|---|---|---|
-| Display (koppen) | DM Sans (variabel) | 400–800 | SIL Open Font License — vrij voor webgebruik |
-| Tekst | Figtree (variabel) | 400–600 | SIL Open Font License — vrij voor webgebruik |
+| Display (koppen) | Figtree (variabel) | 400–800 | SIL Open Font License — vrij voor webgebruik |
+| Tekst | DM Sans (variabel) | 400–600 | SIL Open Font License — vrij voor webgebruik |
 | Mono (optioneel) | systeemfont | — | — |
 
 Beide zijn de families die de huidige site al gebruikt (zichtbaar in de
@@ -106,3 +106,13 @@ Nederlandse diakrieten (é, ë, ï, ö) vallen daarbinnen.
 - Het testimonial-blok "Een greep uit onze tevreden klanten" bevatte geen
   zichtbare citaten in de opgehaalde HTML — geen reviews aangetroffen om over
   te nemen. Blijft `[PLACEHOLDER]` tot de klant reviews aanlevert.
+
+## Broncontrole typografie — 22 september 2026
+
+De actuele homepage-CSS zet `--g-primary-font: "DM Sans"` voor tekst en
+`--g-secondary-font: "Figtree"` voor koppen. Ook h1–h6 zijn expliciet Figtree.
+De eerdere rolverdeling in deze brief was omgekeerd en is hierboven gecorrigeerd.
+Het vernieuwde ontwerp gebruikt Figtree voor koppen en DM Sans voor tekst,
+zelf gehost. De bestaande bestandsnamen display/body verwijzen nog naar de
+oude bestandsindeling; de CSS-koppeling bepaalt nu de juiste familie.
+Bron: https://react2u.nl/ — inline `coachify-style-inline-css`.

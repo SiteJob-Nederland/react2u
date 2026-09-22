@@ -4,6 +4,7 @@
   "type": "module",
   "description": "QA-scripts voor het React2u-thema. Alleen lezen; ze wijzigen nooit iets op de site.",
   "scripts": {
+    "ontwerp": "node qa-ontwerp.mjs",
     "thema": "node qa-thema.mjs",
     "links": "node qa-links.mjs",
     "seo": "node qa-seo.mjs",

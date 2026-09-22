@@ -1,0 +1,24 @@
+{
+  "imageWidths": {
+    "assets/images/bron/samen-buiten.png": [
+      480,
+      768,
+      1024
+    ],
+    "assets/images/bron/werkplezier.png": [
+      480,
+      768,
+      1024
+    ],
+    "assets/images/bron/aandacht-definitief.png": [
+      480,
+      768,
+      1280,
+      1600,
+      1920
+    ]
+  },
+  "exclude": [
+    "assets/images/bron/aandacht.png"
+  ]
+}

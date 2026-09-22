@@ -40,3 +40,6 @@ assets/huidige-site/
 
 # Automatische rapportuitvoer; beoordeeld bewijs staat in QA-RAPPORT.md/docs.
 /qa/reports/
+
+# Tijdelijke geïsoleerde assetbuild voor het ontwerp.
+/ontwerp/.build/

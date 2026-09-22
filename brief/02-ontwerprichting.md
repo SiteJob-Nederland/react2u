@@ -10,6 +10,21 @@ de bestaande merkidentiteit. De concrete schermuitwerking is nog een voorstel.
 Historische beschrijvingen van de bestaande assets zijn geen actuele
 goedkeuring van beeldrechten, teksten of ontwerp.
 
+## Bijsturing 22 september 2026 — leidend voor het ontwerp
+
+De gebruiker vraagt expliciet om een menselijke, warme UI met fotografie,
+sliders en subtiele scrollanimaties. Logo en merkkleuren blijven behouden.
+De onderstaande oudere uitgangspunten “geen stockfoto’s” / “geen foto’s”
+zijn hiermee vervangen: bestaand klantbeeld of hoogwaardige Higgsfield-beelden
+is toegestaan. Herkomst wordt intern vastgelegd; geen labels “AI-sfeerbeeld”
+in de interface en geen voorstelling van gegenereerde personen als echte medewerkers.
+Koppen gebruiken Figtree, lopende tekst DM Sans, volgens de actuele broncontrole.
+
+Te korte doelgroeppagina’s worden aangevuld met echte inhoud uit de huidige site.
+De bronopname bevat 40 pagina’s en 80 screenshots (22 september). Zie
+`07-inhoudscontrole.md` voor de selectie en vertaling naar 12 ontwerppagina’s.
+De leesbare inhoud heeft voorrang op animatie; geen CRO/tracking.
+
 ## Vertrekpunt: de bestaande site
 
 - Huidige site: <https://react2u.nl>
@@ -59,7 +74,7 @@ indruk is rust: veel wit, één duidelijke belofte, geen drukte. Kleur is
 functioneel — elke dienst heeft er één, verder blijft de pagina overwegend
 indigo-op-wit. Het REACT-wiel is het ene detail dat blijft hangen: een
 werkwijzemodel dat niemand anders heeft. Typografie draagt gezag zonder kil te
-worden — DM Sans in de koppen geeft net genoeg karakter, Figtree in de tekst
+worden — Figtree in de koppen geeft net genoeg karakter, DM Sans in de tekst
 blijft leesbaar en menselijk.
 
 ## Homepage en doelgroepkeuze
