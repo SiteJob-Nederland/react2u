@@ -1,5 +1,21 @@
 # Ontwerprichting — React2u
 
+## Bijsturing: geen kleurplaat
+
+Kas ziet in de versie met indigo hero en grote roze/turkooizen doelgroepkaarten
+geen overtuigende ontwerpverbetering. De merkidentiteit blijft aanwezig, maar
+de felle dienstkleuren vullen niet langer hele secties of doelgroepvlakken.
+De referenties blijven leidend voor de schaal van typografie, de fotografie
+en het ritme; hun kleurgebruik wordt niet letterlijk nagevolgd.
+
+De nieuwe richting is editorial en beeldgedreven: een rustige warme basis,
+donkere typografie, grote menselijke fotografie, zichtbare witruimte en een
+doelgroepkeuze als twee sterke navigatieregels. Indigo draagt de tekst en één
+contactsectie; oranje is een klein accent. Dienstkleuren blijven behouden in
+het logo en kleine functionele accenten. Subpagina's gebruiken dezelfde
+fotografische opbouw. De eerder beschreven grote verzadigde keuzevlakken zijn
+hiermee vervallen.
+
 ## Richting na feedback: meer lef en drie referenties
 
 Kas vindt de eerste lokale ontwerpversie te braaf en te standaard. Als

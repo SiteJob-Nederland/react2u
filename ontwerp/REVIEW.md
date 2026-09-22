@@ -137,3 +137,38 @@ grenzen zijn gehaald. Rapporten staan lokaal in
 `../qa/uitvoer/ontwerp/rapport.json` en
 `../qa/uitvoer/ontwerp-performance/performance.json`. Dit blijft een
 ontwerp-preview; de eerder beschreven WordPress-releasepunten zijn nog open.
+
+## Nieuwe correctie: van kleurvlakken naar editorial ontwerp
+
+Kas gaf aan dat de vorige versie ondanks de fellere hero nauwelijks als een
+echte verbetering voelde en te veel op een kleurplaat leek. Deze correctie
+vervangt de indigo hero en de roze/turkooizen doelgroeptegels door een warme,
+lichte basis, één donkere tekstkleur en kleine merkaccenten. Het hoofdbeeld
+en de doelgroepkeuze dragen nu de eerste indruk. De tijdelijke
+ontwerpstatusbalk is verwijderd, zodat de preview als echte site beoordeeld
+kan worden.
+
+| Before | After | Why |
+| --- | --- | --- |
+| Hero als bijna volledig indigo vlak met oranje regels | Warme achtergrond, donkere grote kop en groot menselijk beeld | De fotografie en boodschap krijgen voorrang boven kleur. |
+| Roze en turkooizen doelgroepkaarten | Twee duidelijke genummerde navigatieregels met één pijl per route | Werkgever/werknemer blijft direct herkenbaar zonder decoratieve tegels. |
+| Lila slider, donkere waardenstrook en magenta contactband | Fotogedreven slider op wit, waarden op papier en één indigo contactband | Meer ritme met minder concurrerende kleuren. |
+| Rode gedraaide fotobijschriften en gekleurde dienstenranden | Rustige bijschriften, natuurlijke foto's en dunne scheidingslijnen | Subpagina's volgen hetzelfde rustige beeldsysteem. |
+
+Visueel beoordeeld in de lokale browser: homepage op desktop en mobiel,
+werkgevers-hero op desktop, en de fotoslider na het laden van de beelden.
+De bestaande optionele scrollentree en de bediening van de slider zijn
+ongewijzigd; deze correctie voegt geen extra beweging toe. Reduced motion
+blijft de animaties direct uitschakelen. **Motion review: approve voor de
+lokale preview**, onder de bestaande beperking van nog ontbrekende echte
+apparaat- en screenreadercontrole.
+
+Na een contrastcorrectie voor de actieve contactnavigatie slaagt
+`npm --prefix qa run ontwerp`: **72/72** pagina/breedtecombinaties,
+`failures: []`, `incomplete: []`. Interactie, beelddecodering, interne links,
+scrollentree en reduced motion zijn opnieuw gecontroleerd. Drie mobiele
+Lighthouse-runs op de homepage geven mediaan **99/100**, LCP **2102 ms**,
+CLS **0**, TBT **0 ms**; alle bestaande grenzen gehaald. Rapporten:
+`../qa/uitvoer/ontwerp/rapport.json` en
+`../qa/uitvoer/ontwerp-performance/performance.json`. Dit is lokale
+ontwerpvalidatie, geen WordPress-releasegoedkeuring of livegang.

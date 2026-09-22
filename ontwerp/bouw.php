@@ -49,7 +49,6 @@ function page(string $name, string $title, string $description, string $body): v
 </head>
 <body>
 <a class="skip" href="#main">Ga naar inhoud</a>
-<aside class="preview" aria-label="Ontwerpstatus"><div class="shell"><span><b>Ontwerpvoorstel</b> · React2u</span><span>22 september 2026 · Logo en merkkleuren behouden</span></div></aside>
 <header class="header"><div class="shell header-inner">
   <a class="logo" href="index.html" aria-label="React2u — naar home"><img src="assets/logo.png" width="164" height="101" alt="React2u"></a>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigatie"><span data-menu-label>Menu</span><svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
@@ -77,7 +76,7 @@ function page(string $name, string $title, string $description, string $body): v
 require __DIR__ . '/verdieping.php';
 
 $home = '<section class="hero-stage" aria-labelledby="hero-title"><div class="hero-warm shell">
-  <div class="hero-warm-copy"><p class="eyebrow">Gezond. Menselijk. Duidelijk.</p><h1 id="hero-title">Aandacht <br>voor mensen.<br><span>Ruimte <br>voor herstel.</span></h1>
+  <div class="hero-warm-copy"><p class="eyebrow">Gezond. Menselijk. Duidelijk.</p><h1 id="hero-title">Aandacht voor mensen.<br><span>Ruimte voor herstel.</span></h1>
   <p class="hero-intro">Of je nu voor je mensen zorgt of zelf begeleiding zoekt. We luisteren, denken mee en helpen je verder.</p>
   </div>
   <figure class="hero-warm-image">' . photo('aandacht', 'twee mensen in een warm en aandachtig gesprek aan tafel.', '(max-width:760px) 90vw, 52vw', true) . '</figure>
@@ -90,7 +89,7 @@ $home = '<section class="hero-stage" aria-labelledby="hero-title"><div class="he
 </section>
 <section class="moments-section" aria-labelledby="moments-title" data-slider>
   <div class="shell moments-heading"><div><p class="section-kicker">Aandacht maakt het verschil</p><h2 id="moments-title">Kleine momenten.<br>Een groot verschil.</h2></div><div class="slider-controls" hidden><button type="button" class="slider-button previous" aria-label="Vorig beeld" aria-controls="momenten">' . arrow() . '</button><span class="slider-status" aria-live="polite">1 / 3</span><button type="button" class="slider-button next" aria-label="Volgend beeld" aria-controls="momenten">' . arrow() . '</button></div></div>
-  <div class="moments-track" id="momenten" tabindex="0" role="region" aria-label="Sfeerbeelden van aandacht, begeleiding en werkplezier">
+  <div class="moments-track" id="momenten" tabindex="0" role="region" aria-label="Momenten van aandacht, begeleiding en werkplezier">
     <article class="moment" aria-label="1 van 3: Samen kom je verder"><figure>' . photo('samen-leren', photoDescription('samen-leren'), '(max-width:760px) 85vw, 46vw') . '</figure><div class="moment-copy"><span class="moment-kicker">Leren van elkaar</span><h3>Samen kom je verder.</h3><p>Nieuwe inzichten ontstaan wanneer je ervaringen met elkaar deelt.</p><a class="text-link" href="trainingen-en-workshops.html">Over trainingen en workshops' . arrow() . '</a></div></article>
     <article class="moment" aria-label="2 van 3: Samen weer vooruit"><figure>' . photo('samen-buiten', 'twee mensen die samen wandelen en praten in een groen park.', '(max-width:760px) 85vw, 46vw') . '</figure><div class="moment-copy"><span class="moment-kicker">Op jouw manier</span><h3>Samen weer vooruit.</h3><p>Kijken naar mogelijkheden. Met aandacht voor de mens en de situatie.</p><a class="text-link" href="werknemers.html">Voor jou als werknemer' . arrow() . '</a></div></article>
     <article class="moment" aria-label="3 van 3: Fijn om er weer bij te zijn"><figure>' . photo('werkplezier', 'drie collega’s die ontspannen samen aan tafel zitten.', '(max-width:760px) 85vw, 46vw') . '</figure><div class="moment-copy"><span class="moment-kicker">Gezond aan het werk</span><h3>Fijn om erbij te zijn.</h3><p>Aandacht voor werkplezier, preventie en een prettige werkomgeving.</p><a class="text-link" href="werkgevers.html#diensten">Voor jouw organisatie' . arrow() . '</a></div></article>
