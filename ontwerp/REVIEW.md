@@ -102,3 +102,38 @@ Validatie na deze wijziging op http://127.0.0.1:8133:
 
 Dit betreft de lokale ontwerp-preview. De hierboven vastgelegde beperkingen
 van de bestaande WordPress-basis blijven bestaan; geen productie-deployment.
+
+## Visuele herziening na referenties — 22 september 2026
+
+De eerste opzet voelde te braaf. De visuele taal van
+[ArboNed](https://www.arboned.nl/en), [Arbo Unie](https://www.arbounie.nl/)
+en [Acture](https://acture.nl/) is bekeken als referentie voor schaal,
+contrast, fotografie en compositie. React2u behoudt het eigen logo, de
+merkkleuren, Figtree voor koppen en DM Sans voor lopende tekst. De inhoud en
+foto's zijn niet van de referenties overgenomen.
+
+| Before | After | Why |
+| --- | --- | --- |
+| Rustige, grotendeels lichte eerste indruk | Grote indigo hero, forse witte en oranje kop, beeld met boogvorm en twee verzadigde doelgroepvlakken | De keuze voor werkgevers of werknemers is direct zichtbaar en de eerste indruk heeft meer karakter. |
+| Vergelijkbare witte kaarten en gelijkmatig sectieritme | Afwisseling tussen editorial beeld/tekst, lila fotoslider, donkere waardenstrook, asymmetrische diensten en volle contactband | Meer spanning en een menselijker verhaal zonder de inhoud te verkorten. |
+| Bescheiden fotografie en kleine letterhiërarchie | Grotere portretten en werkvloerscènes met gecontroleerde uitsneden, nadrukkelijke koppen | Het menselijke aspect krijgt ruimte; gezichten blijven in beeld. |
+| Twee routekaarten pas na de hero-foto op mobiel | Doelgroepkeuze vóór de foto op mobiel | De belangrijkste navigatie blijft vroeg bereikbaar op een smal scherm. |
+
+Handmatig bekeken in de lokale browser: homepage op 320 en 1440 px,
+werkgeversdiensten desktop en coaching-hero desktop; ook de volledige
+QA-screenshots van de homepage op 390 en 1440 px. Op 320 px geen horizontale
+overflow. De nieuwe compositie overlapt geen tekst of bediening.
+
+`npm --prefix qa run ontwerp` is opnieuw groen: 12 pagina's op 6 breedtes,
+**72/72**, zonder failures of onbesliste axe-resultaten. De bestaande
+interactiechecks voor routes, mobiel menu, slider, scrollentree en live
+reduced motion slagen. Geen wijzigingen aan de motionlogica: de scrollentree
+blijft kort en optioneel, de slider heeft geen autoplay, en de inhoud blijft
+zichtbaar zonder JavaScript. **Motion review: approve voor de lokale preview.**
+
+Mobiele Lighthouse-meting van de herziene homepage: drie koude runs,
+mediaan **99/100**, LCP **2102 ms**, CLS **0**, TBT **0 ms**. De bestaande
+grenzen zijn gehaald. Rapporten staan lokaal in
+`../qa/uitvoer/ontwerp/rapport.json` en
+`../qa/uitvoer/ontwerp-performance/performance.json`. Dit blijft een
+ontwerp-preview; de eerder beschreven WordPress-releasepunten zijn nog open.

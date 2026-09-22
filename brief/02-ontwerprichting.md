@@ -1,5 +1,28 @@
 # Ontwerprichting — React2u
 
+## Richting na feedback: meer lef en drie referenties
+
+Kas vindt de eerste lokale ontwerpversie te braaf en te standaard. Als
+visuele referenties noemt hij [ArboNed](https://www.arboned.nl/en),
+[Arbo Unie](https://www.arbounie.nl/) en [Acture](https://acture.nl/).
+Op 22 september 2026 visueel gecontroleerd: ArboNed opent met zeer grote
+typografie, een verzadigd kleurvlak, menselijke fotografie en overlappende
+snelle routes; Arbo Unie geeft fotografie bijna de hele hero en heeft
+duidelijke inhoudelijke ingangen; Acture gebruikt een asymmetrische verdeling
+van donker tekstvlak en licht beeldvlak. Dit zijn referenties voor ritme en
+lef, geen bron voor React2u-cijfers, claims, beelden of diensten.
+
+De nieuwe React2u-richting gebruikt het eigen indigo als groot contrastvlak,
+de bestaande dienstkleuren als stevige keuzevlakken, forsere Figtree-koppen,
+een beeldgedreven hero en kaarten die deels over het hoofdbeeld vallen.
+Werkgevers en werknemers blijven twee gelijkwaardige routes en komen op
+mobiel vóór de hero-foto. Secties krijgen afwisselend volle kleur, beeld en
+editoriale tekst; identieke witte kaartjes zijn teruggedrongen. De logo-,
+font- en kleurbronnen blijven React2u-eigen. Geen verzonnen klantbewijs.
+
+De eerdere aanwijzingen hieronder die een overwegend witte, rustige en
+terughoudende presentatie voorschrijven, zijn door deze feedback ingehaald.
+
 ## Leidende opdracht — 22 september 2026
 
 Kas vraagt een duidelijke splitsing tussen werkgevers en werknemers en legt

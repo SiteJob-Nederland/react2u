@@ -76,15 +76,15 @@ function page(string $name, string $title, string $description, string $body): v
 
 require __DIR__ . '/verdieping.php';
 
-$home = '<section class="hero-warm shell" aria-labelledby="hero-title">
+$home = '<section class="hero-stage" aria-labelledby="hero-title"><div class="hero-warm shell">
   <div class="hero-warm-copy"><p class="eyebrow">Gezond. Menselijk. Duidelijk.</p><h1 id="hero-title">Aandacht <br>voor mensen.<br><span>Ruimte <br>voor herstel.</span></h1>
   <p class="hero-intro">Of je nu voor je mensen zorgt of zelf begeleiding zoekt. We luisteren, denken mee en helpen je verder.</p>
+  </div>
+  <figure class="hero-warm-image">' . photo('aandacht', 'twee mensen in een warm en aandachtig gesprek aan tafel.', '(max-width:760px) 90vw, 52vw', true) . '</figure>
   <div class="routes">
     <a class="route route-dark" href="werkgevers.html"><h2>Ik ben werkgever</h2><p>Goed voor je mensen<br>en je organisatie.</p><span class="arrow-circle">' . arrow() . '</span></a>
     <a class="route" href="werknemers.html"><h2>Ik ben werknemer</h2><p>Aandacht voor jou.<br>Hulp bij je volgende stap.</p><span class="arrow-circle">' . arrow() . '</span></a>
-  </div></div>
-  <figure class="hero-warm-image">' . photo('aandacht', 'twee mensen in een warm en aandachtig gesprek aan tafel.', '(max-width:760px) 90vw, 52vw', true) . '<figcaption><span class="caption-dot" aria-hidden="true"></span>Eerst luisteren.<br>Dan samen verder.</figcaption></figure>
-</section>
+  </div></div></section>
 <section class="section shell photo-story home-story" id="over-react2u" aria-labelledby="about-title">
   ' . editorialPhoto('persoonlijk-gesprek') . '<div><p class="section-kicker">Dit is React2u</p><h2 id="about-title">Het begint niet<br>bij een dossier.<br><span>Het begint bij jou.</span></h2><div class="story-copy"><p>Werk is een belangrijk deel van je leven. Als het even niet gaat, wil je iemand die naast je staat. Die luistert, overzicht geeft en samen met jou kijkt naar wat er wél kan.</p><p>Dat is de aandacht van React2u. Voor werkgevers én werknemers.</p></div><a class="text-link" href="over-react2u.html">Maak kennis met ons' . arrow() . '</a></div>
 </section>
@@ -96,8 +96,8 @@ $home = '<section class="hero-warm shell" aria-labelledby="hero-title">
     <article class="moment" aria-label="3 van 3: Fijn om er weer bij te zijn"><figure>' . photo('werkplezier', 'drie collega’s die ontspannen samen aan tafel zitten.', '(max-width:760px) 85vw, 46vw') . '</figure><div class="moment-copy"><span class="moment-kicker">Gezond aan het werk</span><h3>Fijn om erbij te zijn.</h3><p>Aandacht voor werkplezier, preventie en een prettige werkomgeving.</p><a class="text-link" href="werkgevers.html#diensten">Voor jouw organisatie' . arrow() . '</a></div></article>
   </div>
 </section>
-<section class="section shell" aria-labelledby="values-title"><div class="values-heading"><p class="section-kicker">Waar je op kunt rekenen</p><h2 id="values-title">Professioneel in wat we doen.<br>Persoonlijk in hoe we het doen.</h2></div>
-  <div class="principles"><article><h3><span class="principle-dot" aria-hidden="true"></span>Gezond</h3><p>Oog voor herstel, preventie en een prettige werkomgeving.</p></article><article><h3><span class="principle-dot" aria-hidden="true"></span>Menselijk</h3><p>Luisteren naar het verhaal achter de situatie. Met persoonlijke aandacht.</p></article><article><h3><span class="principle-dot" aria-hidden="true"></span>Duidelijk</h3><p>Begrijpelijke uitleg en overzicht in de stappen die we samen zetten.</p></article></div>
+<section class="section values-section" aria-labelledby="values-title"><div class="shell"><div class="values-heading"><p class="section-kicker">Waar je op kunt rekenen</p><h2 id="values-title">Professioneel in wat we doen.<br>Persoonlijk in hoe we het doen.</h2></div>
+  <div class="principles"><article><h3><span class="principle-dot" aria-hidden="true"></span>Gezond</h3><p>Oog voor herstel, preventie en een prettige werkomgeving.</p></article><article><h3><span class="principle-dot" aria-hidden="true"></span>Menselijk</h3><p>Luisteren naar het verhaal achter de situatie. Met persoonlijke aandacht.</p></article><article><h3><span class="principle-dot" aria-hidden="true"></span>Duidelijk</h3><p>Begrijpelijke uitleg en overzicht in de stappen die we samen zetten.</p></article></div></div>
 </section>' . band('Zullen we eens praten?', 'Een goed gesprek is een mooi begin.', 'contact.html', 'Neem contact op');
 page('home', 'Aandacht voor gezond werken', 'Ontwerpvoorstel React2u: persoonlijke arbodienstverlening met een duidelijke route voor werkgevers en werknemers.', $home);
 
