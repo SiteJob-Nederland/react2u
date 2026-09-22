@@ -36,6 +36,15 @@ function react2u_breadcrumb_items(): array {
 					'url'  => (string) get_permalink( $ancestor_id ),
 				);
 			}
+			/* Bestaande dienst-URL's blijven top-level; het zichtbare pad toont wel hun echte doelgroep. */
+			if ( 0 === count( get_post_ancestors( $post_id ) ) ) {
+				$slug      = (string) get_post_field( 'post_name', $post_id );
+				$audience  = in_array( $slug, array( 'verzuimbegeleiding-wvp', 'verzuimbegeleiding-erd-zw', 'preventie-en-vitaliteit', 'begeleiding-en-coaching', 'trainingen-en-workshops', 'risicomanagement', 'diensten' ), true ) ? 'werkgevers' : ( 'verzuimprotocol' === $slug ? 'werknemers' : '' );
+				$hub       = '' !== $audience ? get_page_by_path( $audience ) : null;
+				if ( $hub instanceof WP_Post && 'publish' === $hub->post_status ) {
+					$items[] = array( 'name' => (string) get_the_title( $hub ), 'url' => (string) get_permalink( $hub ) );
+				}
+			}
 		} else {
 			$items[] = react2u_archive_crumb( $post_type );
 

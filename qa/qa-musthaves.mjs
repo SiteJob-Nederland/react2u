@@ -61,7 +61,7 @@ async function sitemapPaden() {
 }
 
 const alle = await sitemapPaden();
-if (alle.length === 0) {
+if (alle.length === 0 && process.env.EXPECT_INDEXABLE !== '0') {
 	meld('WAARSCHUWING', '/sitemap.xml', 'geen sitemap gevonden');
 }
 
@@ -94,8 +94,18 @@ const kennisPad  = process.env.MH_KENNIS
 	?? await eersteUitOverzicht('/kennisbank/')
 	?? zoek((p) => /^\/kennisbank\/.+\/$/.test(p), ['/kennisbank/']);
 
-const dienstPad = process.env.MH_DIENST
-	?? zoek((p) => /^\/diensten\/.+\/$/.test(p), ['/diensten/']);
+const dienstKandidaten = [
+	'/verzuimbegeleiding-wvp/', '/verzuimbegeleiding-erd-zw/',
+	'/preventie-en-vitaliteit/', '/begeleiding-en-coaching/',
+	'/trainingen-en-workshops/', '/risicomanagement/',
+];
+let dienstPad = process.env.MH_DIENST
+	?? zoek((p) => /^\/diensten\/.+\/$/.test(p) || dienstKandidaten.includes(p), ['/diensten/']);
+if (!dienstPad) {
+	for (const pad of dienstKandidaten) {
+		if ((await haal(pad)).status === 200) { dienstPad = pad; break; }
+	}
+}
 
 console.log(`Gecontroleerd: artikel=${artikelPad ?? '—'}  kennisbank=${kennisPad ?? '—'}  dienst=${dienstPad ?? '—'}`);
 
@@ -164,27 +174,27 @@ if (!auteurPad && artikelPad) {
 	const bron = await haal(artikelPad);
 	auteurPad = bron.html.match(/href="[^"]*?(\/author\/[^"\/]+\/)"/i)?.[1] ?? null;
 }
-auteurPad ??= '/author/redactie/';
-
-const auteur = await haal(auteurPad);
-if (auteur.status !== 200) {
-	meld('FOUT', auteurPad, `auteurspagina niet op te halen (${auteur.status})`);
-} else {
-	const h = auteur.html;
-	if (telH1(h) !== 1) meld('FOUT', auteurPad, `${telH1(h)} H1 (verwacht 1)`);
-	if (!/class="author-card"/i.test(h)) meld('FOUT', auteurPad, 'geen auteurskaart');
-	if (!/class="author-card-photo"/i.test(h)) meld('FOUT', auteurPad, 'geen auteursfoto (of initialen)');
-	if (!/class="author-card-bio"/i.test(h) && !/class="author-card-role"/i.test(h)) {
-		meld('WAARSCHUWING', auteurPad, 'geen bio of functie — vul het auteursprofiel');
+if (auteurPad) {
+	const auteur = await haal(auteurPad);
+	if (auteur.status !== 200) {
+		meld('FOUT', auteurPad, `auteurspagina niet op te halen (${auteur.status})`);
+	} else {
+		const h = auteur.html;
+		if (telH1(h) !== 1) meld('FOUT', auteurPad, `${telH1(h)} H1 (verwacht 1)`);
+		if (!/class="author-card"/i.test(h)) meld('FOUT', auteurPad, 'geen auteurskaart');
+		if (!/class="author-card-photo"/i.test(h)) meld('FOUT', auteurPad, 'geen auteursfoto (of initialen)');
+		if (!/class="author-card-bio"/i.test(h) && !/class="author-card-role"/i.test(h)) {
+			meld('WAARSCHUWING', auteurPad, 'geen bio of functie — vul het auteursprofiel');
+		}
+		if (!/"@type":"ProfilePage"/.test(h)) meld('FOUT', auteurPad, 'geen ProfilePage-schema');
+		if (!/"@type":"Person"/.test(h)) meld('FOUT', auteurPad, 'geen Person-schema');
 	}
-	if (!/"@type":"ProfilePage"/.test(h)) meld('FOUT', auteurPad, 'geen ProfilePage-schema');
-	if (!/"@type":"Person"/.test(h)) meld('FOUT', auteurPad, 'geen Person-schema');
 }
 
 /* ---- Servicepagina ------------------------------------------------------ */
 
 if (!dienstPad) {
-	meld('FOUT', '(geen)', 'geen servicepagina onder /diensten/ gevonden om te controleren');
+	meld('FOUT', '(geen)', 'geen servicepagina gevonden om te controleren');
 }
 
 const dienst = dienstPad ? await haal(dienstPad) : { status: 0, html: '' };

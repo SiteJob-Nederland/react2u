@@ -1,6 +1,6 @@
 # React2u — lokaal ontwerp
 
-Twaalf gekoppelde ontwerppagina’s, met menselijke fotografie, behoud van logo,
+Veertien gekoppelde ontwerppagina’s, inclusief blog en kennisbank, met menselijke fotografie, behoud van logo,
 merkkleuren en de brongetrouwe fontfamilies (Figtree/DM Sans). Geen CRO.
 
 Vanuit de projectmap:
@@ -14,6 +14,9 @@ npm --prefix qa run ontwerp
 Preview: http://127.0.0.1:8133/index.html
 
 `bouw.php` en `verdieping.php` bouwen HTML. `inhoud.json` bevat de zes diensten.
+De titels en beschrijvingen komen uit `../theme/react2u/inc/seo-routes.json`.
+Blog en kennisbank tonen bestaande onderwerpen en verwijzen door naar de
+inhoudelijke pagina's; er worden geen fictieve artikelen of auteurs getoond.
 `ontwerp.css` en `ontwerp.js` zijn de bronnen. De build gebruikt centrale CSS/JS-
 en beeldkwaliteitsscripts in een geïsoleerde map en serveert de gebouwde assets.
 De lokale server toont alleen toegestane pagina’s/assets en blokkeert broncode,

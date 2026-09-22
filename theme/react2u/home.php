@@ -15,9 +15,8 @@ $posts_page = (int) get_option( 'page_for_posts' );
 		null,
 		array(
 			'eyebrow' => __( 'Blog', 'react2u' ),
-			'title'   => $posts_page ? get_the_title( $posts_page ) : __( 'Blog', 'react2u' ),
-			/* PER KLANT: één zin die duidelijk maakt waarom deze blog bestaat. */
-			'intro'   => __( 'Wat we in de praktijk tegenkomen, opgeschreven zodat je er zelf iets aan hebt.', 'react2u' ),
+			'title'   => __( 'Blog over verzuim en gezond werken', 'react2u' ),
+			'intro'   => __( 'Praktische inzichten over verzuim, preventie en gezond werken. Voor werkgevers en werknemers die verder willen kijken dan een ziekmelding.', 'react2u' ),
 		)
 	);
 	?>

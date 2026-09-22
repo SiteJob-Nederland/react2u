@@ -30,8 +30,14 @@ function band(string $title, string $copy, string $url, string $label): string {
 function faq(string $question, string $answer): string {
     return '<details class="faq"><summary>' . $question . '</summary><p>' . $answer . '</p></details>';
 }
-function page(string $name, string $title, string $description, string $body): void {
+function page(string $name, string $body): void {
     global $config;
+    $routes = json_decode(file_get_contents(dirname(__DIR__) . '/theme/react2u/inc/seo-routes.json'), true, 512, JSON_THROW_ON_ERROR);
+    if (!isset($routes[$name]['title'], $routes[$name]['description'])) {
+        throw new RuntimeException('SEO-route ontbreekt: ' . $name);
+    }
+    $title = $routes[$name]['title'];
+    $description = $routes[$name]['description'];
     $contact = $config['contact'];
     $assetManifest = is_file(__DIR__ . '/assets/quality-assets.json') ? json_decode(file_get_contents(__DIR__ . '/assets/quality-assets.json'), true) : [];
     $css = isset($assetManifest['ontwerp.css']) ? $assetManifest['ontwerp.css']['path'] : 'ontwerp.css';
@@ -42,7 +48,7 @@ function page(string $name, string $title, string $description, string $body): v
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow"><meta name="description" content="<?= e($description) ?>">
-  <title><?= e($title) ?> · React2u</title>
+  <title><?= e($title) ?></title>
   <link rel="icon" href="assets/favicon.png"><link rel="stylesheet" href="<?= e($css) ?>">
   <link rel="preload" href="assets/display-var-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script src="<?= e($js) ?>" defer></script>
@@ -70,7 +76,7 @@ function page(string $name, string $title, string $description, string $body): v
 <footer class="footer"><div class="shell">
   <div class="footer-grid">
     <div class="footer-brand"><a class="logo" href="index.html" aria-label="React2u — naar home"><img src="assets/logo.png" width="164" height="101" loading="lazy" alt="React2u"></a><p class="footer-tagline"><?= e($contact['tagline']) ?>.</p></div>
-    <nav aria-label="Snel naar"><h2>Waar kunnen we je mee helpen?</h2><ul><li><a href="werkgevers.html">Voor werkgevers</a></li><li><a href="werknemers.html">Voor werknemers</a></li><li><a href="over-react2u.html">Over React2u</a></li><li><a href="contact.html">Neem contact op</a></li></ul></nav>
+    <nav aria-label="Snel naar"><h2>Waar kunnen we je mee helpen?</h2><ul><li><a href="werkgevers.html">Voor werkgevers</a></li><li><a href="werknemers.html">Voor werknemers</a></li><li><a href="blog.html">Blog</a></li><li><a href="kennisbank.html">Kennisbank</a></li><li><a href="over-react2u.html">Over React2u</a></li><li><a href="contact.html">Neem contact op</a></li></ul></nav>
     <div><h2>Even contact</h2><ul><li><a href="tel:<?= e($contact['phone_link']) ?>"><?= e($contact['phone']) ?></a></li><li><a href="mailto:<?= e($contact['email']) ?>"><?= e($contact['email']) ?></a></li><li><?= e($contact['street']) ?><br><?= e($contact['postcode'] . ' ' . $contact['city']) ?></li></ul></div>
   </div>
   <div class="footer-bottom"><span>React2u · Gezond. Menselijk. Duidelijk.</span><nav class="legal" aria-label="Documenten"><a href="https://react2u.nl/wp-content/uploads/2025/05/Privacy%20reglement%20r2u.pdf">Privacy</a><a href="https://react2u.nl/wp-content/uploads/2025/05/Klachtenprocedure%20r2u.pdf">Klachtenprocedure</a><a href="https://react2u.nl/wp-content/uploads/2025/05/Algemene%20voorwaarden%20r2u.pdf">Voorwaarden</a></nav></div>
@@ -96,7 +102,7 @@ $home = '<section class="audience-gateway" id="keuze" aria-labelledby="chooser-t
     </a>
   </nav>
 </section>';
-page('home', 'Kies jouw route | Werkgevers of werknemers', 'React2u helpt werkgevers en werknemers. Kies de informatie en begeleiding die bij jouw situatie past.', $home);
+page('home', $home);
 
 $services = '';
 foreach ($config['services'] as $index => $service) {
@@ -123,7 +129,7 @@ $employerMoments = '<section class="moments-section" aria-labelledby="moments-ti
   </div>
 </section>';
 $employers = str_replace('<section class="contact-band"', $employerDetail . $employerMoments . '<section class="contact-band"', $employers);
-page('werkgevers', 'Arbodienst voor werkgevers', 'React2u ondersteunt werkgevers bij verzuimbegeleiding, preventie en duurzame inzetbaarheid. Ontdek onze persoonlijke aanpak en diensten.', $employers);
+page('werkgevers', $employers);
 
 $employees = '<div class="shell"><nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="index.html#keuze">Voor wie</a><span aria-hidden="true">/</span><span aria-current="page">Werknemers</span></nav>
 <section class="subhero" aria-labelledby="employee-title"><div><p class="eyebrow">Voor werknemers</p><h1 id="employee-title">Even uit het werk.<br>Niet uit beeld.</h1><p class="hero-intro">Als werken even niet gaat, komt er veel op je af. We luisteren naar jouw verhaal en helpen je op weg. Met aandacht voor jou en duidelijkheid over de begeleiding.</p><div class="button-row">' . button('#hulp', 'Waar kunnen we je bij helpen?') . '</div></div>
@@ -137,7 +143,7 @@ faq('Waar vind ik het verzuimprotocol?', 'Het verzuimprotocol staat op de websit
 faq('Bij wie kan ik terecht met een vraag?', 'Je kunt React2u bellen of mailen via de <a href="contact.html#werknemer">contactpagina voor werknemers</a>. Daar vind je de contactgegevens.') .
 '</div></div></section>' . band('Jouw verhaal telt.', 'Heb je een vraag of behoefte aan uitleg? Neem contact op.', 'contact.html#werknemer', 'Stel je vraag');
 $employees = str_replace('<section class="section shell" aria-labelledby="faq-title">', $employeeDetail . '<section class="section shell" aria-labelledby="faq-title">', $employees);
-page('werknemers', 'Hulp bij verzuim en re-integratie voor werknemers', 'Ben je ziek of bezig met terugkeer naar werk? Lees hoe React2u je begeleidt, vind het verzuimprotocol en stel je vraag.', $employees);
+page('werknemers', $employees);
 
 function contactMethods(): string {
     global $config;
@@ -147,7 +153,7 @@ function contactMethods(): string {
 $contactPage = '<div class="shell"><nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span aria-hidden="true">/</span><a href="over-react2u.html">React2u</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav>
 <section class="subhero" aria-labelledby="contact-title"><div><p class="eyebrow">Kom met ons in contact</p><h1 id="contact-title">Goed dat je<br>contact zoekt.</h1><p class="hero-intro">Een kennismaking voor je organisatie of een vraag over je begeleiding. We horen graag van je.</p></div><figure class="subhero-photo">' . photo('even-bellen', photoDescription('even-bellen'), '(max-width:760px) 90vw, 40vw', true) . '<figcaption>We horen graag<br>jouw verhaal.</figcaption></figure></section>
 <div class="contact-options"><section class="contact-option" id="werkgever" aria-labelledby="contact-employer"><p class="section-kicker">Voor werkgevers</p>' . editorialPhoto('werkplezier') . '<h2 id="contact-employer">Laten we kennismaken.</h2><p>Bespreek je vraag over verzuim, preventie of ondersteuning voor je organisatie.</p>' . contactMethods() . '</section><section class="contact-option" id="werknemer" aria-labelledby="contact-employee"><p class="section-kicker">Voor werknemers</p>' . editorialPhoto('persoonlijk-gesprek') . '<h2 id="contact-employee">Waar kunnen we je bij helpen?</h2><p>Neem contact op met een vraag over React2u of je begeleiding.</p>' . contactMethods() . '</section></div></div>';
-page('contact', 'Neem contact op', 'Werkgever met een vraag of werknemer die begeleiding zoekt? Neem contact op met React2u.', $contactPage);
+page('contact', $contactPage);
 
 $assets = __DIR__ . '/assets';
 if (!is_dir($assets)) mkdir($assets, 0755, true);
@@ -155,4 +161,4 @@ foreach (['logo.png', 'favicon.png'] as $name) copy(dirname(__DIR__) . '/theme/r
 foreach (['display-var-latin.woff2', 'body-var-latin.woff2'] as $name) copy(dirname(__DIR__) . '/theme/react2u/assets/fonts/' . $name, $assets . '/' . $name);
 if (!is_dir($assets . '/quality')) mkdir($assets . '/quality', 0755, true);
 foreach (glob(__DIR__ . '/media/theme/react2u-ontwerp/assets/images/quality/*.webp') as $image) copy($image, $assets . '/quality/' . basename($image));
-echo "Twaalf ontwerppagina's gebouwd met bestaande merkassets en proof.php als bron.\n";
+echo "Veertien ontwerppagina's gebouwd met bestaande merkassets en proof.php als bron.\n";

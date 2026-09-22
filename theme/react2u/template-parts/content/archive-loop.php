@@ -52,7 +52,11 @@ $before  = (string) ( $args['before'] ?? '' );
 			?>
 		<?php else : ?>
 			<div class="empty-state">
-				<p><?php esc_html_e( 'Hier staat nog niets. Neem gerust direct contact op.', 'react2u' ); ?></p>
+				<p><?php esc_html_e( 'Er zijn hier nog geen artikelen. Lees intussen verder bij de informatie voor werkgevers en werknemers.', 'react2u' ); ?></p>
+				<?php if ( is_home() || is_post_type_archive( 'react2u_kennisbank' ) ) : ?>
+					<?php $employer_page = get_page_by_path( 'werkgevers' ); ?>
+					<p><a href="<?php echo esc_url( $employer_page instanceof WP_Post && 'publish' === $employer_page->post_status ? get_permalink( $employer_page ) : home_url( '/diensten/' ) ); ?>"><?php esc_html_e( 'Voor werkgevers', 'react2u' ); ?></a> · <a href="<?php echo esc_url( home_url( '/werknemers/' ) ); ?>"><?php esc_html_e( 'Voor werknemers', 'react2u' ); ?></a></p>
+				<?php endif; ?>
 				<a class="button button-primary" href="<?php echo esc_url( react2u_cta_url( 'contact' ) ); ?>"><?php echo esc_html( react2u_cta_label( 'contact' ) ); ?></a>
 			</div>
 		<?php endif; ?>

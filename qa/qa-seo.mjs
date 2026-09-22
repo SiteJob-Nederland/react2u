@@ -7,12 +7,14 @@
  */
 
 import { patchDnsLookup } from './qa-resolve.mjs';
+import { readFile } from 'node:fs/promises';
 
 patchDnsLookup();
 
 const baseUrl = (process.env.SITE_URL || 'http://127.0.0.1:8103').replace(/\/$/, '');
 const origin = new URL(baseUrl).origin;
 const indexable = process.env.EXPECT_INDEXABLE !== '0';
+const routeMeta = JSON.parse(await readFile(new URL('../theme/react2u/inc/seo-routes.json', import.meta.url), 'utf8'));
 
 const meldingen = [];
 const meld = (ernst, waar, tekst) => meldingen.push({ ernst, waar, tekst });
@@ -88,15 +90,18 @@ function typenUit(grafen) {
  * installatie heeft nog geen artikel, en dat is geen fout in het thema.
  */
 const teControleren = [
-	{ pad: '/', naam: 'homepage', verwacht: ['Organization', 'WebSite', 'WebPage', 'BreadcrumbList'] },
-	{ pad: '/blog/', naam: 'blogoverzicht', verwacht: ['BreadcrumbList'] },
-	{ pad: '/kennisbank/', naam: 'kennisbank', verwacht: ['BreadcrumbList'] },
+	{ pad: '/', naam: 'homepage', route: 'home', verwacht: ['Organization', 'WebSite', 'WebPage'] },
+	{ pad: '/werkgevers/', naam: 'werkgevers', route: 'werkgevers', verwacht: ['WebPage', 'BreadcrumbList'], vereist: true },
+	{ pad: '/werknemers/', naam: 'werknemers', route: 'werknemers', verwacht: ['WebPage', 'BreadcrumbList'] },
+	{ pad: '/blog/', naam: 'blogoverzicht', route: 'blog', verwacht: ['BreadcrumbList'] },
+	{ pad: '/kennisbank/', naam: 'kennisbank', route: 'kennisbank', verwacht: ['BreadcrumbList'] },
 ];
 
 for (const pagina of teControleren) {
 	const res = await fetch(origin + pagina.pad, { redirect: 'follow' }).catch(() => null);
 	if (!res || res.status === 404) {
-		console.log(`Overgeslagen: ${pagina.naam} (${pagina.pad}) bestaat nog niet.`);
+		if (pagina.vereist) meld('FOUT', pagina.pad, 'doelgroeppagina ontbreekt; de SEO-route kan nog niet landen');
+		else console.log(`Overgeslagen: ${pagina.naam} (${pagina.pad}) bestaat nog niet.`);
 		continue;
 	}
 	if (res.status !== 200) {
@@ -105,6 +110,10 @@ for (const pagina of teControleren) {
 	}
 
 	const html = await res.text();
+	const expected = routeMeta[pagina.route];
+	if (!expected || !html.includes(`<title>${expected.title}</title>`)) meld('FOUT', pagina.pad, 'paginatitel wijkt af van de vastgelegde zoekroute');
+	if (!expected || !html.includes(`content="${expected.description}">`)) meld('FOUT', pagina.pad, 'meta-description wijkt af van de vastgelegde zoekroute');
+	if (!html.includes(`<link rel="canonical" href="${origin}${pagina.pad}">`)) meld('FOUT', pagina.pad, 'self-canonical ontbreekt of wijkt af');
 	const grafen = schemaUit(html);
 
 	const stuk = grafen.find((g) => g.__fout);
@@ -134,6 +143,9 @@ for (const pagina of teControleren) {
 			}
 			if (knoop['@type'] === 'Organization' && JSON.stringify(knoop).includes('[PLACEHOLDER]')) {
 				meld('FOUT', pagina.pad, 'er staat een [PLACEHOLDER] in de gestructureerde data');
+			}
+			if (knoop['@type'] === 'Organization' && knoop.aggregateRating) {
+				meld('FOUT', pagina.pad, 'eigen organisatierating hoort niet in dit schema');
 			}
 			if (knoop.aggregateRating && JSON.stringify(knoop.aggregateRating).includes('[PLACEHOLDER]')) {
 				meld('FOUT', pagina.pad, 'aggregateRating bevat een placeholder — dat is een verzonnen cijfer aan Google');

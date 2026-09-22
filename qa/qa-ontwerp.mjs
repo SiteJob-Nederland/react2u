@@ -2,11 +2,12 @@
 import { dependency } from './quality/config.mjs';
 const { chromium } = dependency('playwright');
 const axe = dependency('axe-core');
-import { mkdir, writeFile, readdir } from 'node:fs/promises';
+import { mkdir, writeFile, readdir, readFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
 const origin = 'http://127.0.0.1:8133';
 const files = (await readdir(new URL('../ontwerp/', import.meta.url))).filter(file => file.endsWith('.html')).sort();
+const seoRoutes = JSON.parse(await readFile(new URL('../theme/react2u/inc/seo-routes.json', import.meta.url), 'utf8'));
 const widths = [320, 390, 768, 1024, 1280, 1440];
 const output = new URL('./uitvoer/ontwerp/', import.meta.url);
 await mkdir(output, { recursive: true });
@@ -33,6 +34,10 @@ try {
       await page.evaluate(() => document.fonts.ready);
       assert.equal(response.status(), 200);
       assert.match(response.headers()['x-robots-tag'], /noindex/);
+      const slug = file === 'index.html' ? 'home' : file.replace(/\.html$/, '');
+      assert.equal(await page.title(), seoRoutes[slug]?.title, `${file}: SEO-titel wijkt af van de WordPress-bron`);
+      assert.equal(await page.locator('meta[name=description]').getAttribute('content'), seoRoutes[slug]?.description, `${file}: beschrijving wijkt af van de WordPress-bron`);
+      assert.match(await page.locator('meta[name=robots]').getAttribute('content'), /noindex/, `${file}: ontwerp mag niet indexeerbaar zijn`);
       for (const img of await page.locator('img').all()) {
         await img.scrollIntoViewIfNeeded();
         await img.evaluate(image => image.decode());
@@ -128,14 +133,16 @@ try {
     assert(await noJsPage.locator('h1').isVisible());
   }
   await noJs.close();
-  report.interactions.push('Alle twaalf pagina’s en navigatie bruikbaar zonder JavaScript');
+  report.interactions.push('Alle veertien pagina’s en navigatie bruikbaar zonder JavaScript');
 
   await page.goto(`${origin}/index.html`);
   const audienceUrls = await page.locator('.audience-choice').evaluateAll(links => links.map(link => new URL(link.href).pathname));
   assert.deepEqual(audienceUrls, ['/werkgevers.html', '/werknemers.html']);
   const audienceMeta = {
     'werkgevers.html': ['Arbodienst voor werkgevers', 'React2u ondersteunt werkgevers'],
-    'werknemers.html': ['Hulp bij verzuim en re-integratie voor werknemers', 'Ben je ziek of bezig met terugkeer naar werk?'],
+    'werknemers.html': ['Verzuimbegeleiding voor werknemers', 'Ben je ziek of bezig met terugkeer naar werk?'],
+    'blog.html': ['Blog over verzuim', 'Verken de onderwerpen'],
+    'kennisbank.html': ['Kennisbank over verzuim', 'Vind uitleg van React2u'],
   };
   for (const [file, [title, description]] of Object.entries(audienceMeta)) {
     await page.goto(`${origin}/${file}`);

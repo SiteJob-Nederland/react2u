@@ -1,0 +1,58 @@
+{
+  "home": {
+    "title": "React2u | Voor werkgevers en werknemers",
+    "description": "React2u helpt werkgevers en werknemers bij gezond werken, verzuim en herstel. Kies de informatie die bij jouw situatie past."
+  },
+  "werkgevers": {
+    "title": "Arbodienst voor werkgevers | React2u",
+    "description": "React2u ondersteunt werkgevers bij verzuimbegeleiding, preventie en duurzame inzetbaarheid. Ontdek onze persoonlijke aanpak en diensten."
+  },
+  "werknemers": {
+    "title": "Verzuimbegeleiding voor werknemers | React2u",
+    "description": "Ben je ziek of bezig met terugkeer naar werk? Lees hoe React2u je begeleidt, vind het verzuimprotocol en stel je vraag."
+  },
+  "verzuimbegeleiding-wvp": {
+    "title": "Verzuimbegeleiding WVP voor werkgevers | React2u",
+    "description": "Begeleiding bij verzuim volgens de Wet verbetering poortwachter: van ziekmelding en plan van aanpak tot re-integratie en dossieropbouw."
+  },
+  "verzuimbegeleiding-erd-zw": {
+    "title": "Verzuimbegeleiding ERD/ZW | React2u",
+    "description": "Eigenrisicodrager voor de Ziektewet? React2u helpt bij de begeleiding en re-integratie van verzuimende ex-medewerkers."
+  },
+  "preventie-en-vitaliteit": {
+    "title": "Preventie en vitaliteit op het werk | React2u",
+    "description": "Werk aan een gezonde organisatie met preventief medisch onderzoek, medewerkerstevredenheidsonderzoek en aandacht voor duurzame inzetbaarheid."
+  },
+  "begeleiding-en-coaching": {
+    "title": "Begeleiding en coaching bij werk | React2u",
+    "description": "React2u biedt persoonlijke begeleiding en coaching rond herstel, werkgeluk, veerkracht en terugkeer naar werk. Bekijk de mogelijkheden."
+  },
+  "trainingen-en-workshops": {
+    "title": "Trainingen en workshops over verzuim | React2u",
+    "description": "Praktische trainingen en workshops over verzuim, leidinggeven en communicatie, afgestemd op de vragen binnen jouw organisatie."
+  },
+  "risicomanagement": {
+    "title": "Risicomanagement en RI&E | React2u",
+    "description": "React2u ondersteunt werkgevers bij het inventariseren van arbeidsrisico's en het opstellen van een plan van aanpak voor gezond werken."
+  },
+  "verzuimprotocol": {
+    "title": "Verzuimprotocol: ziekmelden en begeleiding | React2u",
+    "description": "Wat gebeurt er na een ziekmelding? Lees hoe contact, begeleiding en re-integratie bij React2u verlopen en waar je met vragen terechtkunt."
+  },
+  "over-react2u": {
+    "title": "Over React2u | Menselijke verzuimbegeleiding",
+    "description": "Maak kennis met React2u en onze persoonlijke aanpak voor gezond werken, verzuimbegeleiding en een passende terugkeer naar werk."
+  },
+  "contact": {
+    "title": "Contact met React2u | Werkgever of werknemer",
+    "description": "Heb je als werkgever of werknemer een vraag over verzuim, begeleiding of preventie? Neem contact op met React2u."
+  },
+  "blog": {
+    "title": "Blog over verzuim en gezond werken | React2u",
+    "description": "Verken de onderwerpen waar React2u mee werkt: verzuim, preventie, re-integratie en gezond werken voor werkgevers en werknemers."
+  },
+  "kennisbank": {
+    "title": "Kennisbank over verzuim en re-integratie | React2u",
+    "description": "Vind uitleg van React2u over verzuim, re-integratie, preventie en het verzuimprotocol. Voor werkgevers en werknemers."
+  }
+}

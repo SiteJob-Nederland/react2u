@@ -40,7 +40,7 @@ foreach ($serviceContent as $slug => $item) {
     $body .= '<section class="section shell service-intro"><p class="section-kicker">Samen aan de slag</p><h2>Wat kun je van ons verwachten?</h2><p class="reading-intro">' . e($item['context']) . '</p>' . '<div class="photo-story service-feature">' . editorialPhoto($item['detailImage']) . '<div><h3>' . e($item['sections'][0][0]) . '</h3><p>' . e($item['sections'][0][1]) . '</p></div></div>' . contentCards(array_slice($item['sections'], 1)) . '</section>';
     $body .= '<section class="section muted-section"><div class="shell"><p class="section-kicker">Helder voor iedereen</p><h2>Weten waar je aan toe bent.</h2><div class="responsibilities"><article><h3>' . e($item['leftTitle']) . '</h3>' . itemList($item['left']) . '</article><article><h3>' . e($item['rightTitle']) . '</h3>' . itemList($item['right']) . '</article></div></div></section>';
     $body .= '<section class="section shell related related-photo">' . editorialPhoto($item['closingImage']) . '<div><p class="section-kicker">Elke situatie is anders</p><h2>Wat speelt er bij jou?</h2><p>Bespreek je vraag met ons. Samen kijken we welke begeleiding of dienstverlening past bij jouw organisatie en je medewerkers.</p></div><div>' . button('contact.html#werkgever', 'Bespreek jouw vraag') . '<a class="text-link" href="werkgevers.html#diensten">Bekijk alle diensten' . arrow() . '</a></div></section>';
-    page($slug, $item['title'], $item['intro'], $body);
+    page($slug, $body);
 }
 $employerDetail = splitSection('samenwerken', 'Samenwerking die verder kijkt', 'Meer dan alleen<br>het verzuimdossier.', [
     'Een medewerker die uitvalt mist vaak meer dan het werk alleen. Ook voor jou als werkgever verandert er veel. React2u kijkt daarom naar gezondheid, persoonlijke omstandigheden én de werkomgeving. Werkdruk, communicatie en organisatiecultuur kunnen allemaal een rol spelen.',
@@ -79,7 +79,7 @@ $about .= '<section class="section muted-section"><div class="shell"><p class="s
 ]) . '</div></section>';
 $about .= splitSection('ook-preventief', 'Verder kijken dan herstel', 'Goed voor vandaag.<br>Met oog voor morgen.', ['Naast verzuimbegeleiding kun je bij React2u terecht voor preventie en vitaliteit, coaching, trainingen en risicomanagement. Bijvoorbeeld wanneer je signalen eerder wilt herkennen, medewerkers wilt ondersteunen of wilt werken aan een gezondere organisatie.', 'Ook een specifieke vraag is welkom. We denken mee over een aanpak op maat en bespreken welke expertise daarvoor nodig is.']);
 $about .= band('Maak kennis met React2u.', 'We horen graag wat er bij jou of jouw organisatie speelt.', 'contact.html', 'Laten we praten');
-page('over-react2u', 'Over React2u', 'Maak kennis met de persoonlijke aanpak van React2u: aandacht voor mensen, herstel en gezond werken.', $about);
+page('over-react2u', $about);
 
 $protocol = infoHero('Verzuimprotocol', 'Ziek gemeld. Hoe nu verder?', 'Als je niet kunt werken, wil je weten wat je kunt verwachten. Het verzuimprotocol van React2u geeft richting aan het contact en de begeleiding na een ziekmelding.', 'even-bellen', 'Duidelijkheid geeft rust', 'werknemers');
 $protocol .= '<section class="section shell"><p class="section-kicker">Het protocol in begrijpelijke stappen</p><h2>We houden contact.<br>En kijken samen vooruit.</h2><p class="reading-intro">De onderstaande uitleg volgt de onderwerpen van het bestaande visuele React2u-protocol. Bespreek vragen over jouw situatie en de afspraken binnen je organisatie met je werkgever of React2u.</p>' . contentCards([
@@ -92,4 +92,32 @@ $protocol .= '<section class="section shell"><p class="section-kicker">Het proto
 ]) . '<a class="text-link" href="https://react2u.nl/wp-content/uploads/2024/06/Verzuimprotocol-1-e1717661637232-890x1024.png">Bekijk het oorspronkelijke visuele protocol' . arrow() . '</a></section>';
 $protocol .= '<div class="shell protocol-photo">' . editorialPhoto('persoonlijk-gesprek', 'Ruimte voor je vragen. Aandacht voor jou.') . '</div>';
 $protocol .= band('Niet duidelijk? Laat het ons weten.', 'Je hoeft vragen over de begeleiding niet voor jezelf te houden.', 'contact.html#werknemer', 'Stel je vraag');
-page('verzuimprotocol', 'Verzuimprotocol', 'Uitleg bij het React2u-verzuimprotocol: ziekmelden, contact houden en samen werken aan het vervolg.', $protocol);
+page('verzuimprotocol', $protocol);
+
+function editorialLanding(string $label, string $headline, string $intro, string $image, array $topics): string {
+    $body = '<div class="shell"><nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">' . e($label) . '</span></nav>';
+    $body .= '<section class="subhero"><div><p class="eyebrow">' . e($label) . '</p><h1>' . e($headline) . '</h1><p class="hero-intro">' . e($intro) . '</p></div><figure class="subhero-photo">' . photo($image, photoDescription($image), '(max-width:760px) 90vw, 40vw', true) . '</figure></section></div>';
+    $body .= '<section class="section shell editorial-topics"><p class="section-kicker">Lees verder</p><h2>Begin bij wat voor jou speelt.</h2><div class="content-cards">';
+    foreach ($topics as [$title, $text, $url, $link]) {
+        $body .= '<article><h3>' . e($title) . '</h3><p>' . e($text) . '</p><a class="text-link" href="' . e($url) . '">' . e($link) . arrow() . '</a></article>';
+    }
+    return $body . '</div></section>';
+}
+
+$blog = editorialLanding('Blog', 'Gezond werken begint bij aandacht.', 'Verzuim, preventie en terugkeer naar werk raken mensen én organisaties. Verken de onderwerpen waar React2u dagelijks mee werkt.', 'samen-leren', [
+    ['Als iemand uitvalt', 'Wat vraagt verzuim van de medewerker en van de organisatie? Lees hoe begeleiding volgens de WVP wordt ingericht.', 'verzuimbegeleiding-wvp.html', 'Over verzuimbegeleiding'],
+    ['Voorkomen waar het kan', 'Gezond blijven werken begint met signalen herkennen en aandacht voor werkplezier.', 'preventie-en-vitaliteit.html', 'Over preventie en vitaliteit'],
+    ['Ruimte voor het gesprek', 'Een persoonlijk gesprek kan helpen om te ontdekken wat nodig is voor herstel en beweging.', 'begeleiding-en-coaching.html', 'Over begeleiding en coaching'],
+    ['Samen leren', 'Met praktische trainingen kunnen leidinggevenden en teams beter omgaan met verzuim en communicatie.', 'trainingen-en-workshops.html', 'Over trainingen en workshops'],
+]);
+$blog .= band('Een vraag uit jouw praktijk?', 'We bespreken graag wat er in jouw organisatie of situatie speelt.', 'contact.html', 'Neem contact op');
+page('blog', $blog);
+
+$knowledge = editorialLanding('Kennisbank', 'Je vraag verdient een helder antwoord.', 'Welke stappen volgen bij verzuim? En wie doet wat? Vind de uitleg die past bij jouw rol en situatie.', 'persoonlijk-gesprek', [
+    ['Voor werkgevers', 'Van de eerste ziekmelding tot re-integratie: ontdek welke begeleiding en diensten React2u biedt.', 'werkgevers.html', 'Bekijk de werkgeversroute'],
+    ['Voor werknemers', 'Als werken tijdelijk niet gaat, wil je weten waar je aan toe bent en bij wie je terechtkunt.', 'werknemers.html', 'Bekijk de werknemersroute'],
+    ['Het verzuimprotocol', 'Lees over ziekmelden, contact houden en samen afspraken maken over het vervolg.', 'verzuimprotocol.html', 'Bekijk het verzuimprotocol'],
+    ['Eigenrisicodrager Ziektewet', 'Als eigenrisicodrager begeleid je ook verzuimende ex-medewerkers. Lees hoe React2u daarbij ondersteunt.', 'verzuimbegeleiding-erd-zw.html', 'Over ERD/ZW'],
+]);
+$knowledge .= band('Staat jouw vraag er niet tussen?', 'We luisteren en helpen je bij de juiste informatie.', 'contact.html', 'Stel je vraag');
+page('kennisbank', $knowledge);

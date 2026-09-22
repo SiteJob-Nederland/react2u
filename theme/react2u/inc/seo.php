@@ -22,6 +22,32 @@ function react2u_seo_plugin_active(): bool {
 	return defined( 'WPSEO_VERSION' ) || defined( 'RANK_MATH_VERSION' ) || defined( 'AIOSEO_VERSION' ) || defined( 'SEOPRESS_VERSION' );
 }
 
+/** Dezelfde gecontroleerde paginatitels en beschrijvingen als in het ontwerp. */
+function react2u_seo_routes(): array {
+	static $routes = null;
+	if ( null === $routes ) {
+		$file   = REACT2U_DIR . '/inc/seo-routes.json';
+		$parsed = is_readable( $file ) ? json_decode( (string) file_get_contents( $file ), true ) : null;
+		$routes = is_array( $parsed ) ? $parsed : array();
+	}
+	return $routes;
+}
+
+function react2u_seo_route(): array {
+	if ( is_front_page() ) {
+		$slug = 'home';
+	} elseif ( is_home() ) {
+		$slug = 'blog';
+	} elseif ( is_post_type_archive( 'react2u_kennisbank' ) ) {
+		$slug = 'kennisbank';
+	} elseif ( is_singular( 'page' ) ) {
+		$slug = (string) get_post_field( 'post_name', get_queried_object_id() );
+	} else {
+		$slug = '';
+	}
+	return react2u_seo_routes()[ $slug ] ?? array();
+}
+
 /**
  * Beschrijving voor de huidige weergave. Nooit leeg: een overzichtspagina
  * zonder beschrijving laat Google zelf een zin uit de pagina plukken.
@@ -34,6 +60,11 @@ function react2u_meta_description(): string {
 	if ( is_singular() ) {
 		$override = trim( (string) get_post_meta( (int) get_queried_object_id(), '_react2u_meta_description', true ) );
 		if ( '' !== $override ) { return $override; }
+	}
+
+	$route = react2u_seo_route();
+	if ( '' !== ( $route['description'] ?? '' ) ) {
+		return (string) $route['description'];
 	}
 
 	$site = get_bloginfo( 'name' );
@@ -284,6 +315,17 @@ function react2u_output_meta(): void {
 }
 add_action( 'wp_head', 'react2u_output_meta', 2 );
 
+/** Een leeg blog- of kennisbankoverzicht wordt pas indexeerbaar zodra er publicaties zijn. */
+function react2u_empty_archive_robots( array $robots ): array {
+	if ( ( is_home() || is_post_type_archive( 'react2u_kennisbank' ) ) && ! have_posts() ) {
+		unset( $robots['index'] );
+		$robots['noindex'] = true;
+		$robots['follow']  = true;
+	}
+	return $robots;
+}
+add_filter( 'wp_robots', 'react2u_empty_archive_robots' );
+
 /**
  * Waarde uit inc/proof.php die veilig in het schema mag: leeg en nog niet
  * ingevulde waarden laten we weg. Een [PLACEHOLDER] als telefoonnummer
@@ -354,18 +396,6 @@ function react2u_output_schema(): void {
 		);
 	}
 
-	/* Badge en schema delen één fail-closed bron voor publieke ratingdata. */
-	$rating = react2u_public_rating_data();
-	if ( null !== $rating ) {
-		$organization['aggregateRating'] = array(
-			'@type'       => 'AggregateRating',
-			'ratingValue' => $rating['score_normalized'],
-			'bestRating'  => $rating['max_normalized'],
-			'worstRating' => '1',
-			'ratingCount' => (int) $rating['count_number'],
-		);
-	}
-
 	$graph = array(
 		$organization,
 		array(
@@ -373,7 +403,7 @@ function react2u_output_schema(): void {
 			'@id'             => $website_id,
 			'url'             => home_url( '/' ),
 			'name'            => get_bloginfo( 'name' ),
-			'description'     => react2u_meta_description(),
+			'description'     => (string) ( react2u_seo_routes()['home']['description'] ?? get_bloginfo( 'description' ) ),
 			'publisher'       => array( '@id' => $organization_id ),
 			'inLanguage'      => get_bloginfo( 'language' ),
 			'potentialAction' => array(
@@ -389,7 +419,7 @@ function react2u_output_schema(): void {
 
 	$canonical = react2u_canonical_url();
 
-	$graph[] = array(
+	$webpage = array(
 		'@type'       => is_front_page() ? array( 'WebPage', 'CollectionPage' ) : 'WebPage',
 		'@id'         => $canonical . '#webpage',
 		'url'         => $canonical,
@@ -397,10 +427,14 @@ function react2u_output_schema(): void {
 		'description' => react2u_meta_description(),
 		'isPartOf'    => array( '@id' => $website_id ),
 		'inLanguage'  => get_bloginfo( 'language' ),
-		'breadcrumb'  => array( '@id' => $canonical . '#breadcrumbs' ),
 	);
-
-	$graph[] = react2u_breadcrumb_schema( $canonical );
+	if ( count( react2u_breadcrumb_items() ) > 1 ) {
+		$webpage['breadcrumb'] = array( '@id' => $canonical . '#breadcrumbs' );
+		$graph[]               = $webpage;
+		$graph[]               = react2u_breadcrumb_schema( $canonical );
+	} else {
+		$graph[] = $webpage;
+	}
 
 	if ( is_singular() ) {
 		$post_id   = (int) get_queried_object_id();
@@ -439,19 +473,6 @@ function react2u_output_schema(): void {
 			}
 
 			$graph[] = $article;
-		} elseif ( ! is_front_page() ) {
-			/*
-			 * De homepage heeft hierboven al een WebPage-knoop; een tweede zou
-			 * dezelfde pagina twee keer beschrijven.
-			 */
-			$graph[] = array(
-				'@type'      => 'WebPage',
-				'@id'        => get_permalink( $post_id ) . '#content',
-				'url'        => get_permalink( $post_id ),
-				'name'       => get_the_title( $post_id ),
-				'inLanguage' => get_bloginfo( 'language' ),
-				'isPartOf'   => array( '@id' => $canonical . '#webpage' ),
-			);
 		}
 
 		/*
@@ -581,6 +602,17 @@ function react2u_register_seo_meta(): void {
 		);
 		register_post_meta(
 			$post_type,
+			'_react2u_seo_title',
+			array(
+				'type'              => 'string',
+				'single'            => true,
+				'show_in_rest'      => true,
+				'sanitize_callback' => 'sanitize_text_field',
+				'auth_callback'     => static fn(): bool => current_user_can( 'edit_posts' ),
+			)
+		);
+		register_post_meta(
+			$post_type,
 			'_react2u_canonical_url',
 			array(
 				'type'              => 'string',
@@ -596,9 +628,16 @@ add_action( 'init', 'react2u_register_seo_meta' );
 
 /** Native SEO-titel; de bestaande documenttitel blijft de terugval. */
 function react2u_seo_title_parts( array $parts ): array {
+	if ( react2u_seo_plugin_active() ) {
+		return $parts;
+	}
 	if ( is_singular() ) {
 		$title = trim( (string) get_post_meta( (int) get_queried_object_id(), '_react2u_seo_title', true ) );
 		if ( '' !== $title ) { return array( 'title' => $title ); }
+	}
+	$route = react2u_seo_route();
+	if ( '' !== ( $route['title'] ?? '' ) ) {
+		return array( 'title' => (string) $route['title'] );
 	}
 	return $parts;
 }

@@ -29,6 +29,8 @@ op de inhoudelijke pagina voor zijn of haar situatie kunnen landen.
 | `/` | React2u vinden en doelgroep kiezen | Alleen duidelijke links naar `/werkgevers/` en `/werknemers/` |
 | `/werkgevers/` | Arbodienst en verzuimbegeleiding voor een organisatie | Dienstverlening, aanpak, zes bestaande dienstpagina's en werkgeverscontact |
 | `/werknemers/` | Hulp bij ziekte, begeleiding en terugkeer naar werk | Uitleg van het traject, veelgestelde vragen, `/verzuimprotocol/` en werknemerscontact |
+| `/blog/` | Praktische inzichten over gezond werken en verzuim | Eigen overzicht, artikelen met auteur en links naar relevante doelgroep- en dienstpagina's |
+| `/kennisbank/` | Uitleg bij verzuim, re-integratie en preventie | Eigen overzicht, kennisartikelen en verwijzingen naar de juiste doelgroep |
 
 Elke route krijgt een eigen title, meta-description, H1, intro en self-canonical.
 De gedeelde contactpagina blijft bereikbaar vanuit beide routes. De
@@ -43,15 +45,37 @@ staging/production-weergave gecontroleerd. De merkentree kan in productie
 indexeerbaar blijven voor merkgerelateerde zoekopdrachten, maar krijgt geen
 generieke SEO-tekst om tegelijk op beide doelgroepen te mikken.
 
+De twee redactionele overzichten zijn als pagina in het ontwerp aanwezig en
+hebben eigen titels, beschrijvingen en doorverwijzingen. De WordPress-blog en
+-kennisbank worden automatisch `noindex` zolang ze geen gepubliceerde artikelen
+hebben. Er zijn nog geen geverifieerde klantartikelen of auteurs; die worden
+niet gefingeerd om een leeg overzicht te vullen. Na de eerste publicatie moet
+de indexeerbaarheid op de echte doelhost opnieuw worden gecontroleerd.
+
+Voor de blog passen praktijkinzichten over verzuim, preventie, coaching en
+gezond werken. Voor de kennisbank passen uitlegartikelen over de WVP, de
+Ziektewet voor eigenrisicodragers, het verzuimprotocol en re-integratie.
+Publiceer pas met een echte auteur en inhoudelijke controle. Elk artikel krijgt
+een eigen vraag of onderwerp, één H1, een relevante samenvatting, zichtbare
+publicatie-/wijzigingsdatum en links naar de juiste doelgroep- en dienstpagina.
+Herhaal de diensttekst niet als een nieuw artikel; voeg uitleg of een concreet
+perspectief toe. Gebruik alleen verifieerbare medische/juridische claims en
+beeldrechten. De bestaande templates leveren de technische artikelmetadata,
+Auteur/Person-structuur en sitemappaden zodra echte stukken zijn gepubliceerd.
+
 ## Wat per klant moet gebeuren
 
 - [x] Zoekwoorden per paginatype vastgelegd (zie tabel hieronder)
-- [ ] Eigen SEO-titels en meta-descriptions voor de twee doelgroep-URL's in de WordPress-versie zetten en gerenderd verifiëren
-- [ ] `/werkgevers/` als echte WordPress-pagina publiceren met eigen template en interne links
+- [x] Eigen SEO-titels en meta-descriptions voor de doelgroep-, dienst-, blog- en kennisbankroutes in de bron vastgelegd (`theme/react2u/inc/seo-routes.json`)
+- [ ] Gerenderde SEO-titels en meta-descriptions op de uiteindelijke WordPress-doelhost controleren
+- [x] Broninhoud en interne links voor de nieuwe `/werkgevers/`-pagina voorbereid
+- [ ] `/werkgevers/` publiceren in de echte WordPress-omgeving (contentimport alleen na controle van bestaande klantinhoud)
 - [x] Terugvalmenu's naar de echte URL's (`inc/setup.php`)
 - [ ] Auteurs met échte functie, foto en bio — geen auteurs bekend bij deze
       klant; blog/kennisbank staan klaar maar zonder content
 - [ ] Interne links: elke belangrijke pagina bereikbaar binnen drie klikken
+- [ ] Goedgekeurde tweeroute-homepage uit `ontwerp/` overzetten naar het WordPress-thema; de huidige WordPress-homepage is nog de oudere werkgeversgerichte variant
+- [ ] Echte blog- en kennisbankartikelen plus auteursprofielen toevoegen en de indexeerbaarheid van beide overzichten daarna controleren
 - [x] Geen redirects voor de bestaande dienst- en werknemerspagina's: hun slugs
       blijven gelijk. `/werkgevers/` wordt als nieuwe pagina toegevoegd.
 
@@ -70,6 +94,8 @@ generieke SEO-tekst om tegelijk op beide doelgroepen te mikken.
 | `/werknemers/` | verzuimbegeleiding voor werknemers | ziek melden, re-integratie, herstel, begeleiding |
 | `/verzuimprotocol/` | verzuimprotocol werknemer | ziek melden, rechten en plichten, stappen bij ziekte |
 | /over-react2u/ | over React2u | arbodienst Eindhoven |
+| `/blog/` | blog over verzuim en gezond werken | preventie, terugkeer naar werk, werkplezier |
+| `/kennisbank/` | kennisbank verzuim en re-integratie | WVP, Ziektewet, verzuimprotocol |
 
 ## Redirect-tabel bij een herbouw
 

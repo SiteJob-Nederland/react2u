@@ -13,9 +13,8 @@ get_header();
 		null,
 		array(
 			'eyebrow' => __( 'Kennisbank', 'react2u' ),
-			/* PER KLANT: kop en intro van het kennisbankoverzicht. */
-			'title'   => __( 'Alles uitgelegd, stap voor stap', 'react2u' ),
-			'intro'   => __( 'Geschreven door de mensen die het elke dag doen.', 'react2u' ),
+			'title'   => __( 'Kennisbank over verzuim en re-integratie', 'react2u' ),
+			'intro'   => __( 'Uitleg over verzuimbegeleiding, preventie en terugkeer naar werk. Met aandacht voor vragen van werkgevers en werknemers.', 'react2u' ),
 		)
 	);
 	?>

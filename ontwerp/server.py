@@ -5,7 +5,7 @@ import re
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent
-ALLOWED = {"index.html", "werkgevers.html", "werknemers.html", "contact.html", "ontwerp.css", "ontwerp.js",
+ALLOWED = {"index.html", "werkgevers.html", "werknemers.html", "contact.html", "blog.html", "kennisbank.html", "ontwerp.css", "ontwerp.js",
            "over-react2u.html", "verzuimprotocol.html", "verzuimbegeleiding-wvp.html", "verzuimbegeleiding-erd-zw.html",
            "preventie-en-vitaliteit.html", "begeleiding-en-coaching.html", "trainingen-en-workshops.html", "risicomanagement.html",
            "assets/logo.png", "assets/favicon.png", "assets/display-var-latin.woff2", "assets/body-var-latin.woff2"}

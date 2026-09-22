@@ -80,9 +80,8 @@ function react2u_menu_fallback_render( array $items ): void {
 function react2u_primary_menu_fallback(): void {
 	react2u_menu_fallback_render(
 		array(
-			'/diensten/'                 => __( 'Diensten', 'react2u' ),
+			'/werkgevers/'              => __( 'Werkgevers', 'react2u' ),
 			'/werknemers/'               => __( 'Werknemers', 'react2u' ),
-			'/verzuimprotocol/'          => __( 'Verzuimprotocol', 'react2u' ),
 			'/over-react2u/'             => __( 'Over React2u', 'react2u' ),
 			'/contact/'                  => __( 'Contact', 'react2u' ),
 		)
@@ -92,7 +91,9 @@ function react2u_primary_menu_fallback(): void {
 function react2u_footer_menu_fallback(): void {
 	react2u_menu_fallback_render(
 		array(
-			'/diensten/'      => __( 'Diensten', 'react2u' ),
+			'/werkgevers/'    => __( 'Werkgevers', 'react2u' ),
+			'/werknemers/'     => __( 'Werknemers', 'react2u' ),
+			'/diensten/'       => __( 'Diensten', 'react2u' ),
 			'/over-react2u/'  => __( 'Over React2u', 'react2u' ),
 			'/contact/'       => __( 'Contact', 'react2u' ),
 		)

@@ -101,7 +101,10 @@ add_action( 'template_redirect', 'react2u_sitemap_redirect', 0 );
  */
 function react2u_sitemap_query_args( array $args, string $post_type ): array {
 	if ( 'page' === $post_type ) {
-		$args['post__not_in'] = array_filter( array( (int) get_option( 'page_for_posts' ) ) );
+		$counts = wp_count_posts( 'post' );
+		if ( 0 === (int) ( $counts->publish ?? 0 ) ) {
+			$args['post__not_in'] = array_filter( array( (int) get_option( 'page_for_posts' ) ) );
+		}
 	}
 
 	return $args;

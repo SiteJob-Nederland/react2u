@@ -305,6 +305,15 @@ react2u_inhoud_pagina(
 );
 
 /* ============================================================================
+ * Werkgevers — nieuwe centrale route; bestaande dienstslugs blijven bestaan.
+ * ========================================================================= */
+
+react2u_inhoud_pagina(
+	'werkgevers',
+	require __DIR__ . '/inhoud-werkgevers.php'
+);
+
+/* ============================================================================
  * Werknemers
  * ========================================================================= */
 
@@ -499,9 +508,8 @@ $menus = array(
 	'primary' => array(
 		'naam'  => 'Hoofdnavigatie',
 		'items' => array(
-			array( 'slug' => 'diensten', 'kinderen' => array_keys( $diensten_paginas ) ),
+			array( 'slug' => 'werkgevers', 'kinderen' => array_keys( $diensten_paginas ) ),
 			array( 'slug' => 'werknemers' ),
-			array( 'slug' => 'verzuimprotocol' ),
 			array( 'slug' => 'over-react2u' ),
 			array( 'slug' => 'contact' ),
 		),
@@ -509,7 +517,10 @@ $menus = array(
 	'footer'  => array(
 		'naam'  => 'Footer — pagina\'s',
 		'items' => array(
+			array( 'slug' => 'werkgevers' ),
+			array( 'slug' => 'werknemers' ),
 			array( 'slug' => 'diensten' ),
+			array( 'slug' => 'verzuimprotocol' ),
 			array( 'slug' => 'over-react2u' ),
 			array( 'slug' => 'contact' ),
 		),
