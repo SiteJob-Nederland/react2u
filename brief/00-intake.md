@@ -21,15 +21,18 @@ een menupunt, maar geen gelijkwaardige ingang in de hero. De huidige
 inlogknop verwijst naar de homepage; de echte portaalbestemming is nog nodig.
 De bestaande bronopname onder `assets/huidige-site/` blijft historisch materiaal.
 
-### Voorstel, nog geen goedgekeurd ontwerp
+### Bevestigde ontwerprichting — 22 september 2026
 
-Logo en herkenbare merkkleuren behouden, met een vernieuwde UI. Eén gezamenlijke
-homepage met twee gelijkwaardige routes: **Voor werkgevers** en **Voor werknemers**.
+Kas bevestigt: "logo en merkkleuren behouden, de UI vernieuwen."
+Dit is het akkoord op de richting; de concrete schermen moeten nog worden ontworpen.
+Eén gezamenlijke homepage met twee gelijkwaardige routes: **Voor werkgevers**
+en **Voor werknemers**.
 Zie `02-ontwerprichting.md` voor de inhoud en acceptatiepunten per route.
 
 ### Nog te bepalen
 
-- Ontwerpvrijheid en eventuele referentiesites: gevraagd aan Kas in deze chat.
+- Eventuele referentiesites zijn nog niet aangeleverd; de ontwerpvrijheid is
+  bevestigd binnen het bestaande logo en de merkkleuren.
 - Eigen foto's, gebruiksrechten en definitieve teksten: bevestigen vóór gebruik.
   De eerdere merkbrief en aanleverlijst beschrijven verschillende beeldkeuzes;
   die gelden niet automatisch als actuele klantgoedkeuring.

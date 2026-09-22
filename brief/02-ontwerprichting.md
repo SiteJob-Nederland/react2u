@@ -3,8 +3,10 @@
 ## Leidende opdracht — 22 september 2026
 
 Kas vraagt een duidelijke splitsing tussen werkgevers en werknemers en legt
-extra nadruk op UI. CRO is uitgesloten. De visuele uitwerking hieronder is een
-voorstel; behoud van logo en kleuren is als richting voorgelegd aan Kas.
+extra nadruk op UI. CRO is uitgesloten. Kas heeft de richting bevestigd:
+**logo en merkkleuren behouden, de UI vernieuwen**. Dit geeft ruimte voor een
+nieuwe compositie, typografische hiërarchie, navigatie en componenten binnen
+de bestaande merkidentiteit. De concrete schermuitwerking is nog een voorstel.
 Historische beschrijvingen van de bestaande assets zijn geen actuele
 goedkeuring van beeldrechten, teksten of ontwerp.
 

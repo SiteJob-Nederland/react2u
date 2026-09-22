@@ -1,8 +1,9 @@
 # Startprompt — React2u
 
 Actuele opdracht van 22 september 2026: **geen CRO**, een duidelijke splitsing
-tussen **werkgevers en werknemers**, en UI als hoofdprioriteit. Lees eerst de
-vastgelegde antwoorden en open punten in `00-intake.md` en de bijgewerkte
+tussen **werkgevers en werknemers**, en UI als hoofdprioriteit.
+Bevestigde ontwerprichting: **logo en merkkleuren behouden, de UI vernieuwen**.
+Lees eerst de vastgelegde antwoorden en open punten in `00-intake.md` en de bijgewerkte
 doelgroeproutes in `02-ontwerprichting.md`. De bestaande ontwerpaanzet is geen
 nieuw klantakkoord. De CRO-keuzes staan in `06-opties.json`.
 
