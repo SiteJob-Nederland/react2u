@@ -1,5 +1,21 @@
 # Ontwerprichting — React2u
 
+## Structurele herziening na tweede feedback
+
+Kas ziet ook in de rustige vervolgversie vooral een kleurwijziging: de
+compositie bleef een standaard tekst/foto-splitsing met kaarten eronder.
+Daarom is de pagina-opbouw nu zelf veranderd. De homepage opent met een
+beeldvullende menselijke foto en een overlappend inhoudspaneel waarin de
+twee doelgroepen direct te kiezen zijn. De kennismaking krijgt een grote
+redactionele kop en een asymmetrische fotocombinatie. Alle zes bestaande
+diensten staan als gefotografeerde navigatierijen op de homepage. De
+fotocarrousel toont één groot beeld met een compact tekstpaneel. De
+binnenpagina's krijgen eveneens een foto-eerst hero met overlappende titel.
+
+Dit vervangt de eerdere aanwijzingen hieronder over een split hero, twee
+tegels of twee platte navigatieregels. Logo, React2u-merkkleuren en
+Figtree/DM Sans blijven intact; de kleurvlakken blijven beperkt.
+
 ## Bijsturing: geen kleurplaat
 
 Kas ziet in de versie met indigo hero en grote roze/turkooizen doelgroepkaarten

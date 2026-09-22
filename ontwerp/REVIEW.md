@@ -172,3 +172,53 @@ CLS **0**, TBT **0 ms**; alle bestaande grenzen gehaald. Rapporten:
 `../qa/uitvoer/ontwerp/rapport.json` en
 `../qa/uitvoer/ontwerp-performance/performance.json`. Dit is lokale
 ontwerpvalidatie, geen WordPress-releasegoedkeuring of livegang.
+
+## Structurele herziening na tweede afwijzing
+
+De rustige versie veranderde vooral het kleurgebruik, terwijl de homepage
+een gewone tekst/foto-splitsing bleef. De nieuwe versie verandert daarom de
+informatiearchitectuur en de compositie van het eerste scherm. De homepage
+opent met een beeld over de volle breedte. Het tekstpaneel overlapt de foto
+en bevat direct de gelijkwaardige routes naar werkgevers en werknemers.
+Daarna volgen een redactionele kennismaking met twee foto's, zes bestaande
+diensten als beeldrijke navigatierijen en een grotere, beeldvullende
+fotoslider. Alle binnenpagina's openen nu met een brede foto waar de titel
+overheen valt. De teksten bij diensten zijn uit de bestaande React2u-bron
+gehaald; er zijn geen cijfers of klantcases verzonnen.
+
+| Before | After | Why |
+| --- | --- | --- |
+| Tekst links, foto rechts en routes eronder | Brede foto met overlappend verhaal en routes in hetzelfde paneel | Een werkelijk andere eerste indruk en een vroege doelgroepkeuze. |
+| Kennismaking als tweede tekst/foto-splitsing | Grote redactionele kop met een asymmetrische combinatie van twee mensenfoto's | Het menselijke verhaal krijgt een eigen ritme. |
+| Geen dienstenoverzicht op de homepage | Alle zes diensten als gefotografeerde, klikbare rijen | Meer inhoud en direct inzicht in het aanbod. |
+| Kleine kaarten naast elkaar in de slider | Eén groot beeld per slide met compact tekstpaneel | De beelden zijn nu de hoofdpersoon van de interactie. |
+| Subpagina's met dezelfde links/rechts hero | Foto eerst, titelvlak overlapt de onderkant | De nieuwe beeldtaal loopt door op werkgevers, werknemers en diensten. |
+
+Visueel bekeken in de lokale browser op 1440, 390 en 320 px: eerste scherm,
+kennismaking, dienstenrijen, slider en werkgeversopening. De hero-afbeelding
+is opnieuw uitgesneden zodat beide gezichten op desktop volledig in beeld
+staan; op mobiel blijven ze zichtbaar. De bestaande sliderlogica en optionele
+scrollentree zijn niet gewijzigd.
+
+### Motion review — review-animations
+
+| Before | After | Why |
+| --- | --- | --- |
+| Een horizontale slider met kleinere tekst/fotokaarten | Dezelfde native scroll-snap en knoppen met grotere foto en statisch tekstpaneel | De compositie verandert, maar er ontstaat geen nieuwe automatische beweging. |
+| Bestaande optionele scrollentree | Ongewijzigd: 12px/320ms voor zeldzame sectie-entree buiten het eerste scherm | Inhoud en primaire routes verschijnen direct en blijven zichtbaar bij scriptuitval. |
+| Reduced motion schakelt alle beweging uit | Ongewijzigd, inclusief wisselen tijdens het bezoek | De lokale projecteis gaat voor de mildere externe skillrichtlijn. |
+
+**Verdict: approve voor de lokale preview**, mits de huidige scherm- en
+interactietests groen blijven. Geen autoplay, layoutanimatie of scrollovername
+toegevoegd; de native slider blijft bedienbaar en onderbreekbaar.
+
+Na de correctie van een overlappend fotobijschrift is de lokale ontwerp-QA
+groen: **72/72** pagina/breedtecombinaties, `failures: []` en
+`incomplete: []`. De slider, beide routes, mobiele navigatie, echte
+scrollentree, scriptuitval en live reduced motion zijn opnieuw getest.
+Mobiele Lighthouse-meting van de homepage: mediaan **97/100**, LCP
+**2478 ms**, CLS **0**, TBT **0 ms** over drie koude runs. Alle bestaande
+grenzen worden gehaald, maar de LCP zit dicht op de grens van 2500 ms.
+Dit is labdata voor de lokale preview, geen velddata of productiebewijs.
+Rapporten: `../qa/uitvoer/ontwerp/rapport.json` en
+`../qa/uitvoer/ontwerp-performance/performance.json`.
