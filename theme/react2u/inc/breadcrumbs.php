@@ -1,6 +1,7 @@
 <?php
 /**
- * Kruimelpad — minimaal drie niveaus, zichtbaar én in BreadcrumbList.
+ * Kruimelpad — zichtbaar én in BreadcrumbList: drie niveaus voor een artikel,
+ * twee voor een overzicht direct onder Home, geen op de homepage.
  *
  * Home -> artikel is te weinig: het overzicht hoort ertussen, en waar een
  * categorie bestaat ook die. Zichtbaar pad en gestructureerde data komen uit
@@ -184,10 +185,21 @@ function react2u_primary_term( int $post_id, string $post_type ): ?WP_Term {
 	return null;
 }
 
+/**
+ * Is er een kruimelpad om te tonen? Alleen "Home" is geen pad: de homepage
+ * krijgt geen kruimelpad en geen BreadcrumbList, want Google vraagt minstens
+ * twee ListItems. Het zichtbare pad en het schema gebruiken deze ene grens.
+ *
+ * @param array<int,array{name:string,url:string}> $items
+ */
+function react2u_heeft_kruimelpad( array $items ): bool {
+	return count( $items ) >= 2;
+}
+
 /** Zichtbaar kruimelpad. De laatste kruimel is geen link: daar ben je al. */
 function react2u_breadcrumbs( array $args = array() ): void {
 	$items = react2u_breadcrumb_items();
-	if ( count( $items ) < 2 ) {
+	if ( ! react2u_heeft_kruimelpad( $items ) ) {
 		return;
 	}
 

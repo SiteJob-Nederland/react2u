@@ -65,9 +65,10 @@ function react2u_config(): array {
 		),
 
 		/* ---- Sterrenscore — KLANT LEVERT AAN ------------------------------- *
-		 * Blijft uit het schema tot alle drie de velden echt zijn ingevuld.
-		 * Een placeholder als aggregateRating publiceren zou een verzonnen
-		 * cijfer aan Google doorgeven.
+		 * Alleen zichtbaar op de site, met de bron erbij en een link naar de
+		 * beoordelingen op dat platform ('url'). De score komt nooit in de
+		 * gestructureerde data: Google staat geen overgenomen scores toe en
+		 * geeft een bedrijf geen sterren voor beoordelingen over zichzelf.
 		 */
 		'rating' => array(
 			'score'  => REACT2U_PLACEHOLDER,
@@ -264,6 +265,12 @@ function react2u_config(): array {
 			'unit' => REACT2U_PLACEHOLDER . ' per eenheid',
 			'note' => '',
 		),
+
+		/* ---- "Gemaakt door SiteJob" in de sitevoet ------------------------- *
+		 * De link heeft altijd rel="nofollow". Wil de klant de vermelding niet,
+		 * zet dit dan op false; de sitevoet laat hem dan weg.
+		 */
+		'sitejob_vermelding' => true,
 	);
 
 	$config = apply_filters( 'react2u_config', $config );
@@ -430,8 +437,9 @@ function react2u_has_email(): bool {
 /**
  * Volledig gevalideerde sterrenscore voor publieke uitvoer.
  *
- * De badge en het schema gebruiken bewust dezelfde functie. Zo kan een deels
- * ingevulde score niet in de ene uitvoer wel en in de andere niet verschijnen.
+ * Alleen de zichtbare badge gebruikt deze functie; de score komt niet in de
+ * gestructureerde data (Google geeft geen sterren voor beoordelingen over
+ * het eigen bedrijf). Een deels ingevulde score verschijnt zo nergens.
  * Gegroepeerde aantallen gebruiken steeds hetzelfde scheidingsteken; een punt
  * of komma kan daardoor niet stilletjes van decimaal naar duizendtalseparator
  * veranderen in een verder malformed getal.
