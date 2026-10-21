@@ -1,6 +1,7 @@
 <?php
 /**
- * Kruimelpad — minimaal drie niveaus, zichtbaar én in BreadcrumbList.
+ * Kruimelpad — zichtbaar én in BreadcrumbList: drie niveaus voor een artikel,
+ * twee voor een overzicht direct onder Home, geen op de homepage.
  *
  * Home -> artikel is te weinig: het overzicht hoort ertussen, en waar een
  * categorie bestaat ook die. Zichtbaar pad en gestructureerde data komen uit

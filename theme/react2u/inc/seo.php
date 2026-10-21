@@ -7,8 +7,8 @@
  * SEOPress), dan houdt dit bestand zich stil om dubbele tags te voorkomen.
  *
  * Drie dingen waar het in de praktijk misgaat en die hier dus vastliggen:
- * een meta-description op élke paginasoort, een kruimelpad van drie niveaus in
- * het schema, en een volwaardig ImageObject met afmetingen in plaats van een
+ * een meta-description op élke paginasoort, een kruimelpad in het schema (drie
+ * niveaus bij een artikel, geen op de homepage), en een volwaardig ImageObject met afmetingen in plaats van een
  * kale URL.
  *
  * @package React2u
