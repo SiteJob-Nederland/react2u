@@ -354,17 +354,11 @@ function react2u_output_schema(): void {
 		);
 	}
 
-	/* Badge en schema delen één fail-closed bron voor publieke ratingdata. */
-	$rating = react2u_public_rating_data();
-	if ( null !== $rating ) {
-		$organization['aggregateRating'] = array(
-			'@type'       => 'AggregateRating',
-			'ratingValue' => $rating['score_normalized'],
-			'bestRating'  => $rating['max_normalized'],
-			'worstRating' => '1',
-			'ratingCount' => (int) $rating['count_number'],
-		);
-	}
+	/*
+	 * Bewust geen aggregateRating op de organisatie: Google staat geen
+	 * overgenomen scores toe en geeft een bedrijf geen sterren voor beoordelingen
+	 * over zichzelf. De badge toont de score alleen zichtbaar op de pagina.
+	 */
 
 	$graph = array(
 		$organization,
@@ -376,20 +370,13 @@ function react2u_output_schema(): void {
 			'description'     => react2u_meta_description(),
 			'publisher'       => array( '@id' => $organization_id ),
 			'inLanguage'      => get_bloginfo( 'language' ),
-			'potentialAction' => array(
-				'@type'       => 'SearchAction',
-				'target'      => array(
-					'@type'       => 'EntryPoint',
-					'urlTemplate' => home_url( '/?s={search_term_string}' ),
-				),
-				'query-input' => 'required name=search_term_string',
-			),
+			// Geen SearchAction: Google toont de sitelinks-zoekbalk sinds 21-11-2024 niet meer.
 		),
 	);
 
 	$canonical = react2u_canonical_url();
 
-	$graph[] = array(
+	$webpage = array(
 		'@type'       => is_front_page() ? array( 'WebPage', 'CollectionPage' ) : 'WebPage',
 		'@id'         => $canonical . '#webpage',
 		'url'         => $canonical,
@@ -397,10 +384,17 @@ function react2u_output_schema(): void {
 		'description' => react2u_meta_description(),
 		'isPartOf'    => array( '@id' => $website_id ),
 		'inLanguage'  => get_bloginfo( 'language' ),
-		'breadcrumb'  => array( '@id' => $canonical . '#breadcrumbs' ),
 	);
 
-	$graph[] = react2u_breadcrumb_schema( $canonical );
+	// Op de homepage is er geen kruimelpad, dus ook geen BreadcrumbList.
+	$breadcrumbs = react2u_breadcrumb_schema( $canonical );
+	if ( $breadcrumbs ) {
+		$webpage['breadcrumb'] = array( '@id' => $breadcrumbs['@id'] );
+	}
+	$graph[] = $webpage;
+	if ( $breadcrumbs ) {
+		$graph[] = $breadcrumbs;
+	}
 
 	if ( is_singular() ) {
 		$post_id   = (int) get_queried_object_id();
@@ -539,10 +533,20 @@ function react2u_person_schema( int $author_id, string $organization_id ): array
 	return $person;
 }
 
-/** @return array<string,mixed> */
+/**
+ * BreadcrumbList bij het zichtbare kruimelpad, of een lege array als er geen
+ * kruimelpad is (minder dan twee kruimels, zoals op de homepage).
+ *
+ * @return array<string,mixed>
+ */
 function react2u_breadcrumb_schema( string $canonical ): array {
+	$items = react2u_breadcrumb_items();
+	if ( ! react2u_heeft_kruimelpad( $items ) ) {
+		return array();
+	}
+
 	$elements = array();
-	foreach ( react2u_breadcrumb_items() as $index => $item ) {
+	foreach ( $items as $index => $item ) {
 		$element = array(
 			'@type'    => 'ListItem',
 			'position' => $index + 1,

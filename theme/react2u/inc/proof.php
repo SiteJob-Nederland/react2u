@@ -264,6 +264,12 @@ function react2u_config(): array {
 			'unit' => REACT2U_PLACEHOLDER . ' per eenheid',
 			'note' => '',
 		),
+
+		/* ---- "Gemaakt door SiteJob" in de sitevoet ------------------------- *
+		 * De link heeft altijd rel="nofollow". Wil de klant de vermelding niet,
+		 * zet dit dan op false; de sitevoet laat hem dan weg.
+		 */
+		'sitejob_vermelding' => true,
 	);
 
 	$config = apply_filters( 'react2u_config', $config );

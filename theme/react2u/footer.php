@@ -216,7 +216,15 @@ $footer_rating_valid = ! $footer_proof_has_placeholder( $footer_rating )
 			);
 			?>
 		</nav>
-		<small class="footer-sitejob"><?php esc_html_e( 'Gemaakt door', 'react2u' ); ?> <a href="https://sitejob.nl/">SiteJob</a></small>
+		<?php
+		/*
+		 * nofollow: dezelfde volgende link op elke klantsite noemt Google link
+		 * spam. Uit te zetten met 'sitejob_vermelding' in inc/proof.php.
+		 */
+		if ( wp_validate_boolean( react2u_get( 'sitejob_vermelding', true ) ) ) :
+			?>
+			<small class="footer-sitejob"><?php esc_html_e( 'Gemaakt door', 'react2u' ); ?> <a href="https://sitejob.nl/" rel="nofollow">SiteJob</a></small>
+		<?php endif; ?>
 	</div>
 </footer>
 <?php wp_footer(); ?>

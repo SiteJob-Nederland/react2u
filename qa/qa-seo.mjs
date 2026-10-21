@@ -7,6 +7,8 @@
  */
 
 import { patchDnsLookup } from './qa-resolve.mjs';
+import { reviewMarkupProblemen } from './review-markup.mjs';
+import { kruimelpadProblemen, heeftSearchAction, volgendeSitejobLinks } from './google-schema.mjs';
 
 patchDnsLookup();
 
@@ -88,7 +90,8 @@ function typenUit(grafen) {
  * installatie heeft nog geen artikel, en dat is geen fout in het thema.
  */
 const teControleren = [
-	{ pad: '/', naam: 'homepage', verwacht: ['Organization', 'WebSite', 'WebPage', 'BreadcrumbList'] },
+	// De homepage heeft geen kruimelpad: alleen "Home" is voor Google geen BreadcrumbList.
+	{ pad: '/', naam: 'homepage', verwacht: ['Organization', 'WebSite', 'WebPage'] },
 	{ pad: '/blog/', naam: 'blogoverzicht', verwacht: ['BreadcrumbList'] },
 	{ pad: '/kennisbank/', naam: 'kennisbank', verwacht: ['BreadcrumbList'] },
 ];
@@ -122,16 +125,18 @@ for (const pagina of teControleren) {
 		if (!typen.has(verwacht)) meld('FOUT', pagina.pad, `${verwacht} ontbreekt in het schema`);
 	}
 
-	// Kruimelpad in het schema van minimaal drie niveaus.
+	// Kruimelpad: nooit één ListItem (ook niet op de homepage) en geen verwijzing
+	// naar een kruimelpad dat ontbreekt. Een overzicht direct onder Home heeft
+	// terecht twee niveaus; een artikel hoort er drie te hebben.
+	for (const probleem of kruimelpadProblemen(grafen, { minimum: pagina.minKruimels ?? 2 })) meld('FOUT', pagina.pad, probleem);
+	if (heeftSearchAction(grafen)) meld('WAARSCHUWING', pagina.pad, 'SearchAction in de gestructureerde data: Google toont de sitelinks-zoekbalk sinds 21-11-2024 niet meer (plugin?)');
+	// Geen review-markup over het eigen bedrijf, ook niet uit een plugin.
+	for (const probleem of reviewMarkupProblemen(grafen)) meld('FOUT', pagina.pad, `${probleem} — geen review-markup over het eigen bedrijf; de score hoort alleen zichtbaar op de pagina`);
+	// Een volgende link naar sitejob.nl op elke klantsite is link spam ("Gemaakt door SiteJob": nofollow).
+	const [volgend] = volgendeSitejobLinks(html);
+	if (volgend) meld('FOUT', pagina.pad, `volgende link naar sitejob.nl: ${volgend.slice(0, 80)} — zet rel="nofollow"`);
 	for (const graaf of grafen) {
 		for (const knoop of graaf['@graph'] ?? [graaf]) {
-			// Een overzicht direct onder Home heeft terecht twee niveaus; een
-			// artikel hoort er drie te hebben, met het overzicht ertussen.
-			if (knoop['@type'] === 'BreadcrumbList' && pagina.pad !== '/') {
-				const niveaus = (knoop.itemListElement ?? []).length;
-				const minimum = pagina.minKruimels ?? 2;
-				if (niveaus < minimum) meld('FOUT', pagina.pad, `BreadcrumbList heeft ${niveaus} niveaus (verwacht minimaal ${minimum})`);
-			}
 			if (knoop['@type'] === 'Organization' && JSON.stringify(knoop).includes('[PLACEHOLDER]')) {
 				meld('FOUT', pagina.pad, 'er staat een [PLACEHOLDER] in de gestructureerde data');
 			}
